@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "singleTableCellBackgroundViewController.h"
 #import "LoginView.h"
+
 @interface mineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
     LoginView* loginView;
     
     UITableView *myTableView;
-    NSMutableArray * inforArr;
+    NSDictionary * inforDic;
     singleTableCellBackgroundViewController * backView;
 }
+-(void)pushToViewController:(id)_sen;
+-(void)needAppdelegatePushToViewController:(id)_sen;
+
 @end

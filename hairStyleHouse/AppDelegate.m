@@ -77,7 +77,11 @@
     }
     
 }
-
+-(void)pushToViewController:(id)_sen
+{
+    rootNav.navigationBar.hidden =NO;
+    [rootNav pushViewController:_sen animated:NO];
+}
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     return [TencentOAuth HandleOpenURL:url];

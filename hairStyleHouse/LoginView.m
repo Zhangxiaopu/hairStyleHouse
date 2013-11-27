@@ -216,6 +216,8 @@
 -(void)postTententData
 {
 //    [self cJiaZaiView];
+    [self removeFromSuperview];
+
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
 //
 //    qq_keyid
@@ -250,7 +252,6 @@
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    [self removeFromSuperview];
 
     NSLog(@"%@",request.responseString);
 //    if (request.tag==1||request.tag==2) {
@@ -265,12 +266,12 @@
         appDel.touxiangImage=[dic objectForKey:@"head_photo"];
         appDel.uid=backId;//将值赋再appdelegat.uid上
         appDel.city=[dic objectForKey:@"city"];
-        if (request.tag==1) {
-            appDel.loginType=@"qq";
-        }
-        else{
-        appDel.loginType=@"sina";
-        }
+//        if (request.tag==1) {
+//            appDel.loginType=@"qq";
+//        }
+//        else{
+//        appDel.loginType=@"sina";
+//        }
         //
         //NSuserDefaults
         NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];

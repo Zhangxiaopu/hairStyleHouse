@@ -7,8 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class mineViewController;
+#import "personInforViewController.h"
+@interface singleTableCellBackgroundViewController : UIViewController<UIScrollViewDelegate>
+{
+    NSDictionary * infoDic;
+    UIScrollView * workScroll;
+    mineViewController * fatherController;
+    personInforViewController * personInfor;
 
-@interface singleTableCellBackgroundViewController : UIViewController
+}
+@property(nonatomic,strong)NSDictionary * infoDic;
+@property(nonatomic,strong)mineViewController * fatherController;
 @property (strong, nonatomic) IBOutlet UIImageView *headImage;
 @property (strong, nonatomic) IBOutlet UIButton *headButton;
 @property (strong, nonatomic) IBOutlet UILabel *nameLable;
@@ -26,7 +36,16 @@
 @property (strong, nonatomic) IBOutlet UILabel *saveLable;
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 
+@property (strong, nonatomic) IBOutlet UILabel *mobileLable;
 
 @property (strong, nonatomic) IBOutlet UITextView *personInforText;
+
+- (IBAction)headButtonClick:(id)sender;
+- (IBAction)myFansButtonClick:(id)sender;
+- (IBAction)myFouceButtonClick:(id)sender;
+- (IBAction)messageButtonClick:(id)sender;
+- (IBAction)beaspeakButtonClick:(id)sender;
+- (IBAction)saveButtonClick:(id)sender;
+
 
 @end

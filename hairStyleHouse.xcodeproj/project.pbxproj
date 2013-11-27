@@ -110,6 +110,28 @@
 		7AE03D2A184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE03D29184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */; };
 		7AE03D2F184589A400E14EDC /* singleTableCellBackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */; };
+		7AE03D341845B9F300E14EDC /* changeInforViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D321845B9F300E14EDC /* changeInforViewController.xib */; };
+		7AE03D371845BDA700E14EDC /* personInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D361845BDA700E14EDC /* personInforViewController.m */; };
+		7AE03D3A1845CC0900E14EDC /* 未选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D381845CC0900E14EDC /* 未选中.png */; };
+		7AE03D3B1845CC0900E14EDC /* 选中.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D391845CC0900E14EDC /* 选中.png */; };
+		7AE03D441845D41C00E14EDC /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D3D1845D41C00E14EDC /* area.plist */; };
+		7AE03D451845D41C00E14EDC /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D3E1845D41C00E14EDC /* city.plist */; };
+		7AE03D461845D41C00E14EDC /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D401845D41C00E14EDC /* HZAreaPickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7AE03D471845D41C00E14EDC /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D411845D41C00E14EDC /* HZAreaPickerView.xib */; };
+		7AE03D481845D41C00E14EDC /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D431845D41C00E14EDC /* HZLocation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7AE03D4E184615B400E14EDC /* fansAndfouceAndMassegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */; };
+		7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */; };
+		7AE03D551846172F00E14EDC /* pubImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D531846172F00E14EDC /* pubImageViewController.m */; };
+		7AE03D561846172F00E14EDC /* pubImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D541846172F00E14EDC /* pubImageViewController.xib */; };
+		7AE03D5A1846175B00E14EDC /* dresserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D581846175B00E14EDC /* dresserDetailViewController.m */; };
+		7AE03D5B1846175B00E14EDC /* dresserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D591846175B00E14EDC /* dresserDetailViewController.xib */; };
+		7AE03D5E1846178E00E14EDC /* lookEvaluateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D5D1846178E00E14EDC /* lookEvaluateViewController.m */; };
+		7AE03D61184617A800E14EDC /* talkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D60184617A800E14EDC /* talkViewController.m */; };
+		7AE03D64184617DB00E14EDC /* talkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D63184617DB00E14EDC /* talkCell.m */; };
+		7AE03D671846183400E14EDC /* beaspeakViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D661846183400E14EDC /* beaspeakViewController.m */; };
+		7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D691846187000E14EDC /* beaspeakCell.m */; };
+		7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6C18461C0200E14EDC /* SlideImageView.m */; };
+		7AE03D7018461C0200E14EDC /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6E18461C0200E14EDC /* DemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -277,6 +299,42 @@
 		7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singleTableCellBackgroundViewController.h; sourceTree = "<group>"; };
 		7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = singleTableCellBackgroundViewController.m; sourceTree = "<group>"; };
 		7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = singleTableCellBackgroundViewController.xib; sourceTree = "<group>"; };
+		7AE03D321845B9F300E14EDC /* changeInforViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = changeInforViewController.xib; sourceTree = "<group>"; };
+		7AE03D351845BDA700E14EDC /* personInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = personInforViewController.h; sourceTree = "<group>"; };
+		7AE03D361845BDA700E14EDC /* personInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = personInforViewController.m; sourceTree = "<group>"; };
+		7AE03D381845CC0900E14EDC /* 未选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未选中.png"; sourceTree = "<group>"; };
+		7AE03D391845CC0900E14EDC /* 选中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中.png"; sourceTree = "<group>"; };
+		7AE03D3D1845D41C00E14EDC /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		7AE03D3E1845D41C00E14EDC /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		7AE03D3F1845D41C00E14EDC /* HZAreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZAreaPickerView.h; sourceTree = "<group>"; };
+		7AE03D401845D41C00E14EDC /* HZAreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZAreaPickerView.m; sourceTree = "<group>"; };
+		7AE03D411845D41C00E14EDC /* HZAreaPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView.xib; sourceTree = "<group>"; };
+		7AE03D421845D41C00E14EDC /* HZLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLocation.h; sourceTree = "<group>"; };
+		7AE03D431845D41C00E14EDC /* HZLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLocation.m; sourceTree = "<group>"; };
+		7AE03D4C184615B400E14EDC /* fansAndfouceAndMassegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndfouceAndMassegeViewController.h; sourceTree = "<group>"; };
+		7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndfouceAndMassegeViewController.m; sourceTree = "<group>"; };
+		7AE03D4F184615F500E14EDC /* fansAndfoceAndMassegeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndfoceAndMassegeCell.h; sourceTree = "<group>"; };
+		7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndfoceAndMassegeCell.m; sourceTree = "<group>"; };
+		7AE03D521846172F00E14EDC /* pubImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pubImageViewController.h; sourceTree = "<group>"; };
+		7AE03D531846172F00E14EDC /* pubImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pubImageViewController.m; sourceTree = "<group>"; };
+		7AE03D541846172F00E14EDC /* pubImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pubImageViewController.xib; sourceTree = "<group>"; };
+		7AE03D571846175B00E14EDC /* dresserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dresserDetailViewController.h; sourceTree = "<group>"; };
+		7AE03D581846175B00E14EDC /* dresserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dresserDetailViewController.m; sourceTree = "<group>"; };
+		7AE03D591846175B00E14EDC /* dresserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = dresserDetailViewController.xib; sourceTree = "<group>"; };
+		7AE03D5C1846178E00E14EDC /* lookEvaluateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lookEvaluateViewController.h; sourceTree = "<group>"; };
+		7AE03D5D1846178E00E14EDC /* lookEvaluateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lookEvaluateViewController.m; sourceTree = "<group>"; };
+		7AE03D5F184617A800E14EDC /* talkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = talkViewController.h; sourceTree = "<group>"; };
+		7AE03D60184617A800E14EDC /* talkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = talkViewController.m; sourceTree = "<group>"; };
+		7AE03D62184617DB00E14EDC /* talkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = talkCell.h; sourceTree = "<group>"; };
+		7AE03D63184617DB00E14EDC /* talkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = talkCell.m; sourceTree = "<group>"; };
+		7AE03D651846183400E14EDC /* beaspeakViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaspeakViewController.h; sourceTree = "<group>"; };
+		7AE03D661846183400E14EDC /* beaspeakViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaspeakViewController.m; sourceTree = "<group>"; };
+		7AE03D681846187000E14EDC /* beaspeakCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaspeakCell.h; sourceTree = "<group>"; };
+		7AE03D691846187000E14EDC /* beaspeakCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaspeakCell.m; sourceTree = "<group>"; };
+		7AE03D6B18461C0200E14EDC /* SlideImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideImageView.h; sourceTree = "<group>"; };
+		7AE03D6C18461C0200E14EDC /* SlideImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideImageView.m; sourceTree = "<group>"; };
+		7AE03D6D18461C0200E14EDC /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
+		7AE03D6E18461C0200E14EDC /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +378,7 @@
 		7A37D6781844C9E100D9C4D9 = {
 			isa = PBXGroup;
 			children = (
+				7AE03D3C1845D41C00E14EDC /* areapicker */,
 				7A37D74E1844CC4C00D9C4D9 /* 11-20 */,
 				7A37D6B91844CA2700D9C4D9 /* ASIHTTPRequst */,
 				7A37D6D41844CA2700D9C4D9 /* SBJson */,
@@ -378,11 +437,38 @@
 				7A37D7311844CA7300D9C4D9 /* squareViewController.m */,
 				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
 				7A37D7341844CA8A00D9C4D9 /* mineViewController.m */,
+				7A2BA6CC1844E0A200A46A09 /* LoginView.h */,
+				7A2BA6CD1844E0A200A46A09 /* LoginView.m */,
 				7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */,
 				7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */,
 				7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */,
-				7A2BA6CC1844E0A200A46A09 /* LoginView.h */,
-				7A2BA6CD1844E0A200A46A09 /* LoginView.m */,
+				7AE03D351845BDA700E14EDC /* personInforViewController.h */,
+				7AE03D361845BDA700E14EDC /* personInforViewController.m */,
+				7AE03D321845B9F300E14EDC /* changeInforViewController.xib */,
+				7AE03D521846172F00E14EDC /* pubImageViewController.h */,
+				7AE03D531846172F00E14EDC /* pubImageViewController.m */,
+				7AE03D541846172F00E14EDC /* pubImageViewController.xib */,
+				7AE03D4C184615B400E14EDC /* fansAndfouceAndMassegeViewController.h */,
+				7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */,
+				7AE03D4F184615F500E14EDC /* fansAndfoceAndMassegeCell.h */,
+				7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */,
+				7AE03D651846183400E14EDC /* beaspeakViewController.h */,
+				7AE03D661846183400E14EDC /* beaspeakViewController.m */,
+				7AE03D681846187000E14EDC /* beaspeakCell.h */,
+				7AE03D691846187000E14EDC /* beaspeakCell.m */,
+				7AE03D6D18461C0200E14EDC /* DemoViewController.h */,
+				7AE03D6E18461C0200E14EDC /* DemoViewController.m */,
+				7AE03D6B18461C0200E14EDC /* SlideImageView.h */,
+				7AE03D6C18461C0200E14EDC /* SlideImageView.m */,
+				7AE03D571846175B00E14EDC /* dresserDetailViewController.h */,
+				7AE03D581846175B00E14EDC /* dresserDetailViewController.m */,
+				7AE03D591846175B00E14EDC /* dresserDetailViewController.xib */,
+				7AE03D5C1846178E00E14EDC /* lookEvaluateViewController.h */,
+				7AE03D5D1846178E00E14EDC /* lookEvaluateViewController.m */,
+				7AE03D5F184617A800E14EDC /* talkViewController.h */,
+				7AE03D60184617A800E14EDC /* talkViewController.m */,
+				7AE03D62184617DB00E14EDC /* talkCell.h */,
+				7AE03D63184617DB00E14EDC /* talkCell.m */,
 				7A37D6961844C9E100D9C4D9 /* Main.storyboard */,
 				7A37D6991844C9E100D9C4D9 /* ViewController.h */,
 				7A37D69A1844C9E100D9C4D9 /* ViewController.m */,
@@ -535,6 +621,8 @@
 		7A37D74E1844CC4C00D9C4D9 /* 11-20 */ = {
 			isa = PBXGroup;
 			children = (
+				7AE03D381845CC0900E14EDC /* 未选中.png */,
+				7AE03D391845CC0900E14EDC /* 选中.png */,
 				7A37D74F1844CC4C00D9C4D9 /* 01找发型.png */,
 				7A37D7501844CC4C00D9C4D9 /* 02发型师.png */,
 				7A37D7511844CC4C00D9C4D9 /* 03广场.png */,
@@ -571,6 +659,20 @@
 				7A37D7701844CC4C00D9C4D9 /* 钻石.png */,
 			);
 			path = "11-20";
+			sourceTree = "<group>";
+		};
+		7AE03D3C1845D41C00E14EDC /* areapicker */ = {
+			isa = PBXGroup;
+			children = (
+				7AE03D3D1845D41C00E14EDC /* area.plist */,
+				7AE03D3E1845D41C00E14EDC /* city.plist */,
+				7AE03D3F1845D41C00E14EDC /* HZAreaPickerView.h */,
+				7AE03D401845D41C00E14EDC /* HZAreaPickerView.m */,
+				7AE03D411845D41C00E14EDC /* HZAreaPickerView.xib */,
+				7AE03D421845D41C00E14EDC /* HZLocation.h */,
+				7AE03D431845D41C00E14EDC /* HZLocation.m */,
+			);
+			path = areapicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -655,16 +757,20 @@
 				7A37D7851844CC4C00D9C4D9 /* xunzhang.png in Resources */,
 				7A37D7881844CC4C00D9C4D9 /* 历史预约.png in Resources */,
 				7A37D78A1844CC4C00D9C4D9 /* 当前预约.png in Resources */,
+				7AE03D3B1845CC0900E14EDC /* 选中.png in Resources */,
 				7A37D7751844CC4C00D9C4D9 /* 1发型师.png in Resources */,
 				7A37D77A1844CC4C00D9C4D9 /* renzhengfaxingshi.png in Resources */,
 				7A37D7861844CC4C00D9C4D9 /* 全部.png in Resources */,
 				7A37D78E1844CC4C00D9C4D9 /* 皇冠.png in Resources */,
+				7AE03D441845D41C00E14EDC /* area.plist in Resources */,
 				7A37D78C1844CC4C00D9C4D9 /* 星级.png in Resources */,
 				7A37D77C1844CC4C00D9C4D9 /* shalong.png in Resources */,
 				7A37D7921844CC4C00D9C4D9 /* 钻石.png in Resources */,
 				7A37D7891844CC4C00D9C4D9 /* 同城1.png in Resources */,
 				7A37D78F1844CC4C00D9C4D9 /* 私信.png in Resources */,
+				7AE03D451845D41C00E14EDC /* city.plist in Resources */,
 				7A37D69D1844C9E100D9C4D9 /* Images.xcassets in Resources */,
+				7AE03D561846172F00E14EDC /* pubImageViewController.xib in Resources */,
 				7A37D7901844CC4C00D9C4D9 /* 粉丝.png in Resources */,
 				7A37D7791844CC4C00D9C4D9 /* like1.png in Resources */,
 				7A37D77E1844CC4C00D9C4D9 /* x0.png in Resources */,
@@ -683,9 +789,13 @@
 				7A37D7731844CC4C00D9C4D9 /* 03广场.png in Resources */,
 				7A37D78B1844CC4C00D9C4D9 /* 推荐.png in Resources */,
 				7A37D78D1844CC4C00D9C4D9 /* 添加图片.png in Resources */,
+				7AE03D471845D41C00E14EDC /* HZAreaPickerView.xib in Resources */,
+				7AE03D3A1845CC0900E14EDC /* 未选中.png in Resources */,
+				7AE03D341845B9F300E14EDC /* changeInforViewController.xib in Resources */,
 				7A37D7721844CC4C00D9C4D9 /* 02发型师.png in Resources */,
 				7A37D7771844CC4C00D9C4D9 /* jifen.png in Resources */,
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
+				7AE03D5B1846175B00E14EDC /* dresserDetailViewController.xib in Resources */,
 				7A37D7781844CC4C00D9C4D9 /* like.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -711,23 +821,37 @@
 				7A37D7181844CA2700D9C4D9 /* SBJsonStreamWriter.m in Sources */,
 				7A37D70D1844CA2700D9C4D9 /* ASIHTTPRequest.m in Sources */,
 				7A37D7351844CA8A00D9C4D9 /* mineViewController.m in Sources */,
+				7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */,
 				7A37D7131844CA2700D9C4D9 /* SBJsonParser.m in Sources */,
 				7A37D7081844CA2700D9C4D9 /* ASIAuthenticationDialog.m in Sources */,
+				7AE03D371845BDA700E14EDC /* personInforViewController.m in Sources */,
 				7A37D72F1844CA6200D9C4D9 /* dresserViewController.m in Sources */,
 				7A37D7271844CA2700D9C4D9 /* UIButton+WebCache.m in Sources */,
+				7AE03D4E184615B400E14EDC /* fansAndfouceAndMassegeViewController.m in Sources */,
 				7A37D7261844CA2700D9C4D9 /* SDWebImagePrefetcher.m in Sources */,
+				7AE03D61184617A800E14EDC /* talkViewController.m in Sources */,
 				7A37D7111844CA2700D9C4D9 /* PullingRefreshTableView.m in Sources */,
 				7A37D71B1844CA2700D9C4D9 /* SBJsonTokeniser.m in Sources */,
 				7A37D70C1844CA2700D9C4D9 /* ASIFormDataRequest.m in Sources */,
+				7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */,
 				7A37D7291844CA2700D9C4D9 /* UIImageView+WebCache.m in Sources */,
 				7A37D7171844CA2700D9C4D9 /* SBJsonStreamParserState.m in Sources */,
+				7AE03D64184617DB00E14EDC /* talkCell.m in Sources */,
 				7A37D7141844CA2700D9C4D9 /* SBJsonStreamParser.m in Sources */,
 				7A37D7251844CA2700D9C4D9 /* SDWebImageManager.m in Sources */,
 				7A37D7121844CA2700D9C4D9 /* NSObject+SBJson.m in Sources */,
+				7AE03D481845D41C00E14EDC /* HZLocation.m in Sources */,
+				7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */,
 				7A37D71F1844CA2700D9C4D9 /* NSData+GIF.m in Sources */,
+				7AE03D551846172F00E14EDC /* pubImageViewController.m in Sources */,
 				7A37D6951844C9E100D9C4D9 /* AppDelegate.m in Sources */,
 				7A37D7281844CA2700D9C4D9 /* UIImage+GIF.m in Sources */,
+				7AE03D461845D41C00E14EDC /* HZAreaPickerView.m in Sources */,
+				7AE03D671846183400E14EDC /* beaspeakViewController.m in Sources */,
+				7AE03D5A1846175B00E14EDC /* dresserDetailViewController.m in Sources */,
 				7A37D70E1844CA2700D9C4D9 /* ASIInputStream.m in Sources */,
+				7AE03D5E1846178E00E14EDC /* lookEvaluateViewController.m in Sources */,
+				7AE03D7018461C0200E14EDC /* DemoViewController.m in Sources */,
 				7A37D6911844C9E100D9C4D9 /* main.m in Sources */,
 				7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */,
 				7A37D71A1844CA2700D9C4D9 /* SBJsonStreamWriterState.m in Sources */,

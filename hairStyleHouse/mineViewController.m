@@ -35,13 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     loginView=[[LoginView alloc] init];
     loginView.frame=self.view.bounds;
-        
-    
-    inforArr = [[NSMutableArray alloc] init];
-    
+
+    inforDic = [[NSDictionary alloc] init];
     
     myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     myTableView.allowsSelection=NO;
@@ -50,6 +49,14 @@
     myTableView.backgroundColor=[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [self.view addSubview:myTableView];
 	// Do any additional setup after loading the view.
+}
+-(void)leftButtonClick
+{
+    
+}
+-(void)rightButtonClick
+{
+
 }
 -(void)viewDidAppear:(BOOL)animated
 {
@@ -72,7 +79,7 @@
 
     ASIHTTPRequest* request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=info&type=%@&uid=%@",appDele.type,appDele.uid]]];
     request.delegate=self;
-    request.tag=2;
+    request.tag=1;
     [request startAsynchronous];
 }
 
@@ -80,11 +87,14 @@
 {
     
     NSLog(@"%@",request.responseString);
+    NSData*jsondata = [request responseData];
+    NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
     SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-    NSDictionary* dic=[jsonP objectWithString:request.responseString];
+    NSDictionary* dic=[jsonP objectWithString:jsonString];
     NSLog(@"个人信息dic:%@",dic);
-    inforArr = [dic objectForKey:@"user_info"];
-    
+    inforDic = [dic objectForKey:@"user_info"];
+    [self refreashNav];
+    [self freashView];
 //    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
 }
 
@@ -92,6 +102,46 @@
 {
     UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
+}
+
+-(void)refreashNav
+{
+    UIButton * leftButton=[[UIButton alloc] init];
+    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton.layer setMasksToBounds:YES];
+    [leftButton.layer setCornerRadius:3.0];
+    [leftButton.layer setBorderWidth:1.0];
+    [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
+    [leftButton setTitle:@"设置" forState:UIControlStateNormal];
+    leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [leftButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame = CGRectMake(12,20, 60, 25);
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
+    
+    UIButton * rightButton=[[UIButton alloc] init];
+    rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton.layer setMasksToBounds:YES];
+    [rightButton.layer setCornerRadius:3.0];
+    [rightButton.layer setBorderWidth:1.0];
+    [rightButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
+    [rightButton setTitle:@"上传图片" forState:UIControlStateNormal];
+    rightButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [rightButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
+    [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [rightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    rightButton.frame = CGRectMake(12,20, 60, 25);
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc] initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem=rightButtonItem;
+}
+
+-(void)freashView
+{
+    [myTableView reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -123,11 +173,22 @@
 
 - (void)updateBackView
 {
-    if (backView==nil) {
-        backView=[[singleTableCellBackgroundViewController alloc] init];
-    }
+    backView=nil;
+    
+    backView=[[singleTableCellBackgroundViewController alloc] init];
+    backView.fatherController=self;
+    
+    backView.infoDic =inforDic;
 }
-
+-(void)pushToViewController:(id)_sen
+{
+    [self.navigationController pushViewController:_sen animated:NO];
+}
+-(void)needAppdelegatePushToViewController:(id)_sen
+{
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    [appDele pushToViewController:_sen];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

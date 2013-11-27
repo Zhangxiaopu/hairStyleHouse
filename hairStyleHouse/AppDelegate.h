@@ -44,5 +44,6 @@
 @property (nonatomic,strong) NSString* touxiangImage;
 @property (nonatomic,strong) NSString* city;
 @property (nonatomic,strong) NSString* userName;//用到
+-(void)pushToViewController:(id)_sen;
 
 @end
