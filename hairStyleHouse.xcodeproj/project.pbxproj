@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A2BA6CA1844E05800A46A09 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2BA6C81844E05800A46A09 /* TencentOpenAPI.framework */; };
 		7A2BA6CE1844E0A200A46A09 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2BA6CD1844E0A200A46A09 /* LoginView.m */; };
 		7A37D6851844C9E100D9C4D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6841844C9E100D9C4D9 /* Foundation.framework */; };
 		7A37D6871844C9E100D9C4D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6861844C9E100D9C4D9 /* CoreGraphics.framework */; };
@@ -119,7 +118,6 @@
 		7AE03D461845D41C00E14EDC /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D401845D41C00E14EDC /* HZAreaPickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7AE03D471845D41C00E14EDC /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D411845D41C00E14EDC /* HZAreaPickerView.xib */; };
 		7AE03D481845D41C00E14EDC /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D431845D41C00E14EDC /* HZLocation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		7AE03D4E184615B400E14EDC /* fansAndfouceAndMassegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */; };
 		7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */; };
 		7AE03D551846172F00E14EDC /* pubImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D531846172F00E14EDC /* pubImageViewController.m */; };
 		7AE03D561846172F00E14EDC /* pubImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D541846172F00E14EDC /* pubImageViewController.xib */; };
@@ -132,6 +130,12 @@
 		7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D691846187000E14EDC /* beaspeakCell.m */; };
 		7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6C18461C0200E14EDC /* SlideImageView.m */; };
 		7AE03D7018461C0200E14EDC /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6E18461C0200E14EDC /* DemoViewController.m */; };
+		7AE3614B1846D3E0008A107C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */; };
+		7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */; };
+		7AE3615118472232008A107C /* dresserInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615018472232008A107C /* dresserInforViewController.m */; };
+		7AE3615418473C26008A107C /* lookEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615318473C26008A107C /* lookEvaluateCell.m */; };
+		7AE361571847556D008A107C /* scanImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE361561847556D008A107C /* scanImageViewController.m */; };
+		7AE3615A18475580008A107C /* scanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615918475580008A107C /* scanCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,7 +149,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7A2BA6C81844E05800A46A09 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../TencentOpenAPI.framework; sourceTree = "<group>"; };
 		7A2BA6CC1844E0A200A46A09 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		7A2BA6CD1844E0A200A46A09 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		7A37D6811844C9E100D9C4D9 /* hairStyleHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hairStyleHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -311,8 +314,6 @@
 		7AE03D411845D41C00E14EDC /* HZAreaPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView.xib; sourceTree = "<group>"; };
 		7AE03D421845D41C00E14EDC /* HZLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLocation.h; sourceTree = "<group>"; };
 		7AE03D431845D41C00E14EDC /* HZLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLocation.m; sourceTree = "<group>"; };
-		7AE03D4C184615B400E14EDC /* fansAndfouceAndMassegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndfouceAndMassegeViewController.h; sourceTree = "<group>"; };
-		7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndfouceAndMassegeViewController.m; sourceTree = "<group>"; };
 		7AE03D4F184615F500E14EDC /* fansAndfoceAndMassegeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndfoceAndMassegeCell.h; sourceTree = "<group>"; };
 		7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndfoceAndMassegeCell.m; sourceTree = "<group>"; };
 		7AE03D521846172F00E14EDC /* pubImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pubImageViewController.h; sourceTree = "<group>"; };
@@ -335,6 +336,17 @@
 		7AE03D6C18461C0200E14EDC /* SlideImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideImageView.m; sourceTree = "<group>"; };
 		7AE03D6D18461C0200E14EDC /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		7AE03D6E18461C0200E14EDC /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		7AE3614C1846E8AE008A107C /* fansAndFouceAndmassegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndFouceAndmassegeViewController.h; sourceTree = "<group>"; };
+		7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndFouceAndmassegeViewController.m; sourceTree = "<group>"; };
+		7AE3614F18472232008A107C /* dresserInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dresserInforViewController.h; sourceTree = "<group>"; };
+		7AE3615018472232008A107C /* dresserInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dresserInforViewController.m; sourceTree = "<group>"; };
+		7AE3615218473C26008A107C /* lookEvaluateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lookEvaluateCell.h; sourceTree = "<group>"; };
+		7AE3615318473C26008A107C /* lookEvaluateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lookEvaluateCell.m; sourceTree = "<group>"; };
+		7AE361551847556D008A107C /* scanImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanImageViewController.h; sourceTree = "<group>"; };
+		7AE361561847556D008A107C /* scanImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scanImageViewController.m; sourceTree = "<group>"; };
+		7AE3615818475580008A107C /* scanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanCell.h; sourceTree = "<group>"; };
+		7AE3615918475580008A107C /* scanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scanCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,12 +356,12 @@
 			files = (
 				7AE03D2A184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle in Frameworks */,
 				7A37D74D1844CB4600D9C4D9 /* CFNetwork.framework in Frameworks */,
-				7A2BA6CA1844E05800A46A09 /* TencentOpenAPI.framework in Frameworks */,
 				7A37D74B1844CB4000D9C4D9 /* QuartzCore.framework in Frameworks */,
 				7A37D7491844CB3900D9C4D9 /* CoreLocation.framework in Frameworks */,
 				7A37D7471844CB2D00D9C4D9 /* ImageIO.framework in Frameworks */,
 				7A37D7451844CB2300D9C4D9 /* MapKit.framework in Frameworks */,
 				7A37D7431844CB1A00D9C4D9 /* libsqlite3.dylib in Frameworks */,
+				7AE3614B1846D3E0008A107C /* TencentOpenAPI.framework in Frameworks */,
 				7A37D7411844CB0900D9C4D9 /* libsqlite3.0.dylib in Frameworks */,
 				7A37D73F1844CAFE00D9C4D9 /* libstdc++.dylib in Frameworks */,
 				7A37D73D1844CAF300D9C4D9 /* CoreTelephony.framework in Frameworks */,
@@ -403,7 +415,7 @@
 			isa = PBXGroup;
 			children = (
 				7AE03D29184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle */,
-				7A2BA6C81844E05800A46A09 /* TencentOpenAPI.framework */,
+				7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */,
 				7A37D74C1844CB4600D9C4D9 /* CFNetwork.framework */,
 				7A37D74A1844CB4000D9C4D9 /* QuartzCore.framework */,
 				7A37D7481844CB3900D9C4D9 /* CoreLocation.framework */,
@@ -448,23 +460,31 @@
 				7AE03D521846172F00E14EDC /* pubImageViewController.h */,
 				7AE03D531846172F00E14EDC /* pubImageViewController.m */,
 				7AE03D541846172F00E14EDC /* pubImageViewController.xib */,
-				7AE03D4C184615B400E14EDC /* fansAndfouceAndMassegeViewController.h */,
-				7AE03D4D184615B400E14EDC /* fansAndfouceAndMassegeViewController.m */,
+				7AE3614C1846E8AE008A107C /* fansAndFouceAndmassegeViewController.h */,
+				7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */,
 				7AE03D4F184615F500E14EDC /* fansAndfoceAndMassegeCell.h */,
 				7AE03D50184615F500E14EDC /* fansAndfoceAndMassegeCell.m */,
 				7AE03D651846183400E14EDC /* beaspeakViewController.h */,
 				7AE03D661846183400E14EDC /* beaspeakViewController.m */,
 				7AE03D681846187000E14EDC /* beaspeakCell.h */,
 				7AE03D691846187000E14EDC /* beaspeakCell.m */,
+				7AE361551847556D008A107C /* scanImageViewController.h */,
+				7AE361561847556D008A107C /* scanImageViewController.m */,
+				7AE3615818475580008A107C /* scanCell.h */,
+				7AE3615918475580008A107C /* scanCell.m */,
 				7AE03D6D18461C0200E14EDC /* DemoViewController.h */,
 				7AE03D6E18461C0200E14EDC /* DemoViewController.m */,
 				7AE03D6B18461C0200E14EDC /* SlideImageView.h */,
 				7AE03D6C18461C0200E14EDC /* SlideImageView.m */,
+				7AE3614F18472232008A107C /* dresserInforViewController.h */,
+				7AE3615018472232008A107C /* dresserInforViewController.m */,
 				7AE03D571846175B00E14EDC /* dresserDetailViewController.h */,
 				7AE03D581846175B00E14EDC /* dresserDetailViewController.m */,
 				7AE03D591846175B00E14EDC /* dresserDetailViewController.xib */,
 				7AE03D5C1846178E00E14EDC /* lookEvaluateViewController.h */,
 				7AE03D5D1846178E00E14EDC /* lookEvaluateViewController.m */,
+				7AE3615218473C26008A107C /* lookEvaluateCell.h */,
+				7AE3615318473C26008A107C /* lookEvaluateCell.m */,
 				7AE03D5F184617A800E14EDC /* talkViewController.h */,
 				7AE03D60184617A800E14EDC /* talkViewController.m */,
 				7AE03D62184617DB00E14EDC /* talkCell.h */,
@@ -827,13 +847,13 @@
 				7AE03D371845BDA700E14EDC /* personInforViewController.m in Sources */,
 				7A37D72F1844CA6200D9C4D9 /* dresserViewController.m in Sources */,
 				7A37D7271844CA2700D9C4D9 /* UIButton+WebCache.m in Sources */,
-				7AE03D4E184615B400E14EDC /* fansAndfouceAndMassegeViewController.m in Sources */,
 				7A37D7261844CA2700D9C4D9 /* SDWebImagePrefetcher.m in Sources */,
 				7AE03D61184617A800E14EDC /* talkViewController.m in Sources */,
 				7A37D7111844CA2700D9C4D9 /* PullingRefreshTableView.m in Sources */,
 				7A37D71B1844CA2700D9C4D9 /* SBJsonTokeniser.m in Sources */,
 				7A37D70C1844CA2700D9C4D9 /* ASIFormDataRequest.m in Sources */,
 				7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */,
+				7AE3615118472232008A107C /* dresserInforViewController.m in Sources */,
 				7A37D7291844CA2700D9C4D9 /* UIImageView+WebCache.m in Sources */,
 				7A37D7171844CA2700D9C4D9 /* SBJsonStreamParserState.m in Sources */,
 				7AE03D64184617DB00E14EDC /* talkCell.m in Sources */,
@@ -855,6 +875,7 @@
 				7A37D6911844C9E100D9C4D9 /* main.m in Sources */,
 				7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */,
 				7A37D71A1844CA2700D9C4D9 /* SBJsonStreamWriterState.m in Sources */,
+				7AE3615418473C26008A107C /* lookEvaluateCell.m in Sources */,
 				7A37D72C1844CA4400D9C4D9 /* findStyleViewController.m in Sources */,
 				7A37D7241844CA2700D9C4D9 /* SDWebImageDownloaderOperation.m in Sources */,
 				7A37D70F1844CA2700D9C4D9 /* ASINetworkQueue.m in Sources */,
@@ -864,14 +885,17 @@
 				7A37D7101844CA2700D9C4D9 /* Reachability.m in Sources */,
 				7A37D7221844CA2700D9C4D9 /* SDWebImageDecoder.m in Sources */,
 				7A37D7211844CA2700D9C4D9 /* SDWebImageCompat.m in Sources */,
+				7AE3615A18475580008A107C /* scanCell.m in Sources */,
 				7A37D71D1844CA2700D9C4D9 /* SBJsonWriter.m in Sources */,
 				7A37D7321844CA7300D9C4D9 /* squareViewController.m in Sources */,
 				7A37D70B1844CA2700D9C4D9 /* ASIDownloadCache.m in Sources */,
+				7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */,
 				7A37D7231844CA2700D9C4D9 /* SDWebImageDownloader.m in Sources */,
 				7A37D71E1844CA2700D9C4D9 /* MKAnnotationView+WebCache.m in Sources */,
 				7A37D7161844CA2700D9C4D9 /* SBJsonStreamParserAdapter.m in Sources */,
 				7A37D71C1844CA2700D9C4D9 /* SBJsonUTF8Stream.m in Sources */,
 				7A37D7201844CA2700D9C4D9 /* SDImageCache.m in Sources */,
+				7AE361571847556D008A107C /* scanImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1025,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jeason/Desktop,
+					/Users/jeason/Desktop/hairStyleHouse,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hairStyleHouse/hairStyleHouse-Prefix.pch";
@@ -1019,6 +1044,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jeason/Desktop,
+					/Users/jeason/Desktop/hairStyleHouse,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hairStyleHouse/hairStyleHouse-Prefix.pch";

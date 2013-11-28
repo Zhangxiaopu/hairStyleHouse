@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "singleTableCellBackgroundViewController.h"
 #import "LoginView.h"
-
+#import "pubImageViewController.h"
 @interface mineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
@@ -18,6 +18,8 @@
     UITableView *myTableView;
     NSDictionary * inforDic;
     singleTableCellBackgroundViewController * backView;
+    pubImageViewController * pubImage;
+
 }
 -(void)pushToViewController:(id)_sen;
 -(void)needAppdelegatePushToViewController:(id)_sen;

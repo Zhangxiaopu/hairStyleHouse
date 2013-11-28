@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "lookEvaluateCell.h"
+@interface lookEvaluateViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+    NSString * uid;
+    
+    UITableView *myTableView;
+    NSMutableArray * dresserArray;
 
-@interface lookEvaluateViewController : UIViewController
+}
+@property(strong,nonatomic)    NSString * uid;
 
 @end

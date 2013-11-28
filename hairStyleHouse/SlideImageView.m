@@ -372,4 +372,9 @@
     }
 }
 
+
+-(void)setIndex:(NSString *)_ind
+{
+_scrollView.contentOffset = CGPointMake([_ind integerValue]*250, 0);
+}
 @end

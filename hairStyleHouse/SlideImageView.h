@@ -50,4 +50,6 @@
 - (void)addImage:(UIImage*)image; //添加图片数据
 - (void)setImageShadowsWtihDirectionX:(float)value_X Y:(float)value_Y Alpha:(float)alphaValue;//设置图片阴影的x,y方向的值和透明度
 - (void)reLoadUIview;   //重新加载UI
+
+-(void)setIndex:(NSString *)_ind;
 @end

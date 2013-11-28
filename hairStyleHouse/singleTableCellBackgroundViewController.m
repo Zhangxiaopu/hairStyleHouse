@@ -97,7 +97,9 @@
 
 -(void)selectImage:(UIButton*)button
 {
-
+    scanView=nil;
+    scanView = [[scanImageViewController alloc] init];
+    [fatherController pushToViewController:scanView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -114,15 +116,36 @@
 }
 
 - (IBAction)myFansButtonClick:(id)sender {
+    fansAndfouceAndMassege = nil;
+    fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
+    fansAndfouceAndMassege.fansOrFouceOrMessage=@"noMassege";
+    fansAndfouceAndMassege.fansOrFouce=@"fans";
+    [fatherController pushToViewController:fansAndfouceAndMassege];
 }
 
-- (IBAction)myFouceButtonClick:(id)sender {
+- (IBAction)myFouceButtonClick:(id)sender
+{
+    fansAndfouceAndMassege = nil;
+    fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
+    fansAndfouceAndMassege.fansOrFouceOrMessage=@"noMassege";
+    fansAndfouceAndMassege.fansOrFouce=@"fouce";
+    [fatherController pushToViewController:fansAndfouceAndMassege];
+
 }
 
-- (IBAction)messageButtonClick:(id)sender {
+- (IBAction)messageButtonClick:(id)sender
+{
+    fansAndfouceAndMassege = nil;
+    fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
+    fansAndfouceAndMassege.fansOrFouceOrMessage=@"massege";
+    [fatherController pushToViewController:fansAndfouceAndMassege];
+
+
 }
 
-- (IBAction)beaspeakButtonClick:(id)sender {
+- (IBAction)beaspeakButtonClick:(id)sender
+{
+    
 }
 
 - (IBAction)saveButtonClick:(id)sender {

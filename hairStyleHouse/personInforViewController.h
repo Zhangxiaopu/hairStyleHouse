@@ -19,7 +19,7 @@
     NSTimer * timer;
     NSString * timeString;
     UIView * backView;
-    UIImageView * headImage;
+//    UIImageView * headImage;
     
     BOOL ifchangeHeadImage;
 }

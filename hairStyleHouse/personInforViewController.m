@@ -14,7 +14,7 @@
 #import "HZAreaPickerView.h"
 #import "HZLocation.h"
 #import "UIImageView+WebCache.h"
-
+#import <MobileCoreServices/MobileCoreServices.h>
 @interface personInforViewController ()<UITextFieldDelegate, HZAreaPickerDelegate>
 @property (retain, nonatomic) IBOutlet UITextField *areaText;
 @property (strong, nonatomic) NSString *areaValue, *cityValue;
@@ -68,7 +68,7 @@
 {
     [super viewDidLoad];
     UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-    Lab.text = @"个人中心";
+    Lab.text = @"修改资料";
     Lab.textAlignment = NSTextAlignmentCenter;
     Lab.font = [UIFont systemFontOfSize:16];
     Lab.textColor = [UIColor blackColor];
@@ -77,7 +77,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     inforDic = [[NSDictionary alloc] init];
-    headImage = [[UIImageView alloc] init];
+//    headImage = [[UIImageView alloc] init];
     verifyString = [[NSString alloc] init];
     mobileString= [[NSString alloc] init];
     sexString = [[NSString alloc] init];
@@ -464,9 +464,10 @@ else if (request.tag==5)
         
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            NSArray *temp_MediaTypes = [UIImagePickerController availableMediaTypesForSourceType:picker.sourceType];//如果只实现拍照或者摄像都要，那么就要用到#import <MobileCoreServices/MobileCoreServices.h>
+            NSArray *temp_MediaTypes = [[NSArray alloc] initWithObjects: (NSString *)  kUTTypeImage  , nil];//如果只实现拍照或者摄像都要，那么就要用到#import <MobileCoreServices/MobileCoreServices.h>
             picker.mediaTypes = temp_MediaTypes;
-            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+            picker.allowsEditing = NO;
+            //            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
             picker.delegate = self;
             //      picker.allowsImageEditing = YES;
         }
@@ -522,6 +523,7 @@ else if (request.tag==5)
         NSLog(@"found an image");
         _headImage.image = image;
         ifchangeHeadImage =YES;
+        [picker dismissViewControllerAnimated:NO completion:nil];
 
 //        NSData* imageData = UIImagePNGRepresentation(image);
 //        NSString *imageFile = [documentsDirectory stringByAppendingPathComponent:@"temp.jpg"];

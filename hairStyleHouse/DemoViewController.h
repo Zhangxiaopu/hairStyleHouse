@@ -14,5 +14,12 @@
     SlideImageView* slideImageView;
     UILabel* indexLabel;
     UILabel* clickLabel;
+    
+    NSMutableArray * imageArr;
+    NSString * index;
+    
 }
+@property (strong,nonatomic)NSMutableArray * imageArr;
+@property (strong,nonatomic)    NSString * index;
+
 @end

@@ -56,7 +56,11 @@
 }
 -(void)rightButtonClick
 {
-
+    pubImage = nil;
+    pubImage = [[pubImageViewController alloc] init];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    [appDele pushToViewController:pubImage];
+    
 }
 -(void)viewDidAppear:(BOOL)animated
 {

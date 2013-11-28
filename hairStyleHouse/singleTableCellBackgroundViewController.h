@@ -9,13 +9,16 @@
 #import <UIKit/UIKit.h>
 @class mineViewController;
 #import "personInforViewController.h"
+#import "fansAndFouceAndmassegeViewController.h"
+#import "scanImageViewController.h"
 @interface singleTableCellBackgroundViewController : UIViewController<UIScrollViewDelegate>
 {
     NSDictionary * infoDic;
     UIScrollView * workScroll;
     mineViewController * fatherController;
     personInforViewController * personInfor;
-
+    fansAndFouceAndmassegeViewController * fansAndfouceAndMassege;
+    scanImageViewController * scanView;
 }
 @property(nonatomic,strong)NSDictionary * infoDic;
 @property(nonatomic,strong)mineViewController * fatherController;
