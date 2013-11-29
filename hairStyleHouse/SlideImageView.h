@@ -28,6 +28,7 @@
 @interface SlideImageView : UIView <UIScrollViewDelegate, SlideScrollViewDelegate>
 {
     int _index; //当前图片的索引
+    NSString * page;
     NSMutableArray* _scrollImageArray; //滚动视图图片数组
     NSMutableArray* _imageViewArray;   //弹压视图图片数组
     SlideScrollView* _scrollView; 
@@ -35,6 +36,7 @@
     float _shadowValueX,_shadowValueY;//阴影的x,y方向的值
     float _shadowAlpha; //阴影透明度
 }
+@property(nonatomic, strong) NSString * page;
 @property (nonatomic, assign) NSObject<SlideImageViewDelegate>* delegate;
 @property(nonatomic) float _zMarginValue;//图片之间z方向的间距值，越小间距越大
 @property(nonatomic) float _xMarginValue;//图片之间x方向的间距值，越小间距越大

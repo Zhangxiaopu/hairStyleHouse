@@ -52,7 +52,7 @@
 @synthesize _zMarginValue, _xMarginValue, _angleValue, _alphaValue;
 @synthesize _imageArray;
 @synthesize delegate;
-
+@synthesize page;
 
 - (id)init //默认初始化为全屏
 {
@@ -88,7 +88,7 @@
     return self;
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark interface function
 
 - (id)initWithFrame:(CGRect)frame
@@ -125,7 +125,7 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame ZMarginValue:(float)zMarginValue 
+- (id)initWithFrame:(CGRect)frame ZMarginValue:(float)zMarginValue
        XMarginValue:(float)xMarginValue AngleValue:(float)angleValue Alpha:(float)alphaValue
 {
     self = [super initWithFrame:frame];
@@ -183,7 +183,7 @@
         [_scrollImageArray removeAllObjects];
     }
     //清理弹压视图数据
-    if(_imageViewArray.count > 0) 
+    if(_imageViewArray.count > 0)
     {
         for(UIImageView* imageView in _imageViewArray)
             [imageView removeFromSuperview];
@@ -193,13 +193,14 @@
     {
         _index = 0;
         //加载滚动视图数据
-        [self loadScrollView];
+        
         //加载弹压视图数据
         [self loadImageView];
+        [self loadScrollView];
     }
 }
 
-#pragma mark - 
+#pragma mark -
 #pragma mark private function
 
 - (void)loadScrollView //加载滚动视图数据
@@ -248,18 +249,23 @@
     _scrollView.SlideImagedelegate = self;
     _scrollView.imageViewArr = _scrollImageArray;
     _scrollView.imageWidth = width;
+    [self setoffset];
 }
-
+-(void)setoffset
+{
+    _scrollView.contentOffset = CGPointMake([page integerValue]*250, 0);
+    
+}
 - (void)loadImageView //加载弹压视图数据
 {
     float width = self.frame.size.width;
-    float height = self.frame.size.height; 
+    float height = self.frame.size.height;
     //加载循环
     for(int i=0; i<_imageArray.count; i++)
     {
         UIImage* image = [_imageArray objectAtIndex:i];
         // 设置每张图片的坐标，z值和透明度
-        CGPoint point = CGPointMake(i*width/_xMarginValue, 0); 
+        CGPoint point = CGPointMake(i*width/_xMarginValue, 0);
         float zPosition = -i*width/_zMarginValue;
         float alpha = 1 - i*width/_alphaValue;
         
@@ -372,9 +378,4 @@
     }
 }
 
-
--(void)setIndex:(NSString *)_ind
-{
-_scrollView.contentOffset = CGPointMake([_ind integerValue]*250, 0);
-}
 @end

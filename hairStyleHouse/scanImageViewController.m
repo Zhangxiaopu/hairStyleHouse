@@ -176,7 +176,7 @@
     demoView =nil;
     demoView  = [[DemoViewController alloc] init];
     demoView.imageArr =dresserArray;
-    demoView.index =[NSString stringWithFormat:@"%d",_index];
+    demoView.getindex =[NSString stringWithFormat:@"%d",_index];
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     [appDele pushToViewController:demoView];
 }

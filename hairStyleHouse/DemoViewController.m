@@ -14,12 +14,12 @@
 
 @implementation DemoViewController
 @synthesize imageArr;
-@synthesize index;
+@synthesize getindex;
 - (id)init
 {
     self = [super init];
     if (self) {
-        CGRect rect = {{20,100},{250,340}};
+        CGRect rect = {{20,100},{250,300}};
         slideImageView = [[SlideImageView alloc]initWithFrame:rect ZMarginValue:5 XMarginValue:10 AngleValue:0.3 Alpha:1000];
         slideImageView.borderColor = [UIColor whiteColor];
         slideImageView.delegate = self;
@@ -44,8 +44,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [slideImageView setIndex:index];
-
+    self.view.backgroundColor = [UIColor grayColor];
     [self refreashNavLab];
     [self refreashNav];
 	// Do any additional setup after loading the view.
@@ -57,8 +56,18 @@
          UIImage* image = imageView.image;
         [slideImageView addImage:image];
     }
+    NSLog(@"index:%@",getindex);
+    slideImageView.page=getindex;
     [slideImageView setImageShadowsWtihDirectionX:2 Y:2 Alpha:0.7];
     [slideImageView reLoadUIview];
+    
+    lineBack = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-120, 320, 120)];
+    lineBack.backgroundColor = [UIColor redColor];
+    headBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
+    headBack.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:lineBack];
+    [lineBack addSubview:headBack];
+    
 }
 
 -(void)refreashNav
@@ -81,13 +90,14 @@
 }
 -(void)leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated:NO];
     self.navigationController.navigationBar.hidden =YES;
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 -(void)refreashNavLab
 {
     UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-    Lab.text = @"浏览图片";
+    Lab.text = [NSString stringWithFormat:@"浏览图片(%d/%d)",[getindex integerValue]+1,imageArr.count];
     Lab.textAlignment = NSTextAlignmentCenter;
     Lab.font = [UIFont systemFontOfSize:16];
     Lab.textColor = [UIColor blackColor];
@@ -112,6 +122,7 @@
 
 - (void)SlideImageViewDidEndScorllWithIndex:(int)index//滑动视图
 {
-
+    getindex=[NSString stringWithFormat:@"%d",index ];
+    [self refreashNavLab];
 }
 @end

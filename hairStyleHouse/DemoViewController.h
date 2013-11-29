@@ -16,10 +16,24 @@
     UILabel* clickLabel;
     
     NSMutableArray * imageArr;
-    NSString * index;
-    
+    NSString * getindex;
+    UIView * lineBack;
+    UIView * headBack;
+    UIImageView * headImage;
+    UIButton * headButton;
+    UILabel  * nameLable;
+    UILabel * cityLable;
+    UIImageView * messageImage;
+    UIButton * messageButton;
+    UIImageView * commentImage;
+    UIButton * commentButton;
+    UIImageView * likeImage;
+    UIButton * likeButton;
+    UIImageView * shareImage;
+    UIButton * shareButton;
+
 }
 @property (strong,nonatomic)NSMutableArray * imageArr;
-@property (strong,nonatomic)    NSString * index;
+@property (strong,nonatomic)    NSString * getindex;
 
 @end
