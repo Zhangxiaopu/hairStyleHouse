@@ -113,7 +113,11 @@
 }
 -(void)selectImage:(UIButton*)button
 {
-    
+    scanView=nil;
+    scanView = [[scanImageViewController alloc] init];
+    scanView.uid=[infoDic objectForKey:@"uid"];
+    scanView.worksOrsave = @"works";
+    [fatherController pushToViewController:scanView];
 }
 
 - (IBAction)myFansButtonClick:(id)sender//查看看评价

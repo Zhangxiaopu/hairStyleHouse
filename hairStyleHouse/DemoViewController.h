@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SlideImageView.h"
-
+#import "commentViewController.h"
 @interface DemoViewController : UIViewController<SlideImageViewDelegate>
 {
     SlideImageView* slideImageView;
@@ -17,6 +17,11 @@
     
     NSMutableArray * imageArr;
     NSString * getindex;
+    
+    NSDictionary * dic;
+    NSDictionary* diction;
+
+    
     UIView * lineBack;
     UIView * headBack;
     UIImageView * headImage;
@@ -31,6 +36,8 @@
     UIButton * likeButton;
     UIImageView * shareImage;
     UIButton * shareButton;
+    
+    commentViewController * commentController;
 
 }
 @property (strong,nonatomic)NSMutableArray * imageArr;

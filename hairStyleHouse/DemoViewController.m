@@ -8,6 +8,9 @@
 
 #import "DemoViewController.h"
 #import "UIImageView+WebCache.h"
+#import "AppDelegate.h"
+#import "ASIFormDataRequest.h"
+#import "SBJson.h"
 @interface DemoViewController ()
 
 @end
@@ -61,12 +64,62 @@
     [slideImageView setImageShadowsWtihDirectionX:2 Y:2 Alpha:0.7];
     [slideImageView reLoadUIview];
     
+    diction = [[NSDictionary alloc] init];
+    dic = [[NSDictionary alloc] init];
     lineBack = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height-120, 320, 120)];
-    lineBack.backgroundColor = [UIColor redColor];
+//    lineBack.backgroundColor = [UIColor redColor];
     headBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
     headBack.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:lineBack];
+    headImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
+    [headBack addSubview: headImage];
     [lineBack addSubview:headBack];
+    
+    nameLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 20, 200, 25)];
+    nameLable.textColor =[UIColor blackColor];
+    nameLable.font = [UIFont systemFontOfSize:12.0];
+    [lineBack addSubview:nameLable];
+    cityLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 50, 200, 25)];
+    cityLable.textColor =[UIColor blackColor];
+    cityLable.font = [UIFont systemFontOfSize:12.0];
+    [lineBack addSubview:cityLable];
+
+    
+    messageImage = [[UIImageView alloc] initWithFrame:CGRectMake(160, 80, 30, 25)];
+    messageImage.image = [UIImage imageNamed:@"sixin.png"];
+    messageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [messageButton addTarget:self action:@selector(messageButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    messageButton.frame = messageImage.frame;
+    
+    commentImage = [[UIImageView alloc] initWithFrame:CGRectMake(200, 80, 30, 25)];
+    commentImage.image = [UIImage imageNamed:@"comment.png"];
+    commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [commentButton addTarget:self action:@selector(commentButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    commentButton.frame = commentImage.frame;
+
+    likeImage = [[UIImageView alloc] initWithFrame:CGRectMake(240, 80, 30, 25)];
+    likeImage.image = [UIImage imageNamed:@"like.png"];
+    likeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [likeButton addTarget:self action:@selector(likeButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    likeButton.frame = likeImage.frame;
+
+    shareImage = [[UIImageView alloc] initWithFrame:CGRectMake(280, 80, 30, 25)];
+    shareImage.image = [UIImage imageNamed:@"fenxiang.png"];
+    shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [shareButton addTarget:self action:@selector(shareButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    shareButton.frame = shareImage.frame;
+
+    
+    [lineBack addSubview:messageImage];
+    [lineBack addSubview:commentImage];
+    [lineBack addSubview:likeImage];
+    [lineBack addSubview:shareImage];
+    [lineBack addSubview:messageButton];
+    [lineBack addSubview:commentButton];
+    [lineBack addSubview:likeButton];
+    [lineBack addSubview:shareButton];
+    [self.view addSubview:lineBack];
+
+    [self getData];
     
 }
 
@@ -104,6 +157,119 @@
     self.navigationItem.titleView =Lab;
 }
 
+
+-(void)getData
+{
+    
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Dynamic&a=workinfo"]]];
+    request.delegate=self;
+    request.tag=1;
+    [request setPostValue:appDele.uid forKey:@"uid"];
+    [request setPostValue:[[imageArr objectAtIndex:[getindex integerValue]] objectForKey:@"work_id"] forKey:@"work_id"];
+    [request startAsynchronous];
+    
+}
+
+-(void)requestFinished:(ASIHTTPRequest *)request
+{
+//    if (dresserArray!=nil) {
+//        [dresserArray removeAllObjects];
+//    }
+    if (request.tag==1) {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        dic=[jsonP objectWithString:jsonString];
+        NSLog(@"图片详情：dic:%@",dic);
+        
+        diction =[dic objectForKey:@"works_info"];
+        
+    }
+    else if (request.tag==2) {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        dic=[jsonP objectWithString:jsonString];
+        NSLog(@"收藏dic:%@",dic);
+        [self getData];
+    }
+    [self freashView];
+
+}
+-(void)freashView
+{
+    [headImage setImageWithURL:[NSURL URLWithString:[diction objectForKey:@"head_photo"]]];
+    nameLable.text = [diction objectForKey:@"username"];
+    cityLable = [diction objectForKey:@"content"];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+
+    if ([[diction objectForKey:@"uid"] isEqualToString:appDele.uid])
+    {
+        messageImage.hidden=YES;
+    }
+    else
+    {
+        messageImage.hidden=NO;
+    }
+    
+    if ([[diction objectForKey:@"islike"] isEqualToString:@"0"])
+    {
+        likeButton.tag=0;
+        likeImage.image = [UIImage imageNamed:@"like.png"];
+
+    }
+    else
+    {
+        likeButton.tag=1;
+        likeImage.image = [UIImage imageNamed:@"like1.png"];
+    }
+}
+
+-(void)messageButtonClick
+{
+
+}
+-(void)commentButtonClick
+{
+    commentController= nil;
+    commentController = [[commentViewController alloc] init];
+    commentController.inforDic = dic;
+
+    [self.navigationController pushViewController:commentController animated:NO];
+}
+-(void)likeButtonClick
+{
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Works&a=collection"]]];
+    request.delegate=self;
+    request.tag=2;
+    [request setPostValue:appDele.uid forKey:@"uid"];
+    [request setPostValue:[diction objectForKey:@"uid"] forKey:@"to_uid"];
+    [request setPostValue:[diction objectForKey:@"work_id"] forKey:@"work_id"];
+    if (likeButton.tag==0)
+    {
+        likeButton.tag=1;
+        likeImage.image = [UIImage imageNamed:@"like1.png"];
+        [request setPostValue:@"1" forKey:@"status"];
+        
+    }
+    else
+    {
+        likeButton.tag=0;
+        likeImage.image = [UIImage imageNamed:@"like.png"];
+        [request setPostValue:@"0" forKey:@"status"];
+
+    }
+    [request startAsynchronous];
+
+}
+-(void)shareButtonClick
+{
+
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -124,5 +290,6 @@
 {
     getindex=[NSString stringWithFormat:@"%d",index ];
     [self refreashNavLab];
+    [self getData];
 }
 @end

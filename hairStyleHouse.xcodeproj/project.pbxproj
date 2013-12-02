@@ -130,6 +130,11 @@
 		7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D691846187000E14EDC /* beaspeakCell.m */; };
 		7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6C18461C0200E14EDC /* SlideImageView.m */; };
 		7AE03D7018461C0200E14EDC /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6E18461C0200E14EDC /* DemoViewController.m */; };
+		7AE1B2FA184C26FF00F51BB2 /* fenxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */; };
+		7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F8184C26FF00F51BB2 /* comment.png */; };
+		7AE1B2FC184C26FF00F51BB2 /* sixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F9184C26FF00F51BB2 /* sixin.png */; };
+		7AE1B2FF184C2E1200F51BB2 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1B2FE184C2E1200F51BB2 /* commentViewController.m */; };
+		7AE1B302184C2E2C00F51BB2 /* commentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1B301184C2E2C00F51BB2 /* commentCell.m */; };
 		7AE3614B1846D3E0008A107C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */; };
 		7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */; };
 		7AE3615118472232008A107C /* dresserInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615018472232008A107C /* dresserInforViewController.m */; };
@@ -336,6 +341,13 @@
 		7AE03D6C18461C0200E14EDC /* SlideImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideImageView.m; sourceTree = "<group>"; };
 		7AE03D6D18461C0200E14EDC /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		7AE03D6E18461C0200E14EDC /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fenxiang.png; sourceTree = "<group>"; };
+		7AE1B2F8184C26FF00F51BB2 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
+		7AE1B2F9184C26FF00F51BB2 /* sixin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sixin.png; sourceTree = "<group>"; };
+		7AE1B2FD184C2E1200F51BB2 /* commentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentViewController.h; sourceTree = "<group>"; };
+		7AE1B2FE184C2E1200F51BB2 /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
+		7AE1B300184C2E2C00F51BB2 /* commentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCell.h; sourceTree = "<group>"; };
+		7AE1B301184C2E2C00F51BB2 /* commentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCell.m; sourceTree = "<group>"; };
 		7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		7AE3614C1846E8AE008A107C /* fansAndFouceAndmassegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndFouceAndmassegeViewController.h; sourceTree = "<group>"; };
 		7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndFouceAndmassegeViewController.m; sourceTree = "<group>"; };
@@ -476,6 +488,10 @@
 				7AE03D6E18461C0200E14EDC /* DemoViewController.m */,
 				7AE03D6B18461C0200E14EDC /* SlideImageView.h */,
 				7AE03D6C18461C0200E14EDC /* SlideImageView.m */,
+				7AE1B2FD184C2E1200F51BB2 /* commentViewController.h */,
+				7AE1B2FE184C2E1200F51BB2 /* commentViewController.m */,
+				7AE1B300184C2E2C00F51BB2 /* commentCell.h */,
+				7AE1B301184C2E2C00F51BB2 /* commentCell.m */,
 				7AE3614F18472232008A107C /* dresserInforViewController.h */,
 				7AE3615018472232008A107C /* dresserInforViewController.m */,
 				7AE03D571846175B00E14EDC /* dresserDetailViewController.h */,
@@ -641,6 +657,9 @@
 		7A37D74E1844CC4C00D9C4D9 /* 11-20 */ = {
 			isa = PBXGroup;
 			children = (
+				7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */,
+				7AE1B2F8184C26FF00F51BB2 /* comment.png */,
+				7AE1B2F9184C26FF00F51BB2 /* sixin.png */,
 				7AE03D381845CC0900E14EDC /* 未选中.png */,
 				7AE03D391845CC0900E14EDC /* 选中.png */,
 				7A37D74F1844CC4C00D9C4D9 /* 01找发型.png */,
@@ -772,6 +791,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A37D7871844CC4C00D9C4D9 /* 关注.png in Resources */,
+				7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */,
 				7A37D7811844CC4C00D9C4D9 /* x3.png in Resources */,
 				7A37D77F1844CC4C00D9C4D9 /* x1.png in Resources */,
 				7A37D7851844CC4C00D9C4D9 /* xunzhang.png in Resources */,
@@ -779,6 +799,7 @@
 				7A37D78A1844CC4C00D9C4D9 /* 当前预约.png in Resources */,
 				7AE03D3B1845CC0900E14EDC /* 选中.png in Resources */,
 				7A37D7751844CC4C00D9C4D9 /* 1发型师.png in Resources */,
+				7AE1B2FC184C26FF00F51BB2 /* sixin.png in Resources */,
 				7A37D77A1844CC4C00D9C4D9 /* renzhengfaxingshi.png in Resources */,
 				7A37D7861844CC4C00D9C4D9 /* 全部.png in Resources */,
 				7A37D78E1844CC4C00D9C4D9 /* 皇冠.png in Resources */,
@@ -817,6 +838,7 @@
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
 				7AE03D5B1846175B00E14EDC /* dresserDetailViewController.xib in Resources */,
 				7A37D7781844CC4C00D9C4D9 /* like.png in Resources */,
+				7AE1B2FA184C26FF00F51BB2 /* fenxiang.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -865,6 +887,7 @@
 				7A37D71F1844CA2700D9C4D9 /* NSData+GIF.m in Sources */,
 				7AE03D551846172F00E14EDC /* pubImageViewController.m in Sources */,
 				7A37D6951844C9E100D9C4D9 /* AppDelegate.m in Sources */,
+				7AE1B2FF184C2E1200F51BB2 /* commentViewController.m in Sources */,
 				7A37D7281844CA2700D9C4D9 /* UIImage+GIF.m in Sources */,
 				7AE03D461845D41C00E14EDC /* HZAreaPickerView.m in Sources */,
 				7AE03D671846183400E14EDC /* beaspeakViewController.m in Sources */,
@@ -884,6 +907,7 @@
 				7A2BA6CE1844E0A200A46A09 /* LoginView.m in Sources */,
 				7A37D7101844CA2700D9C4D9 /* Reachability.m in Sources */,
 				7A37D7221844CA2700D9C4D9 /* SDWebImageDecoder.m in Sources */,
+				7AE1B302184C2E2C00F51BB2 /* commentCell.m in Sources */,
 				7A37D7211844CA2700D9C4D9 /* SDWebImageCompat.m in Sources */,
 				7AE3615A18475580008A107C /* scanCell.m in Sources */,
 				7A37D71D1844CA2700D9C4D9 /* SBJsonWriter.m in Sources */,

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @class  dresserInforViewController;
 #import "lookEvaluateViewController.h"
+#import "scanImageViewController.h"
 @interface dresserDetailViewController : UIViewController<UIScrollViewDelegate>
 {
     dresserInforViewController * fatherController;
@@ -16,7 +17,7 @@
     UIScrollView * workScroll;
 
     lookEvaluateViewController * lookEvaluate;
-
+    scanImageViewController * scanView;
     
 }
 

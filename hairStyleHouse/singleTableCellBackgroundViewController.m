@@ -9,6 +9,7 @@
 #import "singleTableCellBackgroundViewController.h"
 #import "UIImageView+WebCache.h"
 #import "mineViewController.h"
+#import "AppDelegate.h"
 
 @interface singleTableCellBackgroundViewController ()
 
@@ -99,6 +100,9 @@
 {
     scanView=nil;
     scanView = [[scanImageViewController alloc] init];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    scanView.uid = appDele.uid;
+    scanView.worksOrsave = @"works";
     [fatherController pushToViewController:scanView];
 }
 
@@ -148,6 +152,13 @@
     
 }
 
-- (IBAction)saveButtonClick:(id)sender {
+- (IBAction)saveButtonClick:(id)sender
+{
+    scanView=nil;
+    scanView = [[scanImageViewController alloc] init];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    scanView.uid = appDele.uid;
+    scanView.worksOrsave = @"save";
+    [fatherController pushToViewController:scanView];
 }
 @end

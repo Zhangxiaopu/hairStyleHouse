@@ -16,7 +16,8 @@
 @end
 
 @implementation scanImageViewController
-
+@synthesize worksOrsave;
+@synthesize uid;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -83,11 +84,20 @@
 -(void)getData
     {
        
-            AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-            ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=workslist&page=%@",page]]];
+        ASIFormDataRequest* request;
+        if ([worksOrsave isEqualToString:@"works"])
+        {
+             request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=workslist&page=%@",page]]];
+        }
+        else
+        {
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=collectlist&page=%@",page]]];
+        }
+        
             request.delegate=self;
             request.tag=1;
-            [request setPostValue:appDele.uid forKey:@"uid"];
+       
+            [request setPostValue:self.uid forKey:@"uid"];
             [request startAsynchronous];
 
     }
