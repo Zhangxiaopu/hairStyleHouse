@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "singleTableCellBackgroundViewController.h"
 #import "LoginView.h"
+#import "loginViewController.h"
 #import "pubImageViewController.h"
 @interface mineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
-    LoginView* loginView;
+    loginViewController* loginView;
     
     UITableView *myTableView;
     NSDictionary * inforDic;

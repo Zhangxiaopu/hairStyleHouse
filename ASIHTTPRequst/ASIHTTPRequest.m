@@ -761,8 +761,8 @@ static NSOperationQueue *sharedQueue = nil;
 	if (!data) {
 		return nil;
 	}
-	
-	return [[[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:[self responseEncoding]] autorelease];
+//	[self responseEncoding]
+	return [[[NSString alloc] initWithBytes:[data bytes] length:[data length] encoding:NSUTF8StringEncoding] autorelease];
 }
 
 - (BOOL)isResponseCompressed

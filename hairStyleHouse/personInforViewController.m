@@ -25,7 +25,8 @@
 @implementation personInforViewController
 @synthesize areaText;
 @synthesize areaValue=_areaValue, cityValue=_cityValue;
-@synthesize locatePicker=_locatePicker;- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize locatePicker=_locatePicker;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {

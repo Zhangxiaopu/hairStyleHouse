@@ -24,6 +24,7 @@
     NSString * fansOrFouce;
     
     dresserInforViewController * dreserView;
+    
 }
 @property (strong,nonatomic)    NSString * fansOrFouceOrMessage;
 @property (strong,nonatomic)    NSString * fansOrFouce;

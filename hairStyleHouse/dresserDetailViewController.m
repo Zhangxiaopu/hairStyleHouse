@@ -43,7 +43,17 @@
     NSString* cityStr = [infoDic objectForKey:@"city"];
     NSString* fansStr = [infoDic objectForKey:@"assess_num"];
     NSString* workStr = [infoDic objectForKey:@"works_num"];
-    NSMutableArray * workArr = [infoDic objectForKey:@"portfolio"];
+    NSMutableArray * workArr;
+    if ([[infoDic objectForKey:@"portfolio"] isKindOfClass:[NSString class]])
+    {
+        
+    }
+    else if ([[infoDic objectForKey:@"portfolio"] isKindOfClass:[NSArray class]])
+    {
+       workArr = [infoDic objectForKey:@"portfolio"];
+        
+    }
+    
     NSString* inforStr = [infoDic objectForKey:@"signature"];
 
     NSString* storeStr = [infoDic objectForKey:@"store_name"];

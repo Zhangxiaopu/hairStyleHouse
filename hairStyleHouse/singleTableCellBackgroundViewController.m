@@ -149,7 +149,9 @@
 
 - (IBAction)beaspeakButtonClick:(id)sender
 {
-    
+    beaspeakView = nil;
+    beaspeakView = [[beaspeakViewController alloc] init];
+    [fatherController pushToViewController:beaspeakView];
 }
 
 - (IBAction)saveButtonClick:(id)sender

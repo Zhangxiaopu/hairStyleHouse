@@ -36,7 +36,7 @@
     dresserArray =[[NSMutableArray alloc] init];
     page =[[NSString alloc] init];
     
-    //    myTableView.allowsSelection=NO;
+    myTableView.allowsSelection=NO;
     [myTableView setSeparatorInset:UIEdgeInsetsZero];
     myTableView.dataSource=self;
     myTableView.delegate=self;

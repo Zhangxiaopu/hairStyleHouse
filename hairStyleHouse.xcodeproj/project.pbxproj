@@ -106,6 +106,11 @@
 		7A37D7901844CC4C00D9C4D9 /* 粉丝.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D76E1844CC4C00D9C4D9 /* 粉丝.png */; };
 		7A37D7911844CC4C00D9C4D9 /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D76F1844CC4C00D9C4D9 /* 评论.png */; };
 		7A37D7921844CC4C00D9C4D9 /* 钻石.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D7701844CC4C00D9C4D9 /* 钻石.png */; };
+		7ADC1A14184D6E22004C61BC /* beaspeakDresserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC1A12184D6E22004C61BC /* beaspeakDresserViewController.m */; };
+		7ADC1A15184D6E22004C61BC /* beaspeakDresserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC1A13184D6E22004C61BC /* beaspeakDresserViewController.xib */; };
+		7ADC1A17184D8418004C61BC /* 4关注.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC1A16184D8418004C61BC /* 4关注.png */; };
+		7ADC1A1A184D8C05004C61BC /* dresserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC1A19184D8C05004C61BC /* dresserCell.m */; };
+		7ADC1A1D184DBDC7004C61BC /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC1A1C184DBDC7004C61BC /* loginViewController.m */; };
 		7AE03D2A184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE03D29184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle */; };
 		7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */; };
 		7AE03D2F184589A400E14EDC /* singleTableCellBackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */; };
@@ -303,6 +308,14 @@
 		7A37D76E1844CC4C00D9C4D9 /* 粉丝.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "粉丝.png"; sourceTree = "<group>"; };
 		7A37D76F1844CC4C00D9C4D9 /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
 		7A37D7701844CC4C00D9C4D9 /* 钻石.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钻石.png"; sourceTree = "<group>"; };
+		7ADC1A11184D6E22004C61BC /* beaspeakDresserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaspeakDresserViewController.h; sourceTree = "<group>"; };
+		7ADC1A12184D6E22004C61BC /* beaspeakDresserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaspeakDresserViewController.m; sourceTree = "<group>"; };
+		7ADC1A13184D6E22004C61BC /* beaspeakDresserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = beaspeakDresserViewController.xib; sourceTree = "<group>"; };
+		7ADC1A16184D8418004C61BC /* 4关注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4关注.png"; sourceTree = "<group>"; };
+		7ADC1A18184D8C05004C61BC /* dresserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dresserCell.h; sourceTree = "<group>"; };
+		7ADC1A19184D8C05004C61BC /* dresserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dresserCell.m; sourceTree = "<group>"; };
+		7ADC1A1B184DBDC7004C61BC /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
+		7ADC1A1C184DBDC7004C61BC /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
 		7AE03D29184581BC00E14EDC /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TencentOpenApi_IOS_Bundle.bundle; path = "../公司/发型屋/TencentOpenApi_IOS_Bundle.bundle"; sourceTree = "<group>"; };
 		7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = singleTableCellBackgroundViewController.h; sourceTree = "<group>"; };
 		7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = singleTableCellBackgroundViewController.m; sourceTree = "<group>"; };
@@ -457,10 +470,14 @@
 				7A37D72B1844CA4400D9C4D9 /* findStyleViewController.m */,
 				7A37D72D1844CA6200D9C4D9 /* dresserViewController.h */,
 				7A37D72E1844CA6200D9C4D9 /* dresserViewController.m */,
+				7ADC1A18184D8C05004C61BC /* dresserCell.h */,
+				7ADC1A19184D8C05004C61BC /* dresserCell.m */,
 				7A37D7301844CA7300D9C4D9 /* squareViewController.h */,
 				7A37D7311844CA7300D9C4D9 /* squareViewController.m */,
 				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
 				7A37D7341844CA8A00D9C4D9 /* mineViewController.m */,
+				7ADC1A1B184DBDC7004C61BC /* loginViewController.h */,
+				7ADC1A1C184DBDC7004C61BC /* loginViewController.m */,
 				7A2BA6CC1844E0A200A46A09 /* LoginView.h */,
 				7A2BA6CD1844E0A200A46A09 /* LoginView.m */,
 				7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */,
@@ -480,6 +497,9 @@
 				7AE03D661846183400E14EDC /* beaspeakViewController.m */,
 				7AE03D681846187000E14EDC /* beaspeakCell.h */,
 				7AE03D691846187000E14EDC /* beaspeakCell.m */,
+				7ADC1A11184D6E22004C61BC /* beaspeakDresserViewController.h */,
+				7ADC1A12184D6E22004C61BC /* beaspeakDresserViewController.m */,
+				7ADC1A13184D6E22004C61BC /* beaspeakDresserViewController.xib */,
 				7AE361551847556D008A107C /* scanImageViewController.h */,
 				7AE361561847556D008A107C /* scanImageViewController.m */,
 				7AE3615818475580008A107C /* scanCell.h */,
@@ -657,6 +677,7 @@
 		7A37D74E1844CC4C00D9C4D9 /* 11-20 */ = {
 			isa = PBXGroup;
 			children = (
+				7ADC1A16184D8418004C61BC /* 4关注.png */,
 				7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */,
 				7AE1B2F8184C26FF00F51BB2 /* comment.png */,
 				7AE1B2F9184C26FF00F51BB2 /* sixin.png */,
@@ -793,6 +814,7 @@
 				7A37D7871844CC4C00D9C4D9 /* 关注.png in Resources */,
 				7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */,
 				7A37D7811844CC4C00D9C4D9 /* x3.png in Resources */,
+				7ADC1A17184D8418004C61BC /* 4关注.png in Resources */,
 				7A37D77F1844CC4C00D9C4D9 /* x1.png in Resources */,
 				7A37D7851844CC4C00D9C4D9 /* xunzhang.png in Resources */,
 				7A37D7881844CC4C00D9C4D9 /* 历史预约.png in Resources */,
@@ -815,6 +837,7 @@
 				7A37D7901844CC4C00D9C4D9 /* 粉丝.png in Resources */,
 				7A37D7791844CC4C00D9C4D9 /* like1.png in Resources */,
 				7A37D77E1844CC4C00D9C4D9 /* x0.png in Resources */,
+				7ADC1A15184D6E22004C61BC /* beaspeakDresserViewController.xib in Resources */,
 				7A37D7761844CC4C00D9C4D9 /* 2个人用户.png in Resources */,
 				7A37D7821844CC4C00D9C4D9 /* x4.png in Resources */,
 				7A37D68F1844C9E100D9C4D9 /* InfoPlist.strings in Resources */,
@@ -861,6 +884,7 @@
 				7A37D69B1844C9E100D9C4D9 /* ViewController.m in Sources */,
 				7A37D7151844CA2700D9C4D9 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7A37D7181844CA2700D9C4D9 /* SBJsonStreamWriter.m in Sources */,
+				7ADC1A1D184DBDC7004C61BC /* loginViewController.m in Sources */,
 				7A37D70D1844CA2700D9C4D9 /* ASIHTTPRequest.m in Sources */,
 				7A37D7351844CA8A00D9C4D9 /* mineViewController.m in Sources */,
 				7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */,
@@ -870,6 +894,7 @@
 				7A37D72F1844CA6200D9C4D9 /* dresserViewController.m in Sources */,
 				7A37D7271844CA2700D9C4D9 /* UIButton+WebCache.m in Sources */,
 				7A37D7261844CA2700D9C4D9 /* SDWebImagePrefetcher.m in Sources */,
+				7ADC1A14184D6E22004C61BC /* beaspeakDresserViewController.m in Sources */,
 				7AE03D61184617A800E14EDC /* talkViewController.m in Sources */,
 				7A37D7111844CA2700D9C4D9 /* PullingRefreshTableView.m in Sources */,
 				7A37D71B1844CA2700D9C4D9 /* SBJsonTokeniser.m in Sources */,
@@ -908,6 +933,7 @@
 				7A37D7101844CA2700D9C4D9 /* Reachability.m in Sources */,
 				7A37D7221844CA2700D9C4D9 /* SDWebImageDecoder.m in Sources */,
 				7AE1B302184C2E2C00F51BB2 /* commentCell.m in Sources */,
+				7ADC1A1A184D8C05004C61BC /* dresserCell.m in Sources */,
 				7A37D7211844CA2700D9C4D9 /* SDWebImageCompat.m in Sources */,
 				7AE3615A18475580008A107C /* scanCell.m in Sources */,
 				7A37D71D1844CA2700D9C4D9 /* SBJsonWriter.m in Sources */,

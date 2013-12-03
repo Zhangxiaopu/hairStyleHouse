@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "beaspeakCell.h"
+#import "beaspeakDresserViewController.h"
+@interface beaspeakViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@interface beaspeakViewController : UIViewController
+{
+    UIImageView * topImage;
+    UITableView *myTableView;
+    NSMutableArray * dresserArray;
+    BOOL nowOrhistory;//yes是当前预约，no是历史预约
+    
+    beaspeakDresserViewController * deaspeakDresser;
+}
 
 @end
