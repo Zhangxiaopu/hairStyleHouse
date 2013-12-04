@@ -10,13 +10,15 @@
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
+#import "dresserViewController.h"
 @interface loginViewController ()
 
 @end
 
 @implementation loginViewController
 @synthesize tentenOAuth;
-
+@synthesize dresserFatherController;
+@synthesize _backsign;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +36,7 @@
     [self refreashNav];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -48,7 +50,7 @@
     else
     {
         [self cLoginView];
-
+        
     }
     
 }
@@ -64,7 +66,10 @@
 
 -(void)leftButtonClick
 {
+    self.navigationController.navigationBar.hidden=YES;
     [self.navigationController popViewControllerAnimated:YES];
+    [dresserFatherController fromFouceCancelBack:_backsign];
+
     
 }
 -(void)refreashNav
@@ -274,14 +279,16 @@
     expirationDate=(NSString*)_tencentOAuth.expirationDate;
     
     [self postTententData];
-    [self.navigationController popViewControllerAnimated:NO];
+    self.navigationController.navigationBar.hidden=YES;
 
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 
 -(void)postTententData
 {
     //    [self cJiaZaiView];
-//    [self.view removeFromSuperview];
+    //    [self.view removeFromSuperview];
     
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
     //
@@ -343,7 +350,6 @@
     [ud setObject:backId forKey:@"uid"];
     [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
     
-    
     //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
     [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
     //        if (request.tag==1) {
@@ -401,8 +407,8 @@
 //													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles: nil];
 //		[alert show];
 //	}
-//	
-//	
+//
+//
 //}
 
 - (void)didReceiveMemoryWarning

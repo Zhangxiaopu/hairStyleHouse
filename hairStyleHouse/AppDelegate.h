@@ -13,6 +13,7 @@
 #import "mineViewController.h"
 #import <TencentOpenAPI/TencentOAuthObject.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+//#import "loginViewController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate>
 
 {
@@ -31,6 +32,10 @@
     
     mineViewController * mineController;
     UINavigationController * forthNav;
+    
+//    NSString * signStr;
+//    loginViewController* loginView;
+
 }
 @property (strong, nonatomic) UIWindow *window;
 //@property (strong,nonatomic) SinaWeibo* sinaweibo;

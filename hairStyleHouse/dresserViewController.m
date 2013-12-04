@@ -16,7 +16,7 @@
 @end
 
 @implementation dresserViewController
-
+@synthesize fromFouceLoginCancel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -67,7 +67,9 @@
     dresserArray =[[NSMutableArray alloc] init];
     page =[[NSString alloc] init];
     sign =[[NSString alloc] init];
+    fromFouceLoginCancel=[[NSString alloc] init];
     sign = @"all";
+    fromFouceLoginCancel=@"all";
     
     myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-50) style:UITableViewStylePlain];
     myTableView.allowsSelection=NO;
@@ -85,6 +87,7 @@
 {
     [topImage setImage:[UIImage imageNamed:@"全部.png"]];
     sign =@"all";
+    fromFouceLoginCancel=@"all";
     [self getData];
     
 }
@@ -92,12 +95,15 @@
 {
     [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
     sign =@"sameCity";
+    fromFouceLoginCancel=@"sameCity";
+
     [self getData];
 }
 -(void)thirdButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
     sign =@"introduce";
+    fromFouceLoginCancel=@"introduce";
     [self getData];
     
 }
@@ -108,151 +114,213 @@
     [self getData];
     
 }
+-(void)fromFouceCancelBack:(NSString *)_str
+{
+    NSLog(@"fromFouceLoginCancel:%@",fromFouceLoginCancel);
+    
+    
+    if ([fromFouceLoginCancel isEqualToString:@"all"]) {
+        
+        [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+        [self getData1];
 
--(void)getData
+    }
+    else if ([fromFouceLoginCancel isEqualToString:@"sameCity"])
+    {
+        [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+        [self getData1];
+    }
+    else if ([fromFouceLoginCancel isEqualToString:@"introduce"])
+    {
+        [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+
+        [self getData1];
+    }
+}
+
+-(void)getData1
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-//    if (appDele.uid) {
-        ASIFormDataRequest* request;
-        if ([sign isEqualToString:@"all"])
-        {
-//            page=@"2";
-            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
-        }
-        else if([sign isEqualToString:@"sameCity"])
-        {
-//            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
-        }
-        else if([sign isEqualToString:@"introduce"])
-        {
-            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
-        }
-        else if([sign isEqualToString:@"fouce"])
-        {
-            NSLog(@"appDele.uid:%@",appDele.uid);
-            
-            if (appDele.uid) {
-                request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=followstylists&page=%@",page]]];
-            }
-            else
-            {
-                loginView=nil;
-                loginView=[[loginViewController alloc] init];
-                loginView.view.frame=self.view.bounds;
-                [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-//                loginView.userInteractionEnabled=YES;
-//                [self.view addSubview:loginView];
-                [self.navigationController pushViewController:loginView animated:YES];
-            }
-            
-        }
-        request.delegate=self;
-        request.tag=1;
+    //    if (appDele.uid) {
+    ASIFormDataRequest* request;
+    if ([fromFouceLoginCancel isEqualToString:@"all"])
+    {
+        //            page=@"2";
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
+    }
+    else if([fromFouceLoginCancel isEqualToString:@"sameCity"])
+    {
+        //            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+    }
+    else if([fromFouceLoginCancel isEqualToString:@"introduce"])
+    {
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
+    }
+    request.delegate=self;
+    request.tag=1;
     
     if (appDele.uid) {
         [request setPostValue:appDele.uid forKey:@"uid"];
     }
     else
     {
-    
+        
     }
-        [request startAsynchronous];
-//    }
+    [request startAsynchronous];
+    //    }
     
 }
-    -(void)requestFinished:(ASIHTTPRequest *)request
-    {
-        if (dresserArray!=nil) {
-            [dresserArray removeAllObjects];
-        }
-        if (request.tag==1) {
-            NSLog(@"%@",request.responseString);
-            NSData*jsondata = [request responseData];
-            NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
-            
-            SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-            NSDictionary* dic=[jsonP objectWithString:jsonString];
-            NSLog(@"发型师dic:%@",dic);
-            
-            
-            if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSString class]])
-            {
-                
-            }
-            else if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSArray class]])
-            {
-                dresserArray = [dic objectForKey:@"user_info"];
-                
-            }
-            [self freashView];
-        }
-        if (request.tag==2) {
-            NSLog(@"%@",request.responseString);
-            NSData*jsondata = [request responseData];
-            NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
-            SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-            NSDictionary* dic=[jsonP objectWithString:jsonString];
-            NSLog(@"是否关注成功dic:%@",dic);
-//            if ([[dic objectForKey:@"message_list"] isKindOfClass:[NSString class]])
-//            {
-//                
-//            }
-//            else if ([[dic objectForKey:@"message_list"] isKindOfClass:[NSArray class]])
-//            {
-//                dresserArray = [dic objectForKey:@"message_list"];
-//                
-//            }
-            [self getData];
-        }
-        
-    }
-    -(void)freashView
-    {
-        [myTableView reloadData];
-    }
-    - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-    {
-        return 1;
-    }
-    
-    - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-    {
-        return dresserArray.count;
-    }
-    
-    - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-    {
-        
-        NSString *_content =[[dresserArray objectAtIndex:[indexPath row]] objectForKey:@"store_address"];
-        UIFont *font = [UIFont systemFontOfSize:12.0];
-        //设置一个行高上限
-        CGSize size = CGSizeMake(300,200);
-        //计算实际frame大小，并将label的frame变成实际大小
-        CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-        return   80+labelsize.height;
-    }
-    
-    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-    {
-        static NSString *cellID=@"cell";
-        dresserCell *cell=(dresserCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
-        if (cell==nil) {
-            cell=[[dresserCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
-            cell.fatherController=self;
-        }
-        NSInteger row =[indexPath row];
-        [cell setCell:[dresserArray objectAtIndex:row] andIndex:row];
-       
-        return cell;
-    }
-    
-    - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-    {
-        
-       //查看发型师
-        
 
+
+-(void)getData
+{
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    //    if (appDele.uid) {
+    ASIFormDataRequest* request;
+    if ([sign isEqualToString:@"all"])
+    {
+        //            page=@"2";
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
     }
+    else if([sign isEqualToString:@"sameCity"])
+    {
+        //            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+    }
+    else if([sign isEqualToString:@"introduce"])
+    {
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
+    }
+    else if([sign isEqualToString:@"fouce"])
+    {
+        NSLog(@"appDele.uid:%@",appDele.uid);
+        
+        if (appDele.uid) {
+            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=followstylists&page=%@",page]]];
+        }
+        else
+        {
+            loginView=nil;
+            loginView=[[loginViewController alloc] init];
+            loginView.dresserFatherController =self;
+            loginView._backsign = fromFouceLoginCancel;
+            loginView.view.frame=self.view.bounds;
+            [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+            //        loginView.userInteractionEnabled=YES;
+            //        [self.view addSubview:loginView];
+            AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+            
+            [appDele pushToViewController:loginView ];
+
+        }
+        
+    }
+    request.delegate=self;
+    request.tag=1;
+    
+    if (appDele.uid) {
+        [request setPostValue:appDele.uid forKey:@"uid"];
+    }
+    else
+    {
+        
+    }
+    [request startAsynchronous];
+    //    }
+    
+}
+-(void)requestFinished:(ASIHTTPRequest *)request
+{
+    if (dresserArray!=nil) {
+        [dresserArray removeAllObjects];
+    }
+    if (request.tag==1) {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:jsonString];
+        NSLog(@"发型师dic:%@",dic);
+        
+        
+        if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSString class]])
+        {
+            
+        }
+        else if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSArray class]])
+        {
+            dresserArray = [dic objectForKey:@"user_info"];
+            
+        }
+        [self freashView];
+    }
+    if (request.tag==2) {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:jsonString];
+        NSLog(@"是否关注成功dic:%@",dic);
+        //            if ([[dic objectForKey:@"message_list"] isKindOfClass:[NSString class]])
+        //            {
+        //
+        //            }
+        //            else if ([[dic objectForKey:@"message_list"] isKindOfClass:[NSArray class]])
+        //            {
+        //                dresserArray = [dic objectForKey:@"message_list"];
+        //
+        //            }
+        [self getData];
+    }
+    
+}
+-(void)freashView
+{
+    [myTableView reloadData];
+}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return dresserArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    NSString *_content =[[dresserArray objectAtIndex:[indexPath row]] objectForKey:@"store_address"];
+    UIFont *font = [UIFont systemFontOfSize:12.0];
+    //设置一个行高上限
+    CGSize size = CGSizeMake(300,200);
+    //计算实际frame大小，并将label的frame变成实际大小
+    CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    return   80+labelsize.height;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellID=@"cell";
+    dresserCell *cell=(dresserCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell==nil) {
+        cell=[[dresserCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell.fatherController=self;
+    }
+    NSInteger row =[indexPath row];
+    [cell setCell:[dresserArray objectAtIndex:row] andIndex:row];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    //查看发型师
+    
+    
+}
 
 -(void)selectCell:(NSInteger)_index
 {
@@ -261,11 +329,15 @@
     {
         loginView=nil;
         loginView=[[loginViewController alloc] init];
+        loginView.dresserFatherController =self;
+        loginView._backsign = fromFouceLoginCancel;
         loginView.view.frame=self.view.bounds;
         [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-//        loginView.userInteractionEnabled=YES;
-//        [self.view addSubview:loginView];
-        [self.navigationController pushViewController:loginView animated:NO];
+        //        loginView.userInteractionEnabled=YES;
+        //        [self.view addSubview:loginView];
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+
+        [appDele pushToViewController:loginView ];
     }
     else
     {
@@ -285,12 +357,16 @@
     {
         loginView=nil;
         loginView=[[loginViewController alloc] init];
+        loginView.dresserFatherController =self;
+        loginView._backsign = fromFouceLoginCancel;
         loginView.view.frame=self.view.bounds;
         [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-//        loginView.userInteractionEnabled=YES;
-//        [self.view addSubview:loginView];
-        [self.navigationController pushViewController:loginView animated:NO];
-
+        //        loginView.userInteractionEnabled=YES;
+        //        [self.view addSubview:loginView];
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+        
+        [appDele pushToViewController:loginView ];
+        
     }
     else
     {
@@ -307,7 +383,7 @@
         }
         else
         {
-        [request setPostValue:@"1" forKey:@"status"];
+            [request setPostValue:@"1" forKey:@"status"];
         }
         
         [request startAsynchronous];

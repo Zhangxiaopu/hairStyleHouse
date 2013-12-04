@@ -18,12 +18,15 @@
     UITableView *myTableView;
     NSMutableArray * dresserArray;
     NSString * page;
-    NSString * sign;
+    NSString * sign;//标记登陆成功后调用哪个借口
     dresserInforViewController * dreserView;
 
     loginViewController* loginView;
 
+    NSString* fromFouceLoginCancel;//标记取消登陆后调用哪个借口
 }
+@property(nonatomic,strong)        NSString* fromFouceLoginCancel;
+-(void)fromFouceCancelBack:(NSString *)_str;
 -(void)selectCell:(NSInteger)_index;
 -(void)didFouce:(NSInteger)_index;
 

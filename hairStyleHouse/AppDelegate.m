@@ -27,11 +27,13 @@
     squareController=[[squareViewController alloc] init];
     mineController=[[mineViewController alloc] init];
     
+//    signStr = [[NSString alloc] init];
     
     firstNav = [[UINavigationController alloc] initWithRootViewController:findStyleController];
     secondNav = [[UINavigationController alloc] initWithRootViewController:dresserController];
     thirdNav = [[UINavigationController alloc] initWithRootViewController:squareController];
     forthNav = [[UINavigationController alloc] initWithRootViewController:mineController];
+
 
     NSMutableArray* tabArray=[[NSMutableArray alloc] init];
     [tabArray addObject:firstNav];
@@ -59,20 +61,51 @@
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     if (viewController == firstNav) {
+//        signStr=@"1";
         tabImageView.image=[UIImage imageNamed:@"01找发型.png"];
        
     }
     else if (viewController == secondNav) {
+//        signStr=@"2";
+
         tabImageView.image=[UIImage imageNamed:@"02发型师.png"];
        
     }
     else if (viewController == thirdNav) {
+//        signStr=@"3";
+
         tabImageView.image=[UIImage imageNamed:@"03广场.png"];
         
     }
     else if (viewController==forthNav){
-        tabImageView.image=[UIImage imageNamed:@"04我的.png"];
         
+//        if (self.uid) {
+//            signStr=@"4";
+            tabImageView.image=[UIImage imageNamed:@"04我的.png"];
+            
+//        }
+//        else
+//        {
+//            
+//            
+//            loginView=nil;
+//            loginView=[[loginViewController alloc] init];
+////            [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+//            [self pushToViewController:loginView];
+//            if ([signStr isEqualToString:@"1"]) {
+//                rootTab.selectedViewController=firstNav;
+//
+//            }
+//            else if ([signStr isEqualToString:@"2"]) {
+//                rootTab.selectedViewController=secondNav;
+//                
+//            }
+//            else if ([signStr isEqualToString:@"3"]) {
+//                rootTab.selectedViewController=thirdNav;
+//                
+//            }
+//        }
+//        
         
     }
     

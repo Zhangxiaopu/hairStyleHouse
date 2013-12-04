@@ -36,10 +36,10 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self refreashNav];
+
+    loginView=[[LoginView alloc] init];
+    loginView.frame=self.view.bounds;
     
-    loginView=[[loginViewController alloc] init];
-    loginView.view.frame=self.view.bounds;
 
     inforDic = [[NSDictionary alloc] init];
     
@@ -50,19 +50,7 @@
     myTableView.backgroundColor=[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [self.view addSubview:myTableView];
     
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    NSLog(@"appDele.uid:%@",appDele.uid);
-    
-    if (!appDele.uid) {
-        [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-        //        loginView.userInteractionEnabled=YES;
-        //        [self.view addSubview:loginView];
-        [self.navigationController pushViewController:loginView animated:YES];
-    }
-    else
-    {
-        [self getData];
-    }
+   
 	// Do any additional setup after loading the view.
 }
 -(void)leftButtonClick
@@ -79,6 +67,21 @@
 }
 -(void)viewDidAppear:(BOOL)animated
 {
+    [loginView removeFromSuperview];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    NSLog(@"appDele.uid:%@",appDele.uid);
+    
+    if (!appDele.uid) {
+       
+        [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+        loginView.userInteractionEnabled=YES;
+        [self.view addSubview:loginView];
+//        [self.navigationController pushViewController:loginView animated:YES];
+    }
+    else
+    {
+        [self getData];
+    }
 //    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
 //    NSLog(@"appDele.uid:%@",appDele.uid);
 //    
@@ -116,6 +119,7 @@
     NSLog(@"个人信息dic:%@",dic);
     inforDic = [dic objectForKey:@"user_info"];
     
+    [self refreashNav];
     [self freashView];
 //    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
 }

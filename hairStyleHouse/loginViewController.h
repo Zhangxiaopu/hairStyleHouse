@@ -10,6 +10,7 @@
 #import "TencentOpenAPI/TencentOAuth.h"
 //#import "SinaWeibo.h"
 #import "ASIHTTPRequest.h"
+@class  dresserViewController;
 @interface loginViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,/*SinaWeiboDelegate,*/ASIHTTPRequestDelegate/*SinaWeiboRequestDelegate*/>
 {
     UIView* myInfoView;
@@ -41,8 +42,13 @@
     id interface;
     SEL sucfun;
     SEL errfun;
+    
+    
+    dresserViewController * dresserFatherController;
+    NSString * _backsign;
 }
 -(void)getBack:(id)inter andSuc:(SEL)suc andErr:(SEL)err;
 @property(nonatomic,retain) TencentOAuth* tentenOAuth;
-
+@property(nonatomic,retain) dresserViewController * dresserFatherController;
+@property(nonatomic,retain) NSString * _backsign;
 @end

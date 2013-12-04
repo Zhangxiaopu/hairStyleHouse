@@ -14,7 +14,7 @@
 @interface mineViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
-    loginViewController* loginView;
+    LoginView * loginView;
     
     UITableView *myTableView;
     NSDictionary * inforDic;

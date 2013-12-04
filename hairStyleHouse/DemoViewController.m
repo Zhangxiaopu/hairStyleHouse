@@ -61,7 +61,9 @@
     }
     NSLog(@"index:%@",getindex);
     slideImageView.page=getindex;
-    [slideImageView setImageShadowsWtihDirectionX:2 Y:2 Alpha:0.7];
+//    [slideImageView setImageShadowsWtihDirectionX:2 Y:2 Alpha:0.7];
+    [slideImageView setImageShadowsWtihDirectionX:0 Y:0 Alpha:0];
+
     [slideImageView reLoadUIview];
     
     diction = [[NSDictionary alloc] init];
