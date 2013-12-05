@@ -292,7 +292,7 @@
         NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:jsonString];
-        NSLog(@"个人信息dic:%@",dic);
+        NSLog(@"修改经纬度dic:%@",dic);
     }
     //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
     

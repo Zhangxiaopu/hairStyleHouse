@@ -71,6 +71,8 @@
     cityLable.text =[NSString stringWithFormat:@"共有%@张作品",cityStr];
     timeLable.text = timeStr;
     addressLable.text = addressStr;
+//    addressLable.lineBreakMode = UILineBreakModeWordWrap;
+    addressLable.numberOfLines = 0;
     
     headImage.frame = CGRectMake(10, 10, 60, 60);
     nameLable.frame = CGRectMake(80, 15, 200, 15);
@@ -94,11 +96,20 @@
     
     UIFont *font = [UIFont systemFontOfSize:12.0];
     //设置一个行高上限
-    CGSize size = CGSizeMake(300,200);
+    CGSize size = CGSizeMake(260,200);
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [addressStr sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    addressLable.frame = CGRectMake(10, 75, labelsize.width, labelsize.height);
-    cellButton.frame = CGRectMake(0, 0, self.frame.size.width, 80+labelsize.height);
+    if ([addressStr isEqualToString:@""]) {
+        addressLable.frame = CGRectMake(10, 75, labelsize.width, labelsize.height);
+        cellButton.frame = CGRectMake(0, 0, self.frame.size.width, 80);
+    }
+    else
+    {
+        addressLable.frame = CGRectMake(10, 75, labelsize.width, labelsize.height);
+        cellButton.frame = CGRectMake(0, 0, self.frame.size.width, 80+labelsize.height);
+    }
+
+   
 
 }
 

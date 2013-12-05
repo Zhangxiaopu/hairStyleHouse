@@ -107,7 +107,34 @@
 
 -(void)tapView:(UITapGestureRecognizer* )tap
 {
-    
+    findStyleDetail =nil;
+    findStyleDetail = [[findStyleDetailViewController alloc] init];
+    switch (tap.view.tag) {
+        case 0:
+            findStyleDetail.style=@"1";
+            break;
+        case 1:
+            findStyleDetail.style=@"2";
+            break;
+        case 2:
+            findStyleDetail.style=@"3";
+            break;
+        case 3:
+            findStyleDetail.style=@"4";
+            break;
+        case 4:
+            findStyleDetail.style=@"5";
+            break;
+        case 5:
+            findStyleDetail.style=@"6";
+            break;
+            
+        default:
+            break;
+    }
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+
+    [ appDele pushToViewController:findStyleDetail];
     
 }
 
@@ -136,7 +163,7 @@
              
              NSString * citystring =[NSString stringWithFormat: @"你当前的位置是：%@%@%@",placemark.administrativeArea,placemark.locality,placemark.subLocality];
              AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-             appDele.city=citystring;
+             appDele.city=placemark.locality;
              UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:citystring delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
              [alert show];
              
@@ -175,7 +202,7 @@
     NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
     SBJsonParser* jsonP=[[SBJsonParser alloc] init];
     NSDictionary* dic=[jsonP objectWithString:jsonString];
-    NSLog(@"个人信息dic:%@",dic);
+    NSLog(@"修改经纬度dic:%@",dic);
 }
 //定位出错时被调
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -205,6 +232,8 @@
         
     }
 }
+
+
 #pragma mark MKReverseGeocoderDelegate//ios5之前适用，需要MKReverseGeocoderDelegate
 - (void)didReceiveMemoryWarning
 {

@@ -11,9 +11,12 @@
 #import <CoreLocation/CLLocationManager.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MKPlacemark.h>
+#import "findStyleDetailViewController.h"
 
 @interface findStyleViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate>
 {
     CLLocationManager *locationManager;
+    findStyleDetailViewController * findStyleDetail;
 }
+
 @end

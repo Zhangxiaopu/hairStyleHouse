@@ -134,6 +134,12 @@
 		7AD54618184F39EA009A6B79 /* 问答中心.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD54611184F39EA009A6B79 /* 问答中心.png */; };
 		7AD54619184F39EA009A6B79 /* 招聘信息.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD54612184F39EA009A6B79 /* 招聘信息.png */; };
 		7AD5461A184F39EA009A6B79 /* 行业情报.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD54613184F39EA009A6B79 /* 行业情报.png */; };
+		7AD87DFC185024A60016A329 /* hairStyleCategoryScanImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD87DFB185024A60016A329 /* hairStyleCategoryScanImageCell.m */; };
+		7AD87E0218502CA10016A329 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD87DFD18502CA10016A329 /* Default-568h@2x.png */; };
+		7AD87E0318502CA10016A329 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD87DFE18502CA10016A329 /* Default.png */; };
+		7AD87E0418502CA10016A329 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD87DFF18502CA10016A329 /* Default@2x.png */; };
+		7AD87E0518502CA10016A329 /* timeline_image_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD87E0018502CA10016A329 /* timeline_image_loading.png */; };
+		7AD87E0618502CA10016A329 /* timeline_image_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD87E0118502CA10016A329 /* timeline_image_loading@2x.png */; };
 		7ADC1A14184D6E22004C61BC /* beaspeakDresserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC1A12184D6E22004C61BC /* beaspeakDresserViewController.m */; };
 		7ADC1A15184D6E22004C61BC /* beaspeakDresserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC1A13184D6E22004C61BC /* beaspeakDresserViewController.xib */; };
 		7ADC1A17184D8418004C61BC /* 4关注.png in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC1A16184D8418004C61BC /* 4关注.png */; };
@@ -377,6 +383,13 @@
 		7AD54611184F39EA009A6B79 /* 问答中心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "问答中心.png"; sourceTree = "<group>"; };
 		7AD54612184F39EA009A6B79 /* 招聘信息.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "招聘信息.png"; sourceTree = "<group>"; };
 		7AD54613184F39EA009A6B79 /* 行业情报.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "行业情报.png"; sourceTree = "<group>"; };
+		7AD87DFA185024A60016A329 /* hairStyleCategoryScanImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hairStyleCategoryScanImageCell.h; sourceTree = "<group>"; };
+		7AD87DFB185024A60016A329 /* hairStyleCategoryScanImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hairStyleCategoryScanImageCell.m; sourceTree = "<group>"; };
+		7AD87DFD18502CA10016A329 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7AD87DFE18502CA10016A329 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		7AD87DFF18502CA10016A329 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		7AD87E0018502CA10016A329 /* timeline_image_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timeline_image_loading.png; sourceTree = "<group>"; };
+		7AD87E0118502CA10016A329 /* timeline_image_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_image_loading@2x.png"; sourceTree = "<group>"; };
 		7ADC1A11184D6E22004C61BC /* beaspeakDresserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beaspeakDresserViewController.h; sourceTree = "<group>"; };
 		7ADC1A12184D6E22004C61BC /* beaspeakDresserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = beaspeakDresserViewController.m; sourceTree = "<group>"; };
 		7ADC1A13184D6E22004C61BC /* beaspeakDresserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = beaspeakDresserViewController.xib; sourceTree = "<group>"; };
@@ -539,6 +552,8 @@
 				7A37D72B1844CA4400D9C4D9 /* findStyleViewController.m */,
 				7AD545B9184EF6FD009A6B79 /* findStyleDetailViewController.h */,
 				7AD545BA184EF6FD009A6B79 /* findStyleDetailViewController.m */,
+				7AD87DFA185024A60016A329 /* hairStyleCategoryScanImageCell.h */,
+				7AD87DFB185024A60016A329 /* hairStyleCategoryScanImageCell.m */,
 				7A37D72D1844CA6200D9C4D9 /* dresserViewController.h */,
 				7A37D72E1844CA6200D9C4D9 /* dresserViewController.m */,
 				7ADC1A18184D8C05004C61BC /* dresserCell.h */,
@@ -608,6 +623,11 @@
 		7A37D68B1844C9E100D9C4D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7AD87DFD18502CA10016A329 /* Default-568h@2x.png */,
+				7AD87DFE18502CA10016A329 /* Default.png */,
+				7AD87DFF18502CA10016A329 /* Default@2x.png */,
+				7AD87E0018502CA10016A329 /* timeline_image_loading.png */,
+				7AD87E0118502CA10016A329 /* timeline_image_loading@2x.png */,
 				7A37D68C1844C9E100D9C4D9 /* hairStyleHouse-Info.plist */,
 				7A37D68D1844C9E100D9C4D9 /* InfoPlist.strings */,
 				7A37D6901844C9E100D9C4D9 /* main.m */,
@@ -947,11 +967,14 @@
 			files = (
 				7A37D7871844CC4C00D9C4D9 /* 关注.png in Resources */,
 				7AD545B4184EBA81009A6B79 /* 中发.png in Resources */,
+				7AD87E0618502CA10016A329 /* timeline_image_loading@2x.png in Resources */,
 				7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */,
 				7A37D7811844CC4C00D9C4D9 /* x3.png in Resources */,
 				7ADC1A17184D8418004C61BC /* 4关注.png in Resources */,
 				7AD5461A184F39EA009A6B79 /* 行业情报.png in Resources */,
+				7AD87E0418502CA10016A329 /* Default@2x.png in Resources */,
 				7A37D77F1844CC4C00D9C4D9 /* x1.png in Resources */,
+				7AD87E0318502CA10016A329 /* Default.png in Resources */,
 				7A37D7851844CC4C00D9C4D9 /* xunzhang.png in Resources */,
 				7AD545F4184F2B08009A6B79 /* MBProgressHUD.bundle in Resources */,
 				7A37D7881844CC4C00D9C4D9 /* 历史预约.png in Resources */,
@@ -1000,11 +1023,13 @@
 				7A37D78D1844CC4C00D9C4D9 /* 添加图片.png in Resources */,
 				7AE03D471845D41C00E14EDC /* HZAreaPickerView.xib in Resources */,
 				7AE03D3A1845CC0900E14EDC /* 未选中.png in Resources */,
+				7AD87E0518502CA10016A329 /* timeline_image_loading.png in Resources */,
 				7AE03D341845B9F300E14EDC /* changeInforViewController.xib in Resources */,
 				7A37D7721844CC4C00D9C4D9 /* 02发型师.png in Resources */,
 				7A37D7771844CC4C00D9C4D9 /* jifen.png in Resources */,
 				7AD545B8184ED4EF009A6B79 /* 短发.png in Resources */,
 				7AD545B3184EBA81009A6B79 /* 男士发型.png in Resources */,
+				7AD87E0218502CA10016A329 /* Default-568h@2x.png in Resources */,
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
 				7AD54614184F39EA009A6B79 /* 我型我秀.png in Resources */,
 				7AD54615184F39EA009A6B79 /* 热门话题.png in Resources */,
@@ -1105,6 +1130,7 @@
 				7A37D7321844CA7300D9C4D9 /* squareViewController.m in Sources */,
 				7A37D70B1844CA2700D9C4D9 /* ASIDownloadCache.m in Sources */,
 				7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */,
+				7AD87DFC185024A60016A329 /* hairStyleCategoryScanImageCell.m in Sources */,
 				7A37D7161844CA2700D9C4D9 /* SBJsonStreamParserAdapter.m in Sources */,
 				7A37D71C1844CA2700D9C4D9 /* SBJsonUTF8Stream.m in Sources */,
 				7AE361571847556D008A107C /* scanImageViewController.m in Sources */,

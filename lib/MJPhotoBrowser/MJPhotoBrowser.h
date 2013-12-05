@@ -17,6 +17,7 @@
 
 // 显示
 - (void)show;
+-(void)refreashNavLab:(NSInteger)currentIndex and:(NSInteger)allCount;
 @end
 
 @protocol MJPhotoBrowserDelegate <NSObject>

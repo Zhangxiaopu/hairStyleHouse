@@ -150,7 +150,10 @@
     }
     else if([fromFouceLoginCancel isEqualToString:@"sameCity"])
     {
-        //            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        [request setPostValue:appDele.city forKey:@"city"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
     }
     else if([fromFouceLoginCancel isEqualToString:@"introduce"])
     {
@@ -184,7 +187,11 @@
     }
     else if([sign isEqualToString:@"sameCity"])
     {
-        //            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        [request setPostValue:appDele.city forKey:@"city"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+
     }
     else if([sign isEqualToString:@"introduce"])
     {
@@ -294,10 +301,17 @@
     NSString *_content =[[dresserArray objectAtIndex:[indexPath row]] objectForKey:@"store_address"];
     UIFont *font = [UIFont systemFontOfSize:12.0];
     //设置一个行高上限
-    CGSize size = CGSizeMake(300,200);
+    CGSize size = CGSizeMake(260,200);
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    return   80+labelsize.height;
+    if ([_content isEqualToString:@""]) {
+        return   80;
+    }
+    else
+    {
+        return 80+labelsize.height;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -308,6 +322,7 @@
         cell=[[dresserCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
         cell.fatherController=self;
     }
+    
     NSInteger row =[indexPath row];
     [cell setCell:[dresserArray objectAtIndex:row] andIndex:row];
     

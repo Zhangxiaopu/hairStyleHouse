@@ -39,14 +39,17 @@
     // 隐藏状态栏
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
     self.view = [[UIView alloc] init];
-    self.view.frame = [UIScreen mainScreen].bounds;
+    self.view.frame =[UIScreen mainScreen].bounds;
+//    self.view.frame = CGRectMake([UIScreen mainScreen].bounds.origin.x, [UIScreen mainScreen].bounds.origin.y, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-self.navigationController.navigationBar.frame.size.height);
 	self.view.backgroundColor = [UIColor blackColor];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+//    [self refreashNavLab];
+    [self refreashNav];
+  
     // 1.创建UIScrollView
     [self createScrollView];
     
@@ -64,19 +67,51 @@
         [self showPhotos];
     }
 }
+-(void)leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+-(void)refreashNav
+{
+    UIButton * leftButton=[[UIButton alloc] init];
+    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton.layer setMasksToBounds:YES];
+    [leftButton.layer setCornerRadius:3.0];
+    [leftButton.layer setBorderWidth:1.0];
+    [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
+    [leftButton setTitle:@"返回" forState:UIControlStateNormal];
+    leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [leftButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame = CGRectMake(12,20, 60, 25);
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
+}
+-(void)refreashNavLab:(NSInteger)currentIndex and:(NSInteger)allCount
+{
+    UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
+    Lab.text = [NSString stringWithFormat:@"发型图册(%d / %d)", currentIndex , allCount];
+    Lab.textAlignment = NSTextAlignmentCenter;
+    Lab.font = [UIFont systemFontOfSize:16];
+    Lab.textColor = [UIColor blackColor];
+    self.navigationItem.titleView =Lab;
+}
 
 #pragma mark - 私有方法
 #pragma mark 创建工具条
 - (void)createToolbar
 {
-    CGFloat barHeight = 44;
+    CGFloat barHeight = 124;
     CGFloat barY = self.view.frame.size.height - barHeight;
     _toolbar = [[MJPhotoToolbar alloc] init];
+    _toolbar.fatherView =self;
     _toolbar.frame = CGRectMake(0, barY, self.view.frame.size.width, barHeight);
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _toolbar.photos = _photos;
     [self.view addSubview:_toolbar];
-    
+ 
     [self updateTollbarState];
 }
 
@@ -96,6 +131,7 @@
     _photoScrollView.contentSize = CGSizeMake(frame.size.width * _photos.count, 0);
 	[self.view addSubview:_photoScrollView];
     _photoScrollView.contentOffset = CGPointMake(_currentPhotoIndex * frame.size.width, 0);
+    
 }
 
 - (void)setPhotos:(NSArray *)photos

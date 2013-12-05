@@ -279,11 +279,13 @@
     expirationDate=(NSString*)_tencentOAuth.expirationDate;
     
     [self postTententData];
+   
     self.navigationController.navigationBar.hidden=YES;
 
     [self.navigationController popViewControllerAnimated:NO];
     
 }
+
 
 -(void)postTententData
 {
@@ -325,42 +327,71 @@
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
     
-    NSLog(@"%@",request.responseString);
-    //    if (request.tag==1||request.tag==2) {
+    if (request.tag==1) {
+        
+        NSLog(@"%@",request.responseString);
+        //    if (request.tag==1||request.tag==2) {
+        
+        
+        NSLog(@"1111111====%@",request.responseString);
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:request.responseString];
+        backId=[dic objectForKey:@"uid"];
+        AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
+        appDel.type=[dic objectForKey:@"type"];
+        appDel.touxiangImage=[dic objectForKey:@"head_photo"];
+        appDel.uid=backId;//将值赋再appdelegat.uid上
+        appDel.city=[dic objectForKey:@"city"];
+        //        if (request.tag==1) {
+        //            appDel.loginType=@"qq";
+        //        }
+        //        else{
+        //        appDel.loginType=@"sina";
+        //        }
+        //
+        //NSuserDefaults
+        NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+        [ud setObject:backId forKey:@"uid"];
+        [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
+        
+        
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+        
+        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
+        request.delegate=self;
+        request.tag=2;
+        
+        [request setPostValue:appDele.uid forKey:@"uid"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+        [request startAsynchronous];
+        
+        //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
+        
+        //        if (request.tag==1) {
+        //            [ud setObject:@"qq"forKey:@"loginType"];
+        //        }
+        //        else{
+        //            [ud setObject:@"sina"forKey:@"loginType"];
+        //        }
+        
+        //    }
+        //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+        
+    }
     
+    else if(request.tag==2)
+    {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:jsonString];
+        NSLog(@"修改经纬度dic:%@",dic);
+        
+        [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
+    }
     
-    NSLog(@"1111111====%@",request.responseString);
-    SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-    NSDictionary* dic=[jsonP objectWithString:request.responseString];
-    backId=[dic objectForKey:@"uid"];
-    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
-    appDel.type=[dic objectForKey:@"type"];
-    appDel.touxiangImage=[dic objectForKey:@"head_photo"];
-    appDel.uid=backId;//将值赋再appdelegat.uid上
-    appDel.city=[dic objectForKey:@"city"];
-    //        if (request.tag==1) {
-    //            appDel.loginType=@"qq";
-    //        }
-    //        else{
-    //        appDel.loginType=@"sina";
-    //        }
-    //
-    //NSuserDefaults
-    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-    [ud setObject:backId forKey:@"uid"];
-    [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
-    
-    //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
-    [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
-    //        if (request.tag==1) {
-    //            [ud setObject:@"qq"forKey:@"loginType"];
-    //        }
-    //        else{
-    //            [ud setObject:@"sina"forKey:@"loginType"];
-    //        }
-    
-    //    }
-    //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     
 }
 
