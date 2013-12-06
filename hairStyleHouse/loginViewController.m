@@ -19,6 +19,7 @@
 @synthesize tentenOAuth;
 @synthesize dresserFatherController;
 @synthesize _backsign;
+@synthesize _hidden;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -66,9 +67,17 @@
 
 -(void)leftButtonClick
 {
-    self.navigationController.navigationBar.hidden=YES;
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+
+    }
     [self.navigationController popViewControllerAnimated:YES];
-    [dresserFatherController fromFouceCancelBack:_backsign];
+//    [dresserFatherController fromFouceCancelBack:_backsign];
 
     
 }

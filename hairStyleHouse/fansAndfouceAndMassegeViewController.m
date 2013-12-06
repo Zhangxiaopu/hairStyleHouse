@@ -18,6 +18,7 @@
 @implementation fansAndFouceAndmassegeViewController
 @synthesize fansOrFouce;
 @synthesize fansOrFouceOrMessage;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -99,6 +100,7 @@
 
 -(void)leftButtonClick
 {
+    self.navigationController.navigationBar.hidden=YES;
     [self.navigationController popViewControllerAnimated:NO];
     
 }
@@ -235,6 +237,12 @@
     }
     
 }
+
+-(void)requestFailed:(ASIHTTPRequest *)request
+{
+    UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
 -(void)freashView
 {
     [myTableView reloadData];
@@ -286,6 +294,7 @@
             dreserView =nil;
             dreserView =[[dresserInforViewController alloc] init];
             dreserView.uid = [[dresserArray objectAtIndex:[indexPath row] ] objectForKey:@"uid"];
+            dreserView._hidden=@"no";
             [self.navigationController pushViewController:dreserView animated:NO];
         }
         else

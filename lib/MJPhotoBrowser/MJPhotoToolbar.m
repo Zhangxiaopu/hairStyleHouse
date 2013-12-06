@@ -66,18 +66,18 @@
         diction = [[NSDictionary alloc] init];
         dic = [[NSDictionary alloc] init];
         
-        //    lineBack.backgroundColor = [UIColor redColor];
+            self.backgroundColor = [UIColor redColor];
         headBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
         headBack.backgroundColor = [UIColor whiteColor];
         headImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
         [headBack addSubview: headImage];
         [self addSubview:headBack];
         
-        nameLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 20, 200, 25)];
+        nameLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 20, 200, 20)];
         nameLable.textColor =[UIColor blackColor];
         nameLable.font = [UIFont systemFontOfSize:12.0];
         [self addSubview:nameLable];
-        cityLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 50, 200, 25)];
+        cityLable = [[UILabel alloc] initWithFrame:CGRectMake(80, 40, 200, 20)];
         cityLable.textColor =[UIColor blackColor];
         cityLable.font = [UIFont systemFontOfSize:12.0];
         [self addSubview:cityLable];
@@ -117,7 +117,7 @@
         [self addSubview:likeButton];
         [self addSubview:shareButton];
         
-        [self getData];
+       
         // Initialization code
     }
     return self;
@@ -129,8 +129,11 @@
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Dynamic&a=workinfo"]]];
     request.delegate=self;
     request.tag=1;
+    NSLog(@"appDele.uid:%@",appDele.uid);
+    MJPhoto *photo =[_photos objectAtIndex:_currentPhotoIndex];
+    NSLog(@"[_photos objectAtIndex:_currentPhotoIndex]:%@",photo.work_id);
     [request setPostValue:appDele.uid forKey:@"uid"];
-    [request setPostValue:[[imageArr objectAtIndex:[getindex integerValue]] objectForKey:@"work_id"] forKey:@"work_id"];
+    [request setPostValue:photo.work_id forKey:@"work_id"];
     [request startAsynchronous];
     
 }
@@ -167,7 +170,7 @@
 {
     [headImage setImageWithURL:[NSURL URLWithString:[diction objectForKey:@"head_photo"]]];
     nameLable.text = [diction objectForKey:@"username"];
-    cityLable = [diction objectForKey:@"content"];
+    cityLable.text = [diction objectForKey:@"content"];
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     
     if ([[diction objectForKey:@"uid"] isEqualToString:appDele.uid])
@@ -201,7 +204,7 @@
     commentController= nil;
     commentController = [[commentViewController alloc] init];
     commentController.inforDic = dic;
-    
+    [fatherView pushViewController:commentController];
 //    [self.navigationController pushViewController:commentController animated:NO];
 }
 -(void)likeButtonClick
@@ -293,6 +296,7 @@
     _saveImageBtn.enabled = photo.image != nil && !photo.save;
     
     [fatherView refreashNavLab:_currentPhotoIndex+1 and:_photos.count];
+     [self getData];
 }
 
 @end

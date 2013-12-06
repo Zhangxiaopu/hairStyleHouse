@@ -51,4 +51,5 @@
 @property(nonatomic,retain) TencentOAuth* tentenOAuth;
 @property(nonatomic,retain) dresserViewController * dresserFatherController;
 @property(nonatomic,retain) NSString * _backsign;
+@property(nonatomic,retain) NSString * _hidden;
 @end

@@ -103,7 +103,7 @@
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     scanView.uid = appDele.uid;
     scanView.worksOrsave = @"works";
-    [fatherController pushToViewController:scanView];
+    [fatherController needAppdelegatePushToViewController:scanView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,7 +124,7 @@
     fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
     fansAndfouceAndMassege.fansOrFouceOrMessage=@"noMassege";
     fansAndfouceAndMassege.fansOrFouce=@"fans";
-    [fatherController pushToViewController:fansAndfouceAndMassege];
+    [fatherController needAppdelegatePushToViewController:fansAndfouceAndMassege];
 }
 
 - (IBAction)myFouceButtonClick:(id)sender
@@ -133,7 +133,7 @@
     fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
     fansAndfouceAndMassege.fansOrFouceOrMessage=@"noMassege";
     fansAndfouceAndMassege.fansOrFouce=@"fouce";
-    [fatherController pushToViewController:fansAndfouceAndMassege];
+    [fatherController needAppdelegatePushToViewController:fansAndfouceAndMassege];
 
 }
 
@@ -142,7 +142,7 @@
     fansAndfouceAndMassege = nil;
     fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
     fansAndfouceAndMassege.fansOrFouceOrMessage=@"massege";
-    [fatherController pushToViewController:fansAndfouceAndMassege];
+    [fatherController needAppdelegatePushToViewController:fansAndfouceAndMassege];
 
 
 }
@@ -151,7 +151,7 @@
 {
     beaspeakView = nil;
     beaspeakView = [[beaspeakViewController alloc] init];
-    [fatherController pushToViewController:beaspeakView];
+    [fatherController needAppdelegatePushToViewController:beaspeakView];
 }
 
 - (IBAction)saveButtonClick:(id)sender
@@ -161,6 +161,6 @@
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     scanView.uid = appDele.uid;
     scanView.worksOrsave = @"save";
-    [fatherController pushToViewController:scanView];
+    [fatherController needAppdelegatePushToViewController:scanView];
 }
 @end

@@ -83,6 +83,27 @@
     
     [self getData];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    if ([fromFouceLoginCancel isEqualToString:@"all"]) {
+        
+        [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+        [self getData1];
+        
+    }
+    else if ([fromFouceLoginCancel isEqualToString:@"sameCity"])
+    {
+        [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+        [self getData1];
+    }
+    else if ([fromFouceLoginCancel isEqualToString:@"introduce"])
+    {
+        [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+        
+        [self getData1];
+    }
+}
 -(void)oneButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"全部.png"]];
@@ -119,23 +140,7 @@
     NSLog(@"fromFouceLoginCancel:%@",fromFouceLoginCancel);
     
     
-    if ([fromFouceLoginCancel isEqualToString:@"all"]) {
-        
-        [topImage setImage:[UIImage imageNamed:@"全部.png"]];
-        [self getData1];
-
-    }
-    else if ([fromFouceLoginCancel isEqualToString:@"sameCity"])
-    {
-        [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
-        [self getData1];
-    }
-    else if ([fromFouceLoginCancel isEqualToString:@"introduce"])
-    {
-        [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
-
-        [self getData1];
-    }
+   
 }
 
 -(void)getData1
@@ -208,6 +213,7 @@
         {
             loginView=nil;
             loginView=[[loginViewController alloc] init];
+            loginView._hidden=@"yes";
             loginView.dresserFatherController =self;
             loginView._backsign = fromFouceLoginCancel;
             loginView.view.frame=self.view.bounds;
@@ -346,6 +352,7 @@
         loginView=[[loginViewController alloc] init];
         loginView.dresserFatherController =self;
         loginView._backsign = fromFouceLoginCancel;
+        loginView._hidden=@"yes";
         loginView.view.frame=self.view.bounds;
         [loginView getBack:self andSuc:@selector(getData) andErr:nil];
         //        loginView.userInteractionEnabled=YES;
@@ -358,10 +365,12 @@
     {
         dreserView =nil;
         dreserView =[[dresserInforViewController alloc] init];
-        
+        dreserView._hidden=@"yes";
         dreserView.uid = [[dresserArray objectAtIndex:_index ] objectForKey:@"uid"];
         NSLog(@"%@", dreserView.uid);
-        [self.navigationController pushViewController:dreserView animated:NO];
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+        
+        [appDele pushToViewController:dreserView ];
     }
 }
 
@@ -372,6 +381,8 @@
     {
         loginView=nil;
         loginView=[[loginViewController alloc] init];
+        loginView._hidden=@"yes";
+
         loginView.dresserFatherController =self;
         loginView._backsign = fromFouceLoginCancel;
         loginView.view.frame=self.view.bounds;

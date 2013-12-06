@@ -1,32 +1,26 @@
 //
-//  mineViewController.m
+//  userInforViewController.m
 //  hairStyleHouse
 //
-//  Created by jeason on 13-11-26.
+//  Created by jeason on 13-12-6.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
 
-#import "mineViewController.h"
+#import "userInforViewController.h"
 #import "AppDelegate.h"
-#import "LoginView.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
-@interface mineViewController ()
+@interface userInforViewController ()
 
 @end
 
-@implementation mineViewController
+@implementation userInforViewController
+@synthesize uid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-        Lab.text = @"个人中心";
-        Lab.textAlignment = NSTextAlignmentCenter;
-        Lab.font = [UIFont systemFontOfSize:16];
-        Lab.textColor = [UIColor blackColor];
-        self.navigationItem.titleView =Lab;
         // Custom initialization
     }
     return self;
@@ -34,13 +28,6 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-
-    loginView=[[LoginView alloc] init];
-    loginView.frame=self.view.bounds;
-    
-
     inforDic = [[NSDictionary alloc] init];
     
     myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
@@ -50,87 +37,45 @@
     myTableView.backgroundColor=[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [self.view addSubview:myTableView];
     
-   
-	// Do any additional setup after loading the view.
+    [self getData];
 }
--(void)leftButtonClick
-{
-    
-}
--(void)rightButtonClick
-{
-    pubImage = nil;
-    pubImage = [[pubImageViewController alloc] init];
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    [appDele pushToViewController:pubImage];
-    
-}
--(void)viewDidAppear:(BOOL)animated
-{
-    [loginView removeFromSuperview];
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    NSLog(@"appDele.uid:%@",appDele.uid);
-    
-    if (!appDele.uid) {
-       
-        [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-        loginView.userInteractionEnabled=YES;
-        [self.view addSubview:loginView];
-//        [self.navigationController pushViewController:loginView animated:YES];
-    }
-    else
-    {
-        [self getData];
-    }
-//    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-//    NSLog(@"appDele.uid:%@",appDele.uid);
-//    
-//    if (!appDele.uid) {
-//        [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-////        loginView.userInteractionEnabled=YES;
-////        [self.view addSubview:loginView];
-//        [self.navigationController pushViewController:loginView animated:YES];
-//    }
-//    else
-//    {
-//        [self getData];
-//    }
-}
-
-
 -(void)getData
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-
-    ASIHTTPRequest* request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=info&type=%@&uid=%@",appDele.type,appDele.uid]]];
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=User&a=other_info"]];
     request.delegate=self;
     request.tag=1;
+    [request setPostValue:self.uid forKey:@"uid"];
+    [request setPostValue:appDele.uid forKey:@"to_uid"];
+    [request setPostValue:@"1" forKey:@"type"];
     [request startAsynchronous];
 }
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    
-    NSLog(@"%@",request.responseString);
-    NSData*jsondata = [request responseData];
-    NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
-    SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-    NSDictionary* dic=[jsonP objectWithString:jsonString];
-    NSLog(@"个人信息dic:%@",dic);
-    inforDic = [dic objectForKey:@"user_info"];
-    
-    [self refreashNav];
-    [self freashView];
-//    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
+    if (request.tag==1)
+    {
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:jsonString];
+        NSLog(@"普通用户信息dic:%@",dic);
+        inforDic = [dic objectForKey:@"user_info"];
+        
+        [self refreashNav:@"1"];//改变关注状态
+        [self freashView];
+    }
+    //    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request
 {
-    UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
 
--(void)refreashNav
+-(void)refreashNav:(NSString *)str
 {
     UIButton * leftButton=[[UIButton alloc] init];
     leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -138,7 +83,7 @@
     [leftButton.layer setCornerRadius:3.0];
     [leftButton.layer setBorderWidth:1.0];
     [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
-    [leftButton setTitle:@"设置" forState:UIControlStateNormal];
+    [leftButton setTitle:@"返回" forState:UIControlStateNormal];
     leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
     [leftButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
     [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -148,13 +93,23 @@
     UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem=leftButtonItem;
     
-    UIButton * rightButton=[[UIButton alloc] init];
+    rightButton=[[UIButton alloc] init];
     rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [rightButton.layer setMasksToBounds:YES];
     [rightButton.layer setCornerRadius:3.0];
     [rightButton.layer setBorderWidth:1.0];
     [rightButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
-    [rightButton setTitle:@"上传图片" forState:UIControlStateNormal];
+    if ([str isEqualToString:@"1"])
+    {
+        [rightButton setTitle:@"取消关注" forState:UIControlStateNormal];
+        rightButton.tag=1;
+    }
+    else
+    {
+        [rightButton setTitle:@"关注" forState:UIControlStateNormal];
+        rightButton.tag=0;
+        
+    }
     rightButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
     [rightButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
     [rightButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -165,6 +120,38 @@
     self.navigationItem.rightBarButtonItem=rightButtonItem;
 }
 
+-(void)leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
+-(void)rightButtonClick
+{
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=User&a=follow"]];
+    request.delegate=self;
+    request.tag=2;
+    [request setPostValue:appDele.uid forKey:@"uid"];
+    [request setPostValue:self.uid forKey:@"touid"];
+    [request setPostValue:appDele.type forKey:@"type"];
+    [request setPostValue:@"1" forKey:@"totype"];
+    
+    if ( rightButton.tag==1)//取消关注
+    {
+        [request setPostValue:@"0" forKey:@"status"];
+        [rightButton setTitle:@"关注" forState:UIControlStateNormal];
+        rightButton.tag=0;
+        
+    }
+    else//加关注
+    {
+        [request setPostValue:@"1" forKey:@"status"];
+        [rightButton setTitle:@"取消关注" forState:UIControlStateNormal];
+        rightButton.tag=1;
+        
+    }
+    [request startAsynchronous];
+    //在这里关注或取消关注
+}
 -(void)freashView
 {
     [myTableView reloadData];
@@ -181,7 +168,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  return   self.view.frame.size.height;
+    return   self.view.frame.size.height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,7 +179,7 @@
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     [self updateBackView];
-//    backView.view.backgroundColor =[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
+    //    backView.view.backgroundColor =[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [cell.contentView addSubview:backView.view];
     return cell;
 }
@@ -201,11 +188,11 @@
 {
     backView=nil;
     
-    backView=[[singleTableCellBackgroundViewController alloc] init];
+    backView=[[userDetailViewController alloc] init];
     backView.fatherController=self;
-    
     backView.infoDic =inforDic;
 }
+
 -(void)pushToViewController:(id)_sen
 {
     [self.navigationController pushViewController:_sen animated:NO];

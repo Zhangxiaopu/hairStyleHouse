@@ -81,6 +81,7 @@
 
 -(void)leftButtonClick
 {
+    self.navigationController.navigationBar.hidden=YES;
     [self.navigationController popViewControllerAnimated:NO];
     
 }
@@ -156,7 +157,11 @@
         [self freashView];
     }
 }
-    
+-(void)requestFailed:(ASIHTTPRequest *)request
+{
+    UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
 
 -(void)freashView
 {

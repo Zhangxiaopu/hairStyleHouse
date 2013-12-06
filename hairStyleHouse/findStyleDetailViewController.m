@@ -286,6 +286,7 @@
         // 替换为中等尺寸图片
         NSString *url = [[dresserArray[i] objectForKey:@"work_image"] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         MJPhoto *photo = [[MJPhoto alloc] init];
+        photo.work_id =[dresserArray[i] objectForKey:@"work_id"];
         photo.url = [NSURL URLWithString:url]; // 图片路径
 //        photo.srcImageView = self.view.subviews[i]; // 来源于哪个UIImageView
         [photos addObject:photo];

@@ -14,4 +14,5 @@
 // 当前展示的图片索引
 @property (nonatomic, assign) NSUInteger currentPhotoIndex;
 @property (nonatomic, strong) MJPhotoBrowser * fatherView;
+-(void)getData;
 @end

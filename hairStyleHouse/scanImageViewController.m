@@ -11,6 +11,9 @@
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageView+MJWebCache.h"
+#import "MJPhotoBrowser.h"
+#import "MJPhoto.h"
 @interface scanImageViewController ()
 
 @end
@@ -66,6 +69,7 @@
 
 -(void)leftButtonClick
 {
+    self.navigationController.navigationBar.hidden=YES;
     [self.navigationController popViewControllerAnimated:NO];
     
 }
@@ -127,6 +131,12 @@
         
         }
     }
+
+-(void)requestFailed:(ASIHTTPRequest *)request
+{
+    UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求超时" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+}
     -(void)freashView
     {
         [myTableView reloadData];
@@ -181,14 +191,29 @@
     }
 
 
+
 -(void)selectImage:(NSInteger)_index
 {
-    demoView =nil;
-    demoView  = [[DemoViewController alloc] init];
-    demoView.imageArr =dresserArray;
-    demoView.getindex =[NSString stringWithFormat:@"%d",_index];
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    [appDele pushToViewController:demoView];
+    int count = dresserArray.count;
+    // 1.封装图片数据
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
+    for (int i = 0; i<count; i++) {
+        // 替换为中等尺寸图片
+        NSString *url = [[dresserArray[i] objectForKey:@"work_image"] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        MJPhoto *photo = [[MJPhoto alloc] init];
+        photo.work_id =[dresserArray[i] objectForKey:@"work_id"];
+        photo.url = [NSURL URLWithString:url]; // 图片路径
+        //        photo.srcImageView = self.view.subviews[i]; // 来源于哪个UIImageView
+        [photos addObject:photo];
+    }
+    
+    // 2.显示相册
+    browser=nil;
+    browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = _index; // 弹出相册时显示的第一张图片是？
+    browser.photos = photos; // 设置所有的图片
+    [self.navigationController pushViewController:browser animated:YES];
+    //    [browser show];
 }
 - (void)didReceiveMemoryWarning
 {

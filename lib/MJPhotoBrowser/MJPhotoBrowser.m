@@ -5,12 +5,13 @@
 //  Copyright (c) 2013年 itcast. All rights reserved.
 
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
 #import "SDWebImageManager+MJ.h"
 #import "MJPhotoView.h"
 #import "MJPhotoToolbar.h"
-
+#import "commentViewController.h"
 #define kPadding 10
 #define kPhotoViewTagOffset 1000
 #define kPhotoViewIndex(photoView) ([photoView tag] - kPhotoViewTagOffset)
@@ -103,6 +104,7 @@
 #pragma mark 创建工具条
 - (void)createToolbar
 {
+    
     CGFloat barHeight = 124;
     CGFloat barY = self.view.frame.size.height - barHeight;
     _toolbar = [[MJPhotoToolbar alloc] init];
@@ -300,4 +302,31 @@
 	[self showPhotos];
     [self updateTollbarState];
 }
+
+
+-(void)pushViewController:(id)Sen
+{
+    
+    //        loginView.userInteractionEnabled=YES;
+    //        [self.view addSubview:loginView];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    if (appDele.uid) {
+        [self.navigationController pushViewController:Sen animated:YES];
+    }
+    else
+    {
+        loginView=nil;
+        loginView=[[loginViewController alloc] init];
+        loginView._hidden=@"no";
+        loginView.view.frame=self.view.bounds;
+        [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+        [appDele pushToViewController:loginView ];
+    }
+    
+}
+-(void)getData
+{
+    [_toolbar getData];
+}
+
 @end

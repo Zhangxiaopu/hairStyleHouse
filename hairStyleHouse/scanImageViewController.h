@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "scanCell.h"
 #import "DemoViewController.h"
+#import "MJPhotoBrowser.h"
 @interface scanImageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 UITableView *myTableView;
 NSMutableArray * dresserArray;
     
     NSString * page;
+    
+    MJPhotoBrowser * browser;
+    
     DemoViewController * demoView;
     
     NSString * worksOrsave;

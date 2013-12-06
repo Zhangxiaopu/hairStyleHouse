@@ -169,6 +169,9 @@
 		7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D691846187000E14EDC /* beaspeakCell.m */; };
 		7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6C18461C0200E14EDC /* SlideImageView.m */; };
 		7AE03D7018461C0200E14EDC /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE03D6E18461C0200E14EDC /* DemoViewController.m */; };
+		7AE0700B18519FA700ED1EDE /* userInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0700A18519FA700ED1EDE /* userInforViewController.m */; };
+		7AE0700F18519FBE00ED1EDE /* userDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0700D18519FBE00ED1EDE /* userDetailViewController.m */; };
+		7AE0701018519FBE00ED1EDE /* userDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE0700E18519FBE00ED1EDE /* userDetailViewController.xib */; };
 		7AE1B2FA184C26FF00F51BB2 /* fenxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */; };
 		7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F8184C26FF00F51BB2 /* comment.png */; };
 		7AE1B2FC184C26FF00F51BB2 /* sixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F9184C26FF00F51BB2 /* sixin.png */; };
@@ -436,6 +439,11 @@
 		7AE03D6C18461C0200E14EDC /* SlideImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideImageView.m; sourceTree = "<group>"; };
 		7AE03D6D18461C0200E14EDC /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoViewController.h; sourceTree = "<group>"; };
 		7AE03D6E18461C0200E14EDC /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoViewController.m; sourceTree = "<group>"; };
+		7AE0700918519FA700ED1EDE /* userInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userInforViewController.h; sourceTree = "<group>"; };
+		7AE0700A18519FA700ED1EDE /* userInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userInforViewController.m; sourceTree = "<group>"; };
+		7AE0700C18519FBE00ED1EDE /* userDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetailViewController.h; sourceTree = "<group>"; };
+		7AE0700D18519FBE00ED1EDE /* userDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userDetailViewController.m; sourceTree = "<group>"; };
+		7AE0700E18519FBE00ED1EDE /* userDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = userDetailViewController.xib; sourceTree = "<group>"; };
 		7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fenxiang.png; sourceTree = "<group>"; };
 		7AE1B2F8184C26FF00F51BB2 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		7AE1B2F9184C26FF00F51BB2 /* sixin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sixin.png; sourceTree = "<group>"; };
@@ -603,6 +611,11 @@
 				7AE03D571846175B00E14EDC /* dresserDetailViewController.h */,
 				7AE03D581846175B00E14EDC /* dresserDetailViewController.m */,
 				7AE03D591846175B00E14EDC /* dresserDetailViewController.xib */,
+				7AE0700918519FA700ED1EDE /* userInforViewController.h */,
+				7AE0700A18519FA700ED1EDE /* userInforViewController.m */,
+				7AE0700C18519FBE00ED1EDE /* userDetailViewController.h */,
+				7AE0700D18519FBE00ED1EDE /* userDetailViewController.m */,
+				7AE0700E18519FBE00ED1EDE /* userDetailViewController.xib */,
 				7AE03D5C1846178E00E14EDC /* lookEvaluateViewController.h */,
 				7AE03D5D1846178E00E14EDC /* lookEvaluateViewController.m */,
 				7AE3615218473C26008A107C /* lookEvaluateCell.h */,
@@ -995,6 +1008,7 @@
 				7A37D69D1844C9E100D9C4D9 /* Images.xcassets in Resources */,
 				7AE03D561846172F00E14EDC /* pubImageViewController.xib in Resources */,
 				7A37D7901844CC4C00D9C4D9 /* 粉丝.png in Resources */,
+				7AE0701018519FBE00ED1EDE /* userDetailViewController.xib in Resources */,
 				7AD545B5184EBA81009A6B79 /* 长发.png in Resources */,
 				7A37D7791844CC4C00D9C4D9 /* like1.png in Resources */,
 				7A37D77E1844CC4C00D9C4D9 /* x0.png in Resources */,
@@ -1088,6 +1102,7 @@
 				7AD545FC184F2B08009A6B79 /* MJPhotoView.m in Sources */,
 				7A37D7141844CA2700D9C4D9 /* SBJsonStreamParser.m in Sources */,
 				7A37D7121844CA2700D9C4D9 /* NSObject+SBJson.m in Sources */,
+				7AE0700B18519FA700ED1EDE /* userInforViewController.m in Sources */,
 				7AD5460A184F2B08009A6B79 /* UIImage+WebP.m in Sources */,
 				7AE03D481845D41C00E14EDC /* HZLocation.m in Sources */,
 				7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */,
@@ -1109,6 +1124,7 @@
 				7AD54603184F2B08009A6B79 /* SDWebImageDownloaderOperation.m in Sources */,
 				7AD54602184F2B08009A6B79 /* SDWebImageDownloader.m in Sources */,
 				7A37D6911844C9E100D9C4D9 /* main.m in Sources */,
+				7AE0700F18519FBE00ED1EDE /* userDetailViewController.m in Sources */,
 				7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */,
 				7A37D71A1844CA2700D9C4D9 /* SBJsonStreamWriterState.m in Sources */,
 				7AE3615418473C26008A107C /* lookEvaluateCell.m in Sources */,
