@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "fansAndfoceAndMassegeCell.h"
 #import "dresserInforViewController.h"
+#import "userInforViewController.h"
 #import "talkViewController.h"
 
 @interface fansAndFouceAndmassegeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
@@ -24,7 +25,7 @@
     NSString * fansOrFouce;
     
     dresserInforViewController * dreserView;
-    
+    userInforViewController * userView;
 }
 @property (strong,nonatomic)    NSString * fansOrFouceOrMessage;
 @property (strong,nonatomic)    NSString * fansOrFouce;

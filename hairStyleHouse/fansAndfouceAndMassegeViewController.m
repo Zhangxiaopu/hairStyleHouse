@@ -300,6 +300,12 @@
         else
         {
             //查看个人
+            
+            userView =nil;
+            userView =[[userInforViewController alloc] init];
+            userView.uid = [[dresserArray objectAtIndex:[indexPath row] ] objectForKey:@"uid"];
+            userView._hidden=@"no";
+            [self.navigationController pushViewController:userView animated:NO];
         }
     
     }

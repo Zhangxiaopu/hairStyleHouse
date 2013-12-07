@@ -162,7 +162,7 @@
     NSString* timeStr = [[_arr objectAtIndex:_index-1] objectForKey:@"add_time"];
     timeLable.text=timeStr;
     timeLable.font = [UIFont systemFontOfSize:12];
-    timeLable.frame = CGRectMake(200, 25, 120, 20);
+    timeLable.frame = CGRectMake(240, 15, 120, 20);
     
     NSString* contentStr = [[_arr objectAtIndex:_index-1]  objectForKey:@"content"];
     contentLable.text=contentStr;

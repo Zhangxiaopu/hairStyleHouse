@@ -139,7 +139,7 @@
         CGRect rect=CGRectZero;
         for (int i=0; i<workArr.count; i++)
         {
-            rect=CGRectMake(90*i+12*(i+1),3, 90, 100);
+            rect=CGRectMake(90*i+13*(i+1),3, 90, 100);
             UIImageView * workImage = [[UIImageView alloc] initWithFrame:rect];
             [workImage setImageWithURL:[[workArr objectAtIndex:i] objectForKey:@"work_image"]];
             UIButton *newvideobutton=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -169,11 +169,11 @@
 
 -(void)selectSaveImage:(UIButton*)button
 {
-//    scanView=nil;
-//    scanView = [[scanImageViewController alloc] init];
-//    scanView.uid=[infoDic objectForKey:@"uid"];
-//    scanView.worksOrsave = @"works";
-//    [fatherController pushToViewController:scanView];
+    scanView=nil;
+    scanView = [[scanImageViewController alloc] init];
+    scanView.uid=[infoDic objectForKey:@"uid"];
+    scanView.worksOrsave = @"works";
+    [fatherController pushToViewController:scanView];
 }
 
 

@@ -170,10 +170,8 @@
              NSLog(@"name:%@\n country:%@\n postalCode:%@\n ISOcountryCode:%@\n ocean:%@\n inlandWater:%@\n locality:%@\n subLocality:%@\n administrativeArea:%@\n subAdministrativeArea:%@\n thoroughfare:%@\n subThoroughfare:%@\n",placemark.name,placemark.country,placemark.postalCode,placemark.ISOcountryCode,placemark.ocean,placemark.inlandWater,placemark.administrativeArea,placemark.subAdministrativeArea,placemark.locality,placemark.subLocality,placemark.thoroughfare,placemark.subThoroughfare);
              
              [geocoder cancelGeocode];
-             if (appDele.uid) {
-                 [self getData];
-             }
-             
+            
+//             [self getData];
              
          }
      }];
@@ -188,6 +186,7 @@
     request.delegate=self;
     request.tag=1;
     
+   
     [request setPostValue:appDele.uid forKey:@"uid"];
     [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
     [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];

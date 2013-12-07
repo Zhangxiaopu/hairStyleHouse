@@ -1,21 +1,22 @@
 //
-//  singleTableCellBackgroundViewController.m
+//  renewSingleTableCellBackgroundViewController.m
 //  hairStyleHouse
 //
-//  Created by jeason on 13-11-27.
+//  Created by jeason on 13-12-7.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
 
+#import "renewSingleTableCellBackgroundViewController.h"
 #import "singleTableCellBackgroundViewController.h"
 #import "UIImageView+WebCache.h"
 #import "mineViewController.h"
 #import "AppDelegate.h"
-
-@interface singleTableCellBackgroundViewController ()
+@interface renewSingleTableCellBackgroundViewController ()
 
 @end
 
-@implementation singleTableCellBackgroundViewController
+@implementation renewSingleTableCellBackgroundViewController
+
 @synthesize fatherController;
 @synthesize infoDic;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,7 +35,7 @@
     workScroll.delegate=self;
     workScroll.frame = CGRectMake(0, _worksLable.frame.origin.y+_worksLable.frame.size.height,320,_secondBackView.frame.size.height-_worksLable.frame.size.height-_worksLable.frame.origin.y);
     [_secondBackView addSubview:workScroll];
-
+    
     // Do any additional setup after loading the view from its nib.
 }
 -(void)viewDidAppear:(BOOL)animated
@@ -45,20 +46,17 @@
     NSString* fansStr = [infoDic objectForKey:@"fans_num"];
     NSString* fouceStr = [infoDic objectForKey:@"attention_num"];
     NSString* workStr = [infoDic objectForKey:@"works_num"];
-    
     NSMutableArray * workArr ;
     if ([[infoDic objectForKey:@"portfolio"] isKindOfClass:[NSArray class]]) {
         workArr = [infoDic objectForKey:@"portfolio"];
     }
     else
     {
-        
-    }
     
+    }
     NSString* messageStr = [infoDic objectForKey:@"newpm"];
     NSString* beaspeakStr = [infoDic objectForKey:@"reserve_num"];
     NSString* saveStr = [infoDic objectForKey:@"collect_num"];
-    NSString* mobileStr = [infoDic objectForKey:@"mobile"];
     NSString* inforStr = [infoDic objectForKey:@"signature"];
     
     [_headImage setImageWithURL:[NSURL URLWithString:headStr]];
@@ -70,14 +68,13 @@
     _messageLable.text = [NSString stringWithFormat:@"%@",messageStr];
     _beaspeakLable.text = [NSString stringWithFormat:@"%@",beaspeakStr];
     _saveLable.text = [NSString stringWithFormat:@"%@",saveStr];
-    _mobileLable.text = [NSString stringWithFormat:@"%@",mobileStr];
     _personInforText.text = inforStr;
     
     for (UIView* _sub in workScroll.subviews)
     {
-//        if ([_sub isKindOfClass:[AllAroundPullView class]]) {
-//            continue;
-//        }
+        //        if ([_sub isKindOfClass:[AllAroundPullView class]]) {
+        //            continue;
+        //        }
         [_sub removeFromSuperview];
     }
     
@@ -88,20 +85,20 @@
         {
             [workScroll setContentSize:CGSizeMake(workScroll.frame.size.width+1, workScroll.frame.size.height)];
         }
-            CGRect rect=CGRectZero;
-            for (int i=0; i<workArr.count; i++)
-            {
-                rect=CGRectMake(60*i+10*(i+1), 10, 60, 60);
-                UIImageView * workImage = [[UIImageView alloc] initWithFrame:rect];
-                [workImage setImageWithURL:[[workArr objectAtIndex:i] objectForKey:@"work_image"]];
-                UIButton *newvideobutton=[UIButton buttonWithType:UIButtonTypeCustom];
-                newvideobutton.backgroundColor=[UIColor clearColor];
-                newvideobutton.tag=i;
-                [newvideobutton addTarget:self  action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
-                [newvideobutton setFrame:rect];
-                [workScroll addSubview:workImage];
-                [workScroll addSubview:newvideobutton];
-            }
+        CGRect rect=CGRectZero;
+        for (int i=0; i<workArr.count; i++)
+        {
+            rect=CGRectMake(60*i+10*(i+1), 10, 60, 60);
+            UIImageView * workImage = [[UIImageView alloc] initWithFrame:rect];
+            [workImage setImageWithURL:[[workArr objectAtIndex:i] objectForKey:@"work_image"]];
+            UIButton *newvideobutton=[UIButton buttonWithType:UIButtonTypeCustom];
+            newvideobutton.backgroundColor=[UIColor clearColor];
+            newvideobutton.tag=i;
+            [newvideobutton addTarget:self  action:@selector(selectImage:) forControlEvents:UIControlEventTouchUpInside];
+            [newvideobutton setFrame:rect];
+            [workScroll addSubview:workImage];
+            [workScroll addSubview:newvideobutton];
+        }
     }
 }
 
@@ -143,7 +140,7 @@
     fansAndfouceAndMassege.fansOrFouceOrMessage=@"noMassege";
     fansAndfouceAndMassege.fansOrFouce=@"fouce";
     [fatherController needAppdelegatePushToViewController:fansAndfouceAndMassege];
-
+    
 }
 
 - (IBAction)messageButtonClick:(id)sender
@@ -152,10 +149,14 @@
     fansAndfouceAndMassege =[[fansAndFouceAndmassegeViewController alloc] init];
     fansAndfouceAndMassege.fansOrFouceOrMessage=@"massege";
     [fatherController needAppdelegatePushToViewController:fansAndfouceAndMassege];
-
-
+    
+    
 }
 
+- (IBAction)myStoreButtonClick:(id)sender
+{
+
+}
 - (IBAction)beaspeakButtonClick:(id)sender
 {
     beaspeakView = nil;
@@ -171,5 +172,14 @@
     scanView.uid = appDele.uid;
     scanView.worksOrsave = @"save";
     [fatherController needAppdelegatePushToViewController:scanView];
+}
+
+- (IBAction)checkInforButtonClick:(id)sender
+{
+
+}
+- (IBAction)evaluateButtonClick:(id)sender
+{
+
 }
 @end

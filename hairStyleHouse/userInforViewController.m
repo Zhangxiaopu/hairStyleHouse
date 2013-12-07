@@ -16,6 +16,7 @@
 
 @implementation userInforViewController
 @synthesize uid;
+@synthesize _hidden;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -122,7 +123,16 @@
 
 -(void)leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+        
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+        
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)rightButtonClick
 {

@@ -36,7 +36,7 @@
     [self refreashNav];
     self.view.backgroundColor = [UIColor whiteColor];
     topImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320, 50)];
-    [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
     
     UIButton * oneButton = [UIButton buttonWithType:UIButtonTypeCustom];
     oneButton.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320/3, 50);
@@ -78,14 +78,14 @@
 }
 -(void)oneButtonClick
 {
-    [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
     sign =@"new";
     [self getData];
     
 }
 -(void)twoButtonClick
 {
-    [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+    [topImage setImage:[UIImage imageNamed:@"同城发型.png"]];
 //    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
 
     sign =@"city";
@@ -94,7 +94,7 @@
 }
 -(void)thirdButtonClick
 {
-    [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+    [topImage setImage:[UIImage imageNamed:@"推荐发型.png"]];
     sign =@"recommend";
     [self getData];
     

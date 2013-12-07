@@ -183,6 +183,11 @@
 		7AE3615418473C26008A107C /* lookEvaluateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615318473C26008A107C /* lookEvaluateCell.m */; };
 		7AE361571847556D008A107C /* scanImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE361561847556D008A107C /* scanImageViewController.m */; };
 		7AE3615A18475580008A107C /* scanCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615918475580008A107C /* scanCell.m */; };
+		7AE5AC281852C4C100C1970E /* 最新发型.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5AC251852C4C100C1970E /* 最新发型.png */; };
+		7AE5AC291852C4C100C1970E /* 同城发型.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5AC261852C4C100C1970E /* 同城发型.png */; };
+		7AE5AC2A1852C4C100C1970E /* 推荐发型.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5AC271852C4C100C1970E /* 推荐发型.png */; };
+		7AE5AC2E1853017900C1970E /* renewSingleTableCellBackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5AC2C1853017900C1970E /* renewSingleTableCellBackgroundViewController.m */; };
+		7AE5AC2F1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE5AC2D1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,6 +467,12 @@
 		7AE361561847556D008A107C /* scanImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scanImageViewController.m; sourceTree = "<group>"; };
 		7AE3615818475580008A107C /* scanCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanCell.h; sourceTree = "<group>"; };
 		7AE3615918475580008A107C /* scanCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scanCell.m; sourceTree = "<group>"; };
+		7AE5AC251852C4C100C1970E /* 最新发型.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "最新发型.png"; sourceTree = "<group>"; };
+		7AE5AC261852C4C100C1970E /* 同城发型.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同城发型.png"; sourceTree = "<group>"; };
+		7AE5AC271852C4C100C1970E /* 推荐发型.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "推荐发型.png"; sourceTree = "<group>"; };
+		7AE5AC2B1853017900C1970E /* renewSingleTableCellBackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = renewSingleTableCellBackgroundViewController.h; sourceTree = "<group>"; };
+		7AE5AC2C1853017900C1970E /* renewSingleTableCellBackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = renewSingleTableCellBackgroundViewController.m; sourceTree = "<group>"; };
+		7AE5AC2D1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = renewSingleTableCellBackgroundViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,6 +588,9 @@
 				7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */,
 				7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */,
 				7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */,
+				7AE5AC2B1853017900C1970E /* renewSingleTableCellBackgroundViewController.h */,
+				7AE5AC2C1853017900C1970E /* renewSingleTableCellBackgroundViewController.m */,
+				7AE5AC2D1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib */,
 				7AE03D351845BDA700E14EDC /* personInforViewController.h */,
 				7AE03D361845BDA700E14EDC /* personInforViewController.m */,
 				7AE03D321845B9F300E14EDC /* changeInforViewController.xib */,
@@ -749,6 +763,9 @@
 		7A37D74E1844CC4C00D9C4D9 /* 11-20 */ = {
 			isa = PBXGroup;
 			children = (
+				7AE5AC251852C4C100C1970E /* 最新发型.png */,
+				7AE5AC261852C4C100C1970E /* 同城发型.png */,
+				7AE5AC271852C4C100C1970E /* 推荐发型.png */,
 				7AD5460D184F39EA009A6B79 /* 我型我秀.png */,
 				7AD5460E184F39EA009A6B79 /* 热门话题.png */,
 				7AD5460F184F39EA009A6B79 /* 同城.png */,
@@ -985,6 +1002,7 @@
 				7A37D7811844CC4C00D9C4D9 /* x3.png in Resources */,
 				7ADC1A17184D8418004C61BC /* 4关注.png in Resources */,
 				7AD5461A184F39EA009A6B79 /* 行业情报.png in Resources */,
+				7AE5AC291852C4C100C1970E /* 同城发型.png in Resources */,
 				7AD87E0418502CA10016A329 /* Default@2x.png in Resources */,
 				7A37D77F1844CC4C00D9C4D9 /* x1.png in Resources */,
 				7AD87E0318502CA10016A329 /* Default.png in Resources */,
@@ -1000,6 +1018,7 @@
 				7A37D78E1844CC4C00D9C4D9 /* 皇冠.png in Resources */,
 				7AE03D441845D41C00E14EDC /* area.plist in Resources */,
 				7A37D78C1844CC4C00D9C4D9 /* 星级.png in Resources */,
+				7AE5AC281852C4C100C1970E /* 最新发型.png in Resources */,
 				7A37D77C1844CC4C00D9C4D9 /* shalong.png in Resources */,
 				7A37D7921844CC4C00D9C4D9 /* 钻石.png in Resources */,
 				7A37D7891844CC4C00D9C4D9 /* 同城1.png in Resources */,
@@ -1027,6 +1046,7 @@
 				7AD54619184F39EA009A6B79 /* 招聘信息.png in Resources */,
 				7A37D7801844CC4C00D9C4D9 /* x2.png in Resources */,
 				7A37D77B1844CC4C00D9C4D9 /* renzhengziliao.png in Resources */,
+				7AE5AC2F1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib in Resources */,
 				7A37D7831844CC4C00D9C4D9 /* x5.png in Resources */,
 				7AD54617184F39EA009A6B79 /* 特惠预约.png in Resources */,
 				7AD54618184F39EA009A6B79 /* 问答中心.png in Resources */,
@@ -1044,6 +1064,7 @@
 				7AD545B8184ED4EF009A6B79 /* 短发.png in Resources */,
 				7AD545B3184EBA81009A6B79 /* 男士发型.png in Resources */,
 				7AD87E0218502CA10016A329 /* Default-568h@2x.png in Resources */,
+				7AE5AC2A1852C4C100C1970E /* 推荐发型.png in Resources */,
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
 				7AD54614184F39EA009A6B79 /* 我型我秀.png in Resources */,
 				7AD54615184F39EA009A6B79 /* 热门话题.png in Resources */,
@@ -1097,6 +1118,7 @@
 				7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */,
 				7AE3615118472232008A107C /* dresserInforViewController.m in Sources */,
 				7AD54601184F2B08009A6B79 /* SDWebImageDecoder.m in Sources */,
+				7AE5AC2E1853017900C1970E /* renewSingleTableCellBackgroundViewController.m in Sources */,
 				7A37D7171844CA2700D9C4D9 /* SBJsonStreamParserState.m in Sources */,
 				7AE03D64184617DB00E14EDC /* talkCell.m in Sources */,
 				7AD545FC184F2B08009A6B79 /* MJPhotoView.m in Sources */,

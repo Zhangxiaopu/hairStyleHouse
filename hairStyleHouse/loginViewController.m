@@ -289,9 +289,20 @@
     
     [self postTententData];
    
-    self.navigationController.navigationBar.hidden=YES;
+    
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+        
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+        
+    }
+//    [self.navigationController popViewControllerAnimated:YES];
+//    self.navigationController.navigationBar.hidden=NO;
 
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
@@ -346,11 +357,11 @@
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:request.responseString];
         backId=[dic objectForKey:@"uid"];
-        AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;//调用appdel
-        appDel.type=[dic objectForKey:@"type"];
-        appDel.touxiangImage=[dic objectForKey:@"head_photo"];
-        appDel.uid=backId;//将值赋再appdelegat.uid上
-        appDel.city=[dic objectForKey:@"city"];
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
+        appDele.type=[dic objectForKey:@"type"];
+        appDele.touxiangImage=[dic objectForKey:@"head_photo"];
+        appDele.uid=backId;//将值赋再appdelegat.uid上
+        appDele.city=[dic objectForKey:@"city"];
         //        if (request.tag==1) {
         //            appDel.loginType=@"qq";
         //        }
@@ -364,13 +375,13 @@
         [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
         
         
-        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-        
         ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
         request.delegate=self;
         request.tag=2;
         
         [request setPostValue:appDele.uid forKey:@"uid"];
+//         NSLog(@"%f",appDele.longitude);
+//        NSLog(@"%f",appDele.latitude);
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
         [request startAsynchronous];
@@ -397,6 +408,8 @@
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:jsonString];
         NSLog(@"修改经纬度dic:%@",dic);
+        
+       
         
         [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
     }

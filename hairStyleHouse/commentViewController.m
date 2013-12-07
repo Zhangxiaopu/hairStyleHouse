@@ -212,6 +212,7 @@
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:jsonString];
         NSLog(@"评论是否成功dic:%@",dic);
+        contentView.text=@"";
         [self getData];
     }
 }
@@ -287,7 +288,7 @@
 
 -(void)sendButtonClick
 {
-    contentView.text=@"";
+    
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     NSURL * urlString= [NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Works&a=comment"];
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:urlString];

@@ -102,10 +102,22 @@
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
 
-    ASIHTTPRequest* request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=info&type=%@&uid=%@",appDele.type,appDele.uid]]];
-    request.delegate=self;
-    request.tag=1;
-    [request startAsynchronous];
+//    if ([appDele.type isEqualToString:@"1"]) {
+        ASIHTTPRequest* request=[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=info&type=%@&uid=%@",appDele.type,appDele.uid]]];
+        request.delegate=self;
+        request.tag=1;
+        [request startAsynchronous];
+//    }
+//    else
+//    {
+//        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=info"]]];
+//        request.delegate=self;
+//        request.tag=1;
+//        [request setPostValue:appDele.uid forKey:@"uid"];
+//        [request setPostValue:appDele.type forKey:@"type"];
+//        [request startAsynchronous];
+//    }
+    
 }
 
 -(void)requestFinished:(ASIHTTPRequest *)request
@@ -180,8 +192,23 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  return   self.view.frame.size.height;
+{ AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    
+    if ([appDele.type isEqualToString:@"1"])
+    {
+        return   self.view.frame.size.height;
+
+    }
+    else if ([appDele.type isEqualToString:@"2"])
+    {
+        return   self.view.frame.size.height+120;
+
+    }
+    else
+        
+    {
+    return   self.view.frame.size.height;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -193,19 +220,42 @@
     }
     [self updateBackView];
 //    backView.view.backgroundColor =[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
-    [cell.contentView addSubview:backView.view];
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    if ([appDele.type isEqualToString:@"1"])
+    {
+        [cell.contentView addSubview:backView.view];
+
+    }
+    else if ([appDele.type isEqualToString:@"2"])
+    {
+        [cell.contentView addSubview:backView1.view];
+
+    }
     return cell;
 }
 
 - (void)updateBackView
 {
-    backView=nil;
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     
-    backView=[[singleTableCellBackgroundViewController alloc] init];
-    backView.fatherController=self;
-    
-    backView.infoDic =inforDic;
-}
+    if ([appDele.type isEqualToString:@"1"])
+    {
+        
+        backView=nil;
+        backView=[[singleTableCellBackgroundViewController alloc] init];
+        backView.fatherController=self;
+        backView.infoDic =inforDic;
+
+    }
+    else if ([appDele.type isEqualToString:@"2"])
+    {
+        backView1=nil;
+        backView1=[[renewSingleTableCellBackgroundViewController alloc] init];
+        backView1.fatherController=self;
+        backView1.infoDic =inforDic;
+        
+    }
+   }
 -(void)pushToViewController:(id)_sen
 {
     [self.navigationController pushViewController:_sen animated:NO];

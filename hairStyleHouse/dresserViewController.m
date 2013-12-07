@@ -194,6 +194,8 @@
     {
         request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
         [request setPostValue:appDele.city forKey:@"city"];
+//        NSLog(@"%f",appDele.longitude);
+//        NSLog(@"%f",appDele.latitude);
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
 

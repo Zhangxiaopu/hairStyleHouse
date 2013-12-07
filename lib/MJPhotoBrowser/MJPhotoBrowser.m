@@ -113,7 +113,8 @@
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _toolbar.photos = _photos;
     [self.view addSubview:_toolbar];
- 
+    [_toolbar getData];
+
     [self updateTollbarState];
 }
 
@@ -301,8 +302,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	[self showPhotos];
     [self updateTollbarState];
+//     [_toolbar getData];
 }
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView //滚动结束处理
+{
+ [_toolbar getData];
+}
 
 -(void)pushViewController:(id)Sen
 {

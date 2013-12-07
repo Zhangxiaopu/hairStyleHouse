@@ -69,7 +69,6 @@
 
 -(void)leftButtonClick
 {
-    self.navigationController.navigationBar.hidden=YES;
     [self.navigationController popViewControllerAnimated:NO];
     
 }

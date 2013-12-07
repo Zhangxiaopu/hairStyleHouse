@@ -117,7 +117,6 @@
         [self addSubview:likeButton];
         [self addSubview:shareButton];
         
-       
         // Initialization code
     }
     return self;
@@ -129,7 +128,7 @@
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Dynamic&a=workinfo"]]];
     request.delegate=self;
     request.tag=1;
-    NSLog(@"appDele.uid:%@",appDele.uid);
+    NSLog(@"appDele.uid111111:%@",appDele.uid);
     MJPhoto *photo =[_photos objectAtIndex:_currentPhotoIndex];
     NSLog(@"[_photos objectAtIndex:_currentPhotoIndex]:%@",photo.work_id);
     [request setPostValue:appDele.uid forKey:@"uid"];
@@ -210,27 +209,34 @@
 -(void)likeButtonClick
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Works&a=collection"]]];
-    request.delegate=self;
-    request.tag=2;
-    [request setPostValue:appDele.uid forKey:@"uid"];
-    [request setPostValue:[diction objectForKey:@"uid"] forKey:@"to_uid"];
-    [request setPostValue:[diction objectForKey:@"work_id"] forKey:@"work_id"];
-    if (likeButton.tag==0)
-    {
-        likeButton.tag=1;
-        likeImage.image = [UIImage imageNamed:@"like1.png"];
-        [request setPostValue:@"1" forKey:@"status"];
-        
+    if (!appDele.uid) {
+        [fatherView pushViewController:nil];
     }
     else
     {
-        likeButton.tag=0;
-        likeImage.image = [UIImage imageNamed:@"like.png"];
-        [request setPostValue:@"0" forKey:@"status"];
-        
+        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Works&a=collection"]]];
+        request.delegate=self;
+        request.tag=2;
+        [request setPostValue:appDele.uid forKey:@"uid"];
+        [request setPostValue:[diction objectForKey:@"uid"] forKey:@"to_uid"];
+        [request setPostValue:[diction objectForKey:@"work_id"] forKey:@"work_id"];
+        if (likeButton.tag==0)
+        {
+            likeButton.tag=1;
+            likeImage.image = [UIImage imageNamed:@"like1.png"];
+            [request setPostValue:@"1" forKey:@"status"];
+            
+        }
+        else
+        {
+            likeButton.tag=0;
+            likeImage.image = [UIImage imageNamed:@"like.png"];
+            [request setPostValue:@"0" forKey:@"status"];
+            
+        }
+        [request startAsynchronous];
     }
-    [request startAsynchronous];
+    
     
 }
 -(void)shareButtonClick
@@ -296,7 +302,7 @@
     _saveImageBtn.enabled = photo.image != nil && !photo.save;
     
     [fatherView refreashNavLab:_currentPhotoIndex+1 and:_photos.count];
-     [self getData];
+//     [self getData];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "singleTableCellBackgroundViewController.h"
+#import "renewSingleTableCellBackgroundViewController.h"
 #import "LoginView.h"
 #import "loginViewController.h"
 #import "pubImageViewController.h"
@@ -19,6 +20,7 @@
     UITableView *myTableView;
     NSDictionary * inforDic;
     singleTableCellBackgroundViewController * backView;
+    renewSingleTableCellBackgroundViewController * backView1;
     pubImageViewController * pubImage;
 
 }
