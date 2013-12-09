@@ -77,7 +77,10 @@
 
     }
     [self.navigationController popViewControllerAnimated:YES];
-//    [dresserFatherController fromFouceCancelBack:_backsign];
+    if (dresserFatherController) {
+         [dresserFatherController fromFouceCancelBack:_backsign];
+    }
+   
 
     
 }
@@ -361,7 +364,7 @@
         appDele.type=[dic objectForKey:@"type"];
         appDele.touxiangImage=[dic objectForKey:@"head_photo"];
         appDele.uid=backId;//将值赋再appdelegat.uid上
-        appDele.city=[dic objectForKey:@"city"];
+//        appDele.city=[dic objectForKey:@"city"];
         //        if (request.tag==1) {
         //            appDel.loginType=@"qq";
         //        }
@@ -384,6 +387,7 @@
 //        NSLog(@"%f",appDele.latitude);
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+        
         [request startAsynchronous];
         
         //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];

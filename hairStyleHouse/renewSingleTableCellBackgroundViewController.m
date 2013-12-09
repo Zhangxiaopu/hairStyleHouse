@@ -47,7 +47,8 @@
     NSString* fouceStr = [infoDic objectForKey:@"attention_num"];
     NSString* workStr = [infoDic objectForKey:@"works_num"];
     NSMutableArray * workArr ;
-    if ([[infoDic objectForKey:@"portfolio"] isKindOfClass:[NSArray class]]) {
+    if ([[infoDic objectForKey:@"portfolio"] isKindOfClass:[NSArray class]])
+    {
         workArr = [infoDic objectForKey:@"portfolio"];
     }
     else

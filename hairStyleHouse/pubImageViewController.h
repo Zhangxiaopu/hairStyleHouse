@@ -18,6 +18,7 @@
     NSString * hairStyle;
     NSMutableArray * imageArr;
 }
+@property(nonatomic,retain) NSString * _hidden;
 @property (strong, nonatomic) IBOutlet UIImageView *firstImage;
 @property (strong, nonatomic) IBOutlet UIImageView *secondImage;
 @property (strong, nonatomic) IBOutlet UIImageView *thirdImage;

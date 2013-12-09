@@ -7,7 +7,8 @@
 //
 
 #import "squareViewController.h"
-
+#import "AppDelegate.h"
+#import "myShowViewController.h"
 @interface squareViewController ()
 
 @end
@@ -112,6 +113,100 @@
 }
 -(void)tapView:(UITapGestureRecognizer* )tap
 {
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+
+    switch (tap.view.tag) {
+        case 0:
+            myShow = nil;
+            myShow = [[myShowViewController alloc] init];
+            [ appDele pushToViewController:myShow];
+            break;
+        case 1:
+            if (!appDele.uid)
+            {
+                loginView=nil;
+                loginView=[[loginViewController alloc] init];
+                loginView._hidden=@"yes";
+                loginView.view.frame=self.view.bounds;
+//                [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+                //        loginView.userInteractionEnabled=YES;
+                //        [self.view addSubview:loginView];
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                
+                [appDele pushToViewController:loginView ];
+            }
+            else
+            {
+            
+            }
+            break;
+        case 2:
+            if (!appDele.uid)
+            {
+                loginView=nil;
+                loginView=[[loginViewController alloc] init];
+                loginView._hidden=@"yes";
+                loginView.view.frame=self.view.bounds;
+                //                [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+                //        loginView.userInteractionEnabled=YES;
+                //        [self.view addSubview:loginView];
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                
+                [appDele pushToViewController:loginView ];
+            }
+            else
+            {
+                
+            }            break;
+        case 3:
+            
+            break;
+        case 4:
+            if (!appDele.uid)
+            {
+                loginView=nil;
+                loginView=[[loginViewController alloc] init];
+                loginView._hidden=@"yes";
+                loginView.view.frame=self.view.bounds;
+                //                [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+                //        loginView.userInteractionEnabled=YES;
+                //        [self.view addSubview:loginView];
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                
+                [appDele pushToViewController:loginView ];
+            }
+            else
+            {
+                
+            }
+            break;
+        case 5:
+            break;
+           
+        case 6:
+            
+            if (!appDele.uid)
+            {
+                loginView=nil;
+                loginView=[[loginViewController alloc] init];
+                loginView._hidden=@"yes";
+                loginView.view.frame=self.view.bounds;
+                //                [loginView getBack:self andSuc:@selector(getData) andErr:nil];
+                //        loginView.userInteractionEnabled=YES;
+                //        [self.view addSubview:loginView];
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                
+                [appDele pushToViewController:loginView ];
+            }
+            else
+            {
+                
+            }
+            break;
+        default:
+            
+            break;
+    }
     
     
 }

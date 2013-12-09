@@ -11,13 +11,16 @@
 #import "dresserCell.h"
 #import "LoginView.h"
 #import "loginViewController.h"
+@class AllAroundPullView;
 @interface dresserViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 {
     UIImageView * topImage;
     UITableView *myTableView;
+     AllAroundPullView *bottomRefreshView;
     NSMutableArray * dresserArray;
     NSString * page;
+    NSString * pageCount;
     NSString * sign;//标记登陆成功后调用哪个借口
     dresserInforViewController * dreserView;
 

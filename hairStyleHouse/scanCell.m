@@ -64,7 +64,8 @@
         firstImage.clipsToBounds = YES;
         firstImage.contentMode = UIViewContentModeScaleAspectFill;
         firstImage.frame =CGRectMake(12, 20, 90, 120);
-        
+        secondImage.frame =CGRectMake(0, 0, 0, 0);
+        thirdImage.frame =CGRectMake(0, 0, 0, 0);
     }
     else if (index%3==1)
     {
@@ -82,7 +83,8 @@
         secondImage.clipsToBounds = YES;
         secondImage.contentMode = UIViewContentModeScaleAspectFill;
         secondImage.frame =CGRectMake(114, 20, 90, 120);
-        
+        thirdImage.frame =CGRectMake(0, 0, 0, 0);
+
     }
     else if (index%3==2)
     {

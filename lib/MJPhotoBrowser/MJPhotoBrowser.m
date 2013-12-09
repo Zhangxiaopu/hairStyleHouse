@@ -55,6 +55,8 @@
     [self createScrollView];
     
     // 2.创建工具条
+    first = [[NSString alloc] init];
+    first  = @"first";
     [self createToolbar];
 }
 
@@ -113,7 +115,7 @@
     _toolbar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     _toolbar.photos = _photos;
     [self.view addSubview:_toolbar];
-    [_toolbar getData];
+//    [_toolbar getData];
 
     [self updateTollbarState];
 }
@@ -296,6 +298,12 @@
 {
     _currentPhotoIndex = _photoScrollView.contentOffset.x / _photoScrollView.frame.size.width;
     _toolbar.currentPhotoIndex = _currentPhotoIndex;
+    if ([first isEqualToString:@"first"])
+    {
+        first = @"noFirst";
+        [_toolbar getData];
+
+    }
 }
 
 #pragma mark - UIScrollView Delegate

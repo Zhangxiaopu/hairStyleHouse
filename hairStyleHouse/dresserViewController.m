@@ -11,6 +11,7 @@
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "UIImageView+WebCache.h"
+#import "AllAroundPullView.h"
 @interface dresserViewController ()
 
 @end
@@ -66,6 +67,8 @@
     
     dresserArray =[[NSMutableArray alloc] init];
     page =[[NSString alloc] init];
+    page=@"1";
+    pageCount=[[NSString alloc] init];
     sign =[[NSString alloc] init];
     fromFouceLoginCancel=[[NSString alloc] init];
     sign = @"all";
@@ -79,13 +82,101 @@
     myTableView.backgroundColor=[UIColor whiteColor];
     [self.view addSubview:myTableView];
     
+    bottomRefreshView = [[AllAroundPullView alloc] initWithScrollView:myTableView position:AllAroundPullViewPositionBottom action:^(AllAroundPullView *view){
+        NSLog(@"loadMore");
+        [self pullLoadMore];
+    }];
+    bottomRefreshView.hidden=NO;
+    [myTableView addSubview:bottomRefreshView];
+    
     
     
     [self getData];
 }
+-(void)pullLoadMore
+{
+    NSInteger _pageCount= [pageCount integerValue];
+    
+    NSInteger _page = [page integerValue];
+    if (_page<_pageCount) {
+        _page++;
+        page = [NSString stringWithFormat:@"%d",_page];
+        NSLog(@"page:%@",page);
+        [self getData];
+    }
+   else
+   {
+       [bottomRefreshView performSelector:@selector(finishedLoading)];
 
+   }
+}
 -(void)viewDidAppear:(BOOL)animated
 {
+    page=@"1";
+    
+    
+//    if ([fromFouceLoginCancel isEqualToString:@"all"]) {
+//        
+//        [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+//        [self getData1];
+//        
+//    }
+//    else if ([fromFouceLoginCancel isEqualToString:@"sameCity"])
+//    {
+//        [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+//        [self getData1];
+//    }
+//    else if ([fromFouceLoginCancel isEqualToString:@"introduce"])
+//    {
+//        [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+//        
+//        [self getData1];
+//    }
+//    
+}
+-(void)oneButtonClick
+{
+    [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+    sign =@"all";
+    fromFouceLoginCancel=@"all";
+    page=@"1";
+    [dresserArray removeAllObjects];
+    [self getData];
+    
+}
+-(void)twoButtonClick
+{
+    [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+    sign =@"sameCity";
+    fromFouceLoginCancel=@"sameCity";
+    page=@"1";
+    [dresserArray removeAllObjects];
+    [self getData];
+}
+-(void)thirdButtonClick
+{
+    [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+    sign =@"introduce";
+    fromFouceLoginCancel=@"introduce";
+    page=@"1";
+    [dresserArray removeAllObjects];
+    [self getData];
+    
+}
+-(void)forthButtonClick
+{
+    [topImage setImage:[UIImage imageNamed:@"4关注.png"]];
+    sign =@"fouce";
+    page=@"1";
+    [dresserArray removeAllObjects];
+    [self getData];
+    
+}
+-(void)fromFouceCancelBack:(NSString *)_str
+{
+    NSLog(@"fromFouceLoginCancel:%@",fromFouceLoginCancel);
+    sign=_str;
+    page=@"1";
     if ([fromFouceLoginCancel isEqualToString:@"all"]) {
         
         [topImage setImage:[UIImage imageNamed:@"全部.png"]];
@@ -103,42 +194,6 @@
         
         [self getData1];
     }
-}
--(void)oneButtonClick
-{
-    [topImage setImage:[UIImage imageNamed:@"全部.png"]];
-    sign =@"all";
-    fromFouceLoginCancel=@"all";
-    [self getData];
-    
-}
--(void)twoButtonClick
-{
-    [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
-    sign =@"sameCity";
-    fromFouceLoginCancel=@"sameCity";
-
-    [self getData];
-}
--(void)thirdButtonClick
-{
-    [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
-    sign =@"introduce";
-    fromFouceLoginCancel=@"introduce";
-    [self getData];
-    
-}
--(void)forthButtonClick
-{
-    [topImage setImage:[UIImage imageNamed:@"4关注.png"]];
-    sign =@"fouce";
-    [self getData];
-    
-}
--(void)fromFouceCancelBack:(NSString *)_str
-{
-    NSLog(@"fromFouceLoginCancel:%@",fromFouceLoginCancel);
-    
     
    
 }
@@ -194,8 +249,10 @@
     {
         request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
         [request setPostValue:appDele.city forKey:@"city"];
-//        NSLog(@"%f",appDele.longitude);
-//        NSLog(@"%f",appDele.latitude);
+        NSLog(@"city:%@",appDele.city);
+
+        NSLog(@"%f",appDele.longitude);
+        NSLog(@"%f",appDele.latitude);
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
         [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
 
@@ -245,9 +302,11 @@
 }
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    if (dresserArray!=nil) {
-        [dresserArray removeAllObjects];
-    }
+    NSMutableArray * arr;
+//    if (dresserArray!=nil) {
+//        arr= [NSMutableArray arrayWithArray:dresserArray];
+//        [dresserArray removeAllObjects];
+//    }
     if (request.tag==1) {
         NSLog(@"%@",request.responseString);
         NSData*jsondata = [request responseData];
@@ -257,15 +316,23 @@
         NSDictionary* dic=[jsonP objectWithString:jsonString];
         NSLog(@"发型师dic:%@",dic);
         
-        
+        pageCount = [dic objectForKey:@"page_count"];
         if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSString class]])
         {
             
         }
         else if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSArray class]])
         {
-            dresserArray = [dic objectForKey:@"user_info"];
-            
+            arr= [dic objectForKey:@"user_info"];
+            [dresserArray addObjectsFromArray:arr];
+            NSLog(@"dresser.count:%d",dresserArray.count);
+
+//            for (int i=0; i<dresserArray.count; i++)
+//            {
+//                [arr addObject:[dresserArray objectAtIndex:i]];
+//            }
+//            [dresserArray removeAllObjects];
+//            dresserArray =arr;
         }
         [self freashView];
     }
@@ -291,6 +358,7 @@
 }
 -(void)freashView
 {
+    [bottomRefreshView performSelector:@selector(finishedLoading)];
     [myTableView reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

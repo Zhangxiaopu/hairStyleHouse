@@ -10,7 +10,7 @@
 @interface MJPhotoBrowser : UIViewController <UIScrollViewDelegate>
 {
     loginViewController* loginView;
-
+    NSString * first ;
 }
 // 代理
 @property (nonatomic, weak) id<MJPhotoBrowserDelegate> delegate;

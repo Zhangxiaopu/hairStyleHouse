@@ -61,6 +61,7 @@
 {
     pubImage = nil;
     pubImage = [[pubImageViewController alloc] init];
+    pubImage._hidden=@"yes";
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     [appDele pushToViewController:pubImage];
     
