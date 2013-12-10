@@ -1,21 +1,22 @@
 //
-//  commentViewController.m
+//  questionDetailViewController.m
 //  hairStyleHouse
 //
-//  Created by jeason on 13-12-2.
+//  Created by jeason on 13-12-10.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
 
-#import "commentViewController.h"
+#import "questionDetailViewController.h"
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "UIImageView+WebCache.h"
-@interface commentViewController ()
+@interface questionDetailViewController ()
 
 @end
 
-@implementation commentViewController
+@implementation questionDetailViewController
+
 @synthesize inforDic;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +34,7 @@
     [self refreashNavLab];
     [self refreashNav];
     myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-60) style:UITableViewStylePlain];
+    dic = [[NSDictionary alloc] init];
     dresserArray =[[NSMutableArray alloc] init];
     
     //    myTableView.allowsSelection=NO;
@@ -52,7 +54,7 @@
     contentView.delegate =self;
     [lastView addSubview:contentView];
     
-//    sendButton=[[UIButton alloc] initWithFrame:CGRectMake(200,10, 60, 40)];
+    //    sendButton=[[UIButton alloc] initWithFrame:CGRectMake(200,10, 60, 40)];
     sendButton = [UIButton buttonWithType:UIButtonTypeCustom];
     sendButton.frame=CGRectMake(250,10, 60, 40);
     [sendButton.layer setMasksToBounds:YES];
@@ -134,49 +136,48 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-    -(void)refreashNav
-    {
-        UIButton * leftButton=[[UIButton alloc] init];
-        leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [leftButton.layer setMasksToBounds:YES];
-        [leftButton.layer setCornerRadius:3.0];
-        [leftButton.layer setBorderWidth:1.0];
-        [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
-        [leftButton setTitle:@"返回" forState:UIControlStateNormal];
-        leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
-        [leftButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
-        [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [leftButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-        [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        leftButton.frame = CGRectMake(12,20, 60, 25);
-        UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
-        self.navigationItem.leftBarButtonItem=leftButtonItem;
+-(void)refreashNav
+{
+    UIButton * leftButton=[[UIButton alloc] init];
+    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton.layer setMasksToBounds:YES];
+    [leftButton.layer setCornerRadius:3.0];
+    [leftButton.layer setBorderWidth:1.0];
+    [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
+    [leftButton setTitle:@"返回" forState:UIControlStateNormal];
+    leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [leftButton setBackgroundColor:[UIColor colorWithRed:214.0/256.0 green:78.0/256.0 blue:78.0/256.0 alpha:1.0]];
+    [leftButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame = CGRectMake(12,20, 60, 25);
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
 }
 
-    -(void)leftButtonClick
-    {
-        [self.navigationController popViewControllerAnimated:NO];
-    }
+-(void)leftButtonClick
+{
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
-    -(void)refreashNavLab
-    {
-        UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-        Lab.text = [NSString stringWithFormat:@"查看评论"];
-        Lab.textAlignment = NSTextAlignmentCenter;
-        Lab.font = [UIFont systemFontOfSize:16];
-        Lab.textColor = [UIColor blackColor];
-        self.navigationItem.titleView =Lab;
-    }
+-(void)refreashNavLab
+{
+    UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
+    Lab.text = [NSString stringWithFormat:@"话题详情"];
+    Lab.textAlignment = NSTextAlignmentCenter;
+    Lab.font = [UIFont systemFontOfSize:16];
+    Lab.textColor = [UIColor blackColor];
+    self.navigationItem.titleView =Lab;
+}
 
 -(void)getData
 {
-//    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    NSURL * urlString= [NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Works&a=commentlist"];
+    //    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    NSURL * urlString= [NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Infostation&a=skillview"];
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:urlString];
     request.delegate=self;
     request.tag=1;
-    NSLog(@"````%@",inforDic);
-    [request setPostValue:[[inforDic objectForKey:@"works_info"] objectForKey:@"work_id"] forKey:@"works_id"];
+    [request setPostValue:[inforDic objectForKey:@"news_id"] forKey:@"id"];
     [request startAsynchronous];
 }
 
@@ -190,8 +191,8 @@
         NSData*jsondata = [request responseData];
         NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-        NSDictionary* dic=[jsonP objectWithString:jsonString];
-        NSLog(@"评论列表dic:%@",dic);
+        dic=[jsonP objectWithString:jsonString];
+        NSLog(@"话题详情评论列表dic:%@",dic);
         
         if ([[dic objectForKey:@"comment_list"] isKindOfClass:[NSString class]])
         {
@@ -210,8 +211,8 @@
         NSData*jsondata = [request responseData];
         NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-        NSDictionary* dic=[jsonP objectWithString:jsonString];
-        NSLog(@"评论是否成功dic:%@",dic);
+        NSDictionary* dic1=[jsonP objectWithString:jsonString];
+        NSLog(@"评论是否成功dic:%@",dic1);
         contentView.text=@"";
         [self getData];
     }
@@ -237,47 +238,60 @@
     
     if ([indexPath row]==0)
     {
-        return 350;
+        NSString* contentStr = [dic  objectForKey:@"content"];
+        UIFont *font = [UIFont systemFontOfSize:12.0];
+        //设置一个行高上限
+        CGSize size = CGSizeMake(200,400);
+        //计算实际frame大小，并将label的frame变成实际大小
+        CGSize labelsize = [contentStr sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+        if (labelsize.height<40)
+        {
+             return 360;
+        }
+        else
+        {
+            return 320+labelsize.height;
+        }
     }
     else
     {
-    //初始化label
-    //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];
-    //设置自动行数与字符换行
-    //        [label setNumberOfLines:0];
-    //        label.lineBreakMode = UILineBreakModeWordWrap;
-    //        [label setFrame:CGRectMake(0,0, labelsize.width, labelsize.height)];
-    
-    
-    // 测试字串
-    NSString *_content =[[dresserArray objectAtIndex:[indexPath row]-1] objectForKey:@"content"];
-    UIFont *font = [UIFont systemFontOfSize:12.0];
-    //设置一个行高上限
-    CGSize size = CGSizeMake(200,200);
-    //计算实际frame大小，并将label的frame变成实际大小
-    CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+        //初始化label
+        //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];
+        //设置自动行数与字符换行
+        //        [label setNumberOfLines:0];
+        //        label.lineBreakMode = UILineBreakModeWordWrap;
+        //        [label setFrame:CGRectMake(0,0, labelsize.width, labelsize.height)];
+        
+        
+        // 测试字串
+        NSString *_content =[[dresserArray objectAtIndex:[indexPath row]-1] objectForKey:@"content"];
+        UIFont *font = [UIFont systemFontOfSize:12.0];
+        //设置一个行高上限
+        CGSize size = CGSizeMake(200,400);
+        //计算实际frame大小，并将label的frame变成实际大小
+        CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
         
         if (labelsize.height<20) {
             return 60;
         }
-       else
-       {
-        return   48+labelsize.height;
-       }
+        else
+        {
+            return   48+labelsize.height;
+        }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellID=@"cell";
-    commentCell *cell=(commentCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
+    questionDetailCell *cell=(questionDetailCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell==nil) {
-        cell=[[commentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell=[[questionDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
     }
     NSInteger row =[indexPath row];
     if (row==0) {
-
-        [cell setFirstCell:inforDic andArr:dresserArray];
+        
+        [cell setFirstCell:dic andArr:dresserArray];
     }
     else
     {
@@ -290,13 +304,12 @@
 {
     
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    NSURL * urlString= [NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Works&a=comment"];
+    NSURL * urlString= [NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Infostation&a=commentadd"];
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:urlString];
     request.delegate=self;
     request.tag=2;
-    NSLog(@"````%@",inforDic);
     [request setPostValue:appDele.uid forKey:@"from_uid"];
-    [request setPostValue:[[inforDic objectForKey:@"works_info"] objectForKey:@"work_id"] forKey:@"works_id"];
+    [request setPostValue:[inforDic objectForKey:@"id"]  forKey:@"id"];
     [request setPostValue:contentView.text forKey:@"content"];
     [request startAsynchronous];
 }

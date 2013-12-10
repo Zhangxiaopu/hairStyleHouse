@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "myShowViewController.h"
 #import "loginViewController.h"
+#import "saleBeaspeaskViewController.h"
+#import "sameCityViewController.h"
+#import "hotTalkViewController.h"
 @interface squareViewController : UIViewController
 {
     myShowViewController * myShow;
     loginViewController* loginView;
-
+    saleBeaspeaskViewController * saleView;
+    sameCityViewController * sameCityView;
+    hotTalkViewController * hotView;
 }
 @end

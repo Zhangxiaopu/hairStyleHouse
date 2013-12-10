@@ -137,7 +137,11 @@
             }
             else
             {
-            
+                hotView = nil;
+                hotView= [[hotTalkViewController alloc] init];
+                hotView._hidden = @"yes";
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                [appDele pushToViewController:hotView ];
             }
             break;
         case 2:
@@ -159,7 +163,13 @@
                 
             }            break;
         case 3:
-            
+        {
+            saleView = nil;
+            saleView= [[saleBeaspeaskViewController alloc] init];
+            saleView._hidden = @"yes";
+            AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+            [appDele pushToViewController:saleView ];
+        }
             break;
         case 4:
             if (!appDele.uid)
@@ -181,6 +191,14 @@
             }
             break;
         case 5:
+        {
+            
+            sameCityView = nil;
+            sameCityView= [[sameCityViewController alloc] init];
+            sameCityView._hidden = @"yes";
+            AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+            [appDele pushToViewController:sameCityView ];
+        }
             break;
            
         case 6:
