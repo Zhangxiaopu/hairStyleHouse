@@ -160,7 +160,11 @@
             }
             else
             {
-                
+                wayView = nil;
+                wayView= [[wayInforViewController alloc] init];
+                wayView._hidden = @"yes";
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                [appDele pushToViewController:wayView ];
             }            break;
         case 3:
         {
@@ -188,6 +192,11 @@
             else
             {
                 
+                anwserCenter = nil;
+                anwserCenter= [[anwserCenterViewController alloc] init];
+                anwserCenter._hidden = @"yes";
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                [appDele pushToViewController:anwserCenter ];
             }
             break;
         case 5:
@@ -218,7 +227,11 @@
             }
             else
             {
-                
+                inviteView = nil;
+                inviteView= [[inviteViewController alloc] init];
+                inviteView._hidden = @"yes";
+                AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+                [appDele pushToViewController:inviteView ];
             }
             break;
         default:

@@ -14,6 +14,7 @@
 #import "UIImageView+MJWebCache.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
+#import "AllAroundPullView.h"
 @interface scanImageViewController ()
 
 @end
@@ -21,6 +22,7 @@
 @implementation scanImageViewController
 @synthesize worksOrsave;
 @synthesize uid;
+@synthesize _hidden;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -38,6 +40,8 @@
     myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     dresserArray =[[NSMutableArray alloc] init];
     page =[[NSString alloc] init];
+    page=@"1";
+    pageCount=[[NSString alloc] init];
     
     myTableView.allowsSelection=NO;
     [myTableView setSeparatorInset:UIEdgeInsetsZero];
@@ -45,8 +49,37 @@
     myTableView.delegate=self;
     myTableView.backgroundColor=[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [self.view addSubview:myTableView];
-    
+    bottomRefreshView = [[AllAroundPullView alloc] initWithScrollView:myTableView position:AllAroundPullViewPositionBottom action:^(AllAroundPullView *view){
+        NSLog(@"loadMore");
+        [self pullLoadMore];
+    }];
+    bottomRefreshView.hidden=NO;
+    [myTableView addSubview:bottomRefreshView];
+
+
     [self getData];
+}
+
+-(void)pullLoadMore
+{
+    NSInteger _pageCount= [pageCount integerValue];
+    
+    NSInteger _page = [page integerValue];
+    
+    NSLog(@"page:%@",page);
+    NSLog(@"pageCount:%@",pageCount);
+    
+    if (_page<_pageCount) {
+        _page++;
+        page = [NSString stringWithFormat:@"%d",_page];
+        NSLog(@"page:%@",page);
+        [self getData];
+    }
+    else
+    {
+        [bottomRefreshView performSelector:@selector(finishedLoading)];
+        
+    }
 }
     -(void)refreashNav
     {
@@ -69,8 +102,17 @@
 
 -(void)leftButtonClick
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+        
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+        
+    }
     
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 -(void)refreashNavLab
@@ -107,9 +149,9 @@
     
 -(void)requestFinished:(ASIHTTPRequest *)request
     {
-        if (dresserArray!=nil) {
-            [dresserArray removeAllObjects];
-        }
+        NSMutableArray * arr;
+     
+
         if (request.tag==1) {
             NSLog(@"%@",request.responseString);
             NSData*jsondata = [request responseData];
@@ -117,16 +159,19 @@
             SBJsonParser* jsonP=[[SBJsonParser alloc] init];
             NSDictionary* dic=[jsonP objectWithString:jsonString];
             NSLog(@"粉丝列表dic:%@",dic);
+            
+            pageCount = [dic objectForKey:@"page_count"];
             if ([[dic objectForKey:@"works_info"] isKindOfClass:[NSString class]])
             {
                 
             }
             else if ([[dic objectForKey:@"works_info"] isKindOfClass:[NSArray class]])
             {
-                dresserArray = [dic objectForKey:@"works_info"];
+                arr= [dic objectForKey:@"works_info"];
+                [dresserArray addObjectsFromArray:arr];
+                NSLog(@"dresser.count:%d",dresserArray.count);
                 
-            }
-            [self freashView];
+            }            [self freashView];
         
         }
     }
@@ -139,6 +184,8 @@
     -(void)freashView
     {
         [myTableView reloadData];
+        [bottomRefreshView performSelector:@selector(finishedLoading)];
+
     }
     - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
     {

@@ -112,6 +112,7 @@
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     scanView.uid = appDele.uid;
     scanView.worksOrsave = @"works";
+    scanView._hidden = @"yes";
     [fatherController needAppdelegatePushToViewController:scanView];
 }
 

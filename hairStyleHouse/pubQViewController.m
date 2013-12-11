@@ -352,11 +352,12 @@
             
             
             AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-            ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=User&a=data_modify"]];
+            ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Problem&a=quizadd"]];
             request.delegate=self;
             request.tag=2;
             [request setPostValue:appDele.uid forKey:@"uid"];
-            [request setPostValue:headString forKey:@"pic"];
+            [request setPostValue:appDele.city forKey:@"city"];
+            [request setPostValue:headString forKey:@"image"];
             [request setPostValue:describeText.text forKey:@"content"];
             
             

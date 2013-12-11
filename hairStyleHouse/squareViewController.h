@@ -12,6 +12,9 @@
 #import "saleBeaspeaskViewController.h"
 #import "sameCityViewController.h"
 #import "hotTalkViewController.h"
+#import "wayInforViewController.h"
+#import "anwserCenterViewController.h"
+#import "inviteViewController.h"
 @interface squareViewController : UIViewController
 {
     myShowViewController * myShow;
@@ -19,5 +22,8 @@
     saleBeaspeaskViewController * saleView;
     sameCityViewController * sameCityView;
     hotTalkViewController * hotView;
+    wayInforViewController * wayView;
+    anwserCenterViewController * anwserCenter;
+    inviteViewController * inviteView;
 }
 @end

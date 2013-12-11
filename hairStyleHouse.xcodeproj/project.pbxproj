@@ -195,6 +195,19 @@
 		7AE0700B18519FA700ED1EDE /* userInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0700A18519FA700ED1EDE /* userInforViewController.m */; };
 		7AE0700F18519FBE00ED1EDE /* userDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE0700D18519FBE00ED1EDE /* userDetailViewController.m */; };
 		7AE0701018519FBE00ED1EDE /* userDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE0700E18519FBE00ED1EDE /* userDetailViewController.xib */; };
+		7AE09DE61857F94D007CA28D /* wayInforCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DE51857F94D007CA28D /* wayInforCell.m */; };
+		7AE09DE91857F962007CA28D /* wayInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DE81857F962007CA28D /* wayInforViewController.m */; };
+		7AE09DEC1857FE1B007CA28D /* wayDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DEB1857FE1B007CA28D /* wayDetailViewController.m */; };
+		7AE09DEF1857FFA1007CA28D /* wayDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DEE1857FFA1007CA28D /* wayDetailCell.m */; };
+		7AE09DF21858106B007CA28D /* anwserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DF11858106B007CA28D /* anwserCenterViewController.m */; };
+		7AE09DF518581324007CA28D /* myAnwserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DF418581324007CA28D /* myAnwserCenterViewController.m */; };
+		7AE09DF81858142E007CA28D /* myAnwserCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DF71858142E007CA28D /* myAnwserCenterCell.m */; };
+		7AE09DFC18582FBB007CA28D /* inviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DFA18582FBB007CA28D /* inviteViewController.m */; };
+		7AE09DFD18582FBB007CA28D /* inviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE09DFB18582FBB007CA28D /* inviteViewController.xib */; };
+		7AE09E001858353C007CA28D /* inviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09DFF1858353C007CA28D /* inviteCell.m */; };
+		7AE09E04185838D3007CA28D /* inviteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09E02185838D3007CA28D /* inviteDetailViewController.m */; };
+		7AE09E05185838D3007CA28D /* inviteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE09E03185838D3007CA28D /* inviteDetailViewController.xib */; };
+		7AE09E0818586AA7007CA28D /* pubInviteInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE09E0718586AA7007CA28D /* pubInviteInforViewController.m */; };
 		7AE1B2FA184C26FF00F51BB2 /* fenxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */; };
 		7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F8184C26FF00F51BB2 /* comment.png */; };
 		7AE1B2FC184C26FF00F51BB2 /* sixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F9184C26FF00F51BB2 /* sixin.png */; };
@@ -512,6 +525,30 @@
 		7AE0700C18519FBE00ED1EDE /* userDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userDetailViewController.h; sourceTree = "<group>"; };
 		7AE0700D18519FBE00ED1EDE /* userDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userDetailViewController.m; sourceTree = "<group>"; };
 		7AE0700E18519FBE00ED1EDE /* userDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = userDetailViewController.xib; sourceTree = "<group>"; };
+		7AE09DE41857F94D007CA28D /* wayInforCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wayInforCell.h; sourceTree = "<group>"; };
+		7AE09DE51857F94D007CA28D /* wayInforCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wayInforCell.m; sourceTree = "<group>"; };
+		7AE09DE71857F962007CA28D /* wayInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wayInforViewController.h; sourceTree = "<group>"; };
+		7AE09DE81857F962007CA28D /* wayInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wayInforViewController.m; sourceTree = "<group>"; };
+		7AE09DEA1857FE1B007CA28D /* wayDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wayDetailViewController.h; sourceTree = "<group>"; };
+		7AE09DEB1857FE1B007CA28D /* wayDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wayDetailViewController.m; sourceTree = "<group>"; };
+		7AE09DED1857FFA1007CA28D /* wayDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wayDetailCell.h; sourceTree = "<group>"; };
+		7AE09DEE1857FFA1007CA28D /* wayDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wayDetailCell.m; sourceTree = "<group>"; };
+		7AE09DF01858106B007CA28D /* anwserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anwserCenterViewController.h; sourceTree = "<group>"; };
+		7AE09DF11858106B007CA28D /* anwserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = anwserCenterViewController.m; sourceTree = "<group>"; };
+		7AE09DF318581324007CA28D /* myAnwserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAnwserCenterViewController.h; sourceTree = "<group>"; };
+		7AE09DF418581324007CA28D /* myAnwserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAnwserCenterViewController.m; sourceTree = "<group>"; };
+		7AE09DF61858142E007CA28D /* myAnwserCenterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myAnwserCenterCell.h; sourceTree = "<group>"; };
+		7AE09DF71858142E007CA28D /* myAnwserCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myAnwserCenterCell.m; sourceTree = "<group>"; };
+		7AE09DF918582FBB007CA28D /* inviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteViewController.h; sourceTree = "<group>"; };
+		7AE09DFA18582FBB007CA28D /* inviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteViewController.m; sourceTree = "<group>"; };
+		7AE09DFB18582FBB007CA28D /* inviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = inviteViewController.xib; sourceTree = "<group>"; };
+		7AE09DFE1858353C007CA28D /* inviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteCell.h; sourceTree = "<group>"; };
+		7AE09DFF1858353C007CA28D /* inviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteCell.m; sourceTree = "<group>"; };
+		7AE09E01185838D3007CA28D /* inviteDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inviteDetailViewController.h; sourceTree = "<group>"; };
+		7AE09E02185838D3007CA28D /* inviteDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = inviteDetailViewController.m; sourceTree = "<group>"; };
+		7AE09E03185838D3007CA28D /* inviteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = inviteDetailViewController.xib; sourceTree = "<group>"; };
+		7AE09E0618586AA7007CA28D /* pubInviteInforViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pubInviteInforViewController.h; sourceTree = "<group>"; };
+		7AE09E0718586AA7007CA28D /* pubInviteInforViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pubInviteInforViewController.m; sourceTree = "<group>"; };
 		7AE1B2F7184C26FF00F51BB2 /* fenxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fenxiang.png; sourceTree = "<group>"; };
 		7AE1B2F8184C26FF00F51BB2 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		7AE1B2F9184C26FF00F51BB2 /* sixin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sixin.png; sourceTree = "<group>"; };
@@ -668,6 +705,20 @@
 				7ADDE7E318571F8600D48208 /* questionDetailCell.m */,
 				7ADDE7DC1857037500D48208 /* pubQViewController.h */,
 				7ADDE7DD1857037500D48208 /* pubQViewController.m */,
+				7AE09DE71857F962007CA28D /* wayInforViewController.h */,
+				7AE09DE81857F962007CA28D /* wayInforViewController.m */,
+				7AE09DE41857F94D007CA28D /* wayInforCell.h */,
+				7AE09DE51857F94D007CA28D /* wayInforCell.m */,
+				7AE09DEA1857FE1B007CA28D /* wayDetailViewController.h */,
+				7AE09DEB1857FE1B007CA28D /* wayDetailViewController.m */,
+				7AE09DED1857FFA1007CA28D /* wayDetailCell.h */,
+				7AE09DEE1857FFA1007CA28D /* wayDetailCell.m */,
+				7AE09DF01858106B007CA28D /* anwserCenterViewController.h */,
+				7AE09DF11858106B007CA28D /* anwserCenterViewController.m */,
+				7AE09DF318581324007CA28D /* myAnwserCenterViewController.h */,
+				7AE09DF418581324007CA28D /* myAnwserCenterViewController.m */,
+				7AE09DF61858142E007CA28D /* myAnwserCenterCell.h */,
+				7AE09DF71858142E007CA28D /* myAnwserCenterCell.m */,
 				7ADDE7A818569C7500D48208 /* saleBeaspeaskViewController.h */,
 				7ADDE7A918569C7500D48208 /* saleBeaspeaskViewController.m */,
 				7ADDE7AB18569C8A00D48208 /* saleBeaspeakCell.h */,
@@ -676,6 +727,16 @@
 				7ADDE7B01856B2D500D48208 /* sameCityViewController.m */,
 				7ADDE7B21856B2E900D48208 /* sameCityCell.h */,
 				7ADDE7B31856B2E900D48208 /* sameCityCell.m */,
+				7AE09DF918582FBB007CA28D /* inviteViewController.h */,
+				7AE09DFA18582FBB007CA28D /* inviteViewController.m */,
+				7AE09DFB18582FBB007CA28D /* inviteViewController.xib */,
+				7AE09DFE1858353C007CA28D /* inviteCell.h */,
+				7AE09DFF1858353C007CA28D /* inviteCell.m */,
+				7AE09E01185838D3007CA28D /* inviteDetailViewController.h */,
+				7AE09E02185838D3007CA28D /* inviteDetailViewController.m */,
+				7AE09E03185838D3007CA28D /* inviteDetailViewController.xib */,
+				7AE09E0618586AA7007CA28D /* pubInviteInforViewController.h */,
+				7AE09E0718586AA7007CA28D /* pubInviteInforViewController.m */,
 				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
 				7A37D7341844CA8A00D9C4D9 /* mineViewController.m */,
 				7ADC1A1B184DBDC7004C61BC /* loginViewController.h */,
@@ -1182,6 +1243,7 @@
 				7A37D77B1844CC4C00D9C4D9 /* renzhengziliao.png in Resources */,
 				7AE7F53A1855926F00CAB2C6 /* 排行榜.png in Resources */,
 				7AE5AC2F1853017900C1970E /* renewSingleTableCellBackgroundViewController.xib in Resources */,
+				7AE09E05185838D3007CA28D /* inviteDetailViewController.xib in Resources */,
 				7A37D7831844CC4C00D9C4D9 /* x5.png in Resources */,
 				7AD54617184F39EA009A6B79 /* 特惠预约.png in Resources */,
 				7ADDE7CD1856F78A00D48208 /* 我的话题.png in Resources */,
@@ -1207,6 +1269,7 @@
 				7AE5AC2A1852C4C100C1970E /* 推荐发型.png in Resources */,
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
 				7AD54614184F39EA009A6B79 /* 我型我秀.png in Resources */,
+				7AE09DFD18582FBB007CA28D /* inviteViewController.xib in Resources */,
 				7ADDE7CA1856F78A00D48208 /* 名人堂.png in Resources */,
 				7AD54615184F39EA009A6B79 /* 热门话题.png in Resources */,
 				7AE03D5B1846175B00E14EDC /* dresserDetailViewController.xib in Resources */,
@@ -1240,6 +1303,7 @@
 				7AD545FB184F2B08009A6B79 /* MJPhotoToolbar.m in Sources */,
 				7A37D7181844CA2700D9C4D9 /* SBJsonStreamWriter.m in Sources */,
 				7ADC1A1D184DBDC7004C61BC /* loginViewController.m in Sources */,
+				7AE09DF21858106B007CA28D /* anwserCenterViewController.m in Sources */,
 				7A37D70D1844CA2700D9C4D9 /* ASIHTTPRequest.m in Sources */,
 				7ADDE7DE1857037500D48208 /* pubQViewController.m in Sources */,
 				7AD545FF184F2B08009A6B79 /* SDImageCache.m in Sources */,
@@ -1247,6 +1311,7 @@
 				7AD545F5184F2B08009A6B79 /* MBProgressHUD.m in Sources */,
 				7AD5460B184F2B08009A6B79 /* UIImageView+MJWebCache.m in Sources */,
 				7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */,
+				7AE09DF518581324007CA28D /* myAnwserCenterViewController.m in Sources */,
 				7A37D7131844CA2700D9C4D9 /* SBJsonParser.m in Sources */,
 				7A37D7081844CA2700D9C4D9 /* ASIAuthenticationDialog.m in Sources */,
 				7AE03D371845BDA700E14EDC /* personInforViewController.m in Sources */,
@@ -1257,11 +1322,14 @@
 				7ADC1A14184D6E22004C61BC /* beaspeakDresserViewController.m in Sources */,
 				7AE03D61184617A800E14EDC /* talkViewController.m in Sources */,
 				7A37D7111844CA2700D9C4D9 /* PullingRefreshTableView.m in Sources */,
+				7AE09DE61857F94D007CA28D /* wayInforCell.m in Sources */,
 				7AD545F3184F2B08009A6B79 /* MBProgressHUD+Add.m in Sources */,
 				7A37D71B1844CA2700D9C4D9 /* SBJsonTokeniser.m in Sources */,
 				7A37D70C1844CA2700D9C4D9 /* ASIFormDataRequest.m in Sources */,
 				7AE03D6A1846187000E14EDC /* beaspeakCell.m in Sources */,
+				7AE09DEC1857FE1B007CA28D /* wayDetailViewController.m in Sources */,
 				7AE3615118472232008A107C /* dresserInforViewController.m in Sources */,
+				7AE09DE91857F962007CA28D /* wayInforViewController.m in Sources */,
 				7AD54601184F2B08009A6B79 /* SDWebImageDecoder.m in Sources */,
 				7AE5AC2E1853017900C1970E /* renewSingleTableCellBackgroundViewController.m in Sources */,
 				7A37D7171844CA2700D9C4D9 /* SBJsonStreamParserState.m in Sources */,
@@ -1270,6 +1338,7 @@
 				7A37D7141844CA2700D9C4D9 /* SBJsonStreamParser.m in Sources */,
 				7A37D7121844CA2700D9C4D9 /* NSObject+SBJson.m in Sources */,
 				7AE0700B18519FA700ED1EDE /* userInforViewController.m in Sources */,
+				7AE09DF81858142E007CA28D /* myAnwserCenterCell.m in Sources */,
 				7AD5460A184F2B08009A6B79 /* UIImage+WebP.m in Sources */,
 				7ADDE7B11856B2D500D48208 /* sameCityViewController.m in Sources */,
 				7AE03D481845D41C00E14EDC /* HZLocation.m in Sources */,
@@ -1289,6 +1358,7 @@
 				7AE03D671846183400E14EDC /* beaspeakViewController.m in Sources */,
 				7AD545F6184F2B08009A6B79 /* MJPhoto.m in Sources */,
 				7ADDE7B41856B2E900D48208 /* sameCityCell.m in Sources */,
+				7AE09E001858353C007CA28D /* inviteCell.m in Sources */,
 				7AE03D5A1846175B00E14EDC /* dresserDetailViewController.m in Sources */,
 				7A37D70E1844CA2700D9C4D9 /* ASIInputStream.m in Sources */,
 				7AE03D5E1846178E00E14EDC /* lookEvaluateViewController.m in Sources */,
@@ -1300,12 +1370,14 @@
 				7ADDE7E418571F8600D48208 /* questionDetailCell.m in Sources */,
 				7AE0700F18519FBE00ED1EDE /* userDetailViewController.m in Sources */,
 				7AE03D2E184589A400E14EDC /* singleTableCellBackgroundViewController.m in Sources */,
+				7AE09E0818586AA7007CA28D /* pubInviteInforViewController.m in Sources */,
 				7A37D71A1844CA2700D9C4D9 /* SBJsonStreamWriterState.m in Sources */,
 				7AE3615418473C26008A107C /* lookEvaluateCell.m in Sources */,
 				7A37D72C1844CA4400D9C4D9 /* findStyleViewController.m in Sources */,
 				7AD54600184F2B08009A6B79 /* SDWebImageCompat.m in Sources */,
 				7A37D70F1844CA2700D9C4D9 /* ASINetworkQueue.m in Sources */,
 				7AE7F52E1855542400CAB2C6 /* AllAroundPullView.m in Sources */,
+				7AE09E04185838D3007CA28D /* inviteDetailViewController.m in Sources */,
 				7A37D70A1844CA2700D9C4D9 /* ASIDataDecompressor.m in Sources */,
 				7AD54605184F2B08009A6B79 /* SDWebImageManager.m in Sources */,
 				7AD54609184F2B08009A6B79 /* UIImage+MultiFormat.m in Sources */,
@@ -1317,6 +1389,7 @@
 				7A37D7101844CA2700D9C4D9 /* Reachability.m in Sources */,
 				7ADDE7B71856E4A900D48208 /* hotTalkCell.m in Sources */,
 				7AE1B302184C2E2C00F51BB2 /* commentCell.m in Sources */,
+				7AE09DEF1857FFA1007CA28D /* wayDetailCell.m in Sources */,
 				7ADC1A1A184D8C05004C61BC /* dresserCell.m in Sources */,
 				7AE3615A18475580008A107C /* scanCell.m in Sources */,
 				7A37D71D1844CA2700D9C4D9 /* SBJsonWriter.m in Sources */,
@@ -1324,6 +1397,7 @@
 				7A37D70B1844CA2700D9C4D9 /* ASIDownloadCache.m in Sources */,
 				7AE7F533185589F800CAB2C6 /* myShowViewController.m in Sources */,
 				7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */,
+				7AE09DFC18582FBB007CA28D /* inviteViewController.m in Sources */,
 				7AD87DFC185024A60016A329 /* hairStyleCategoryScanImageCell.m in Sources */,
 				7A37D7161844CA2700D9C4D9 /* SBJsonStreamParserAdapter.m in Sources */,
 				7A37D71C1844CA2700D9C4D9 /* SBJsonUTF8Stream.m in Sources */,

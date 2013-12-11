@@ -1,19 +1,16 @@
 //
-//  hotTalkViewController.h
+//  wayInforViewController.h
 //  hairStyleHouse
 //
-//  Created by jeason on 13-12-10.
+//  Created by jeason on 13-12-11.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "hotTalkCell.h"
-#import "MJPhotoBrowser.h"
-#import "loginViewController.h"
-#import "pubQViewController.h"
-#import "questionDetailViewController.h"
 @class AllAroundPullView;
-@interface hotTalkViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "wayInforCell.h"
+#import "wayDetailViewController.h"
+@interface wayInforViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
     UIImageView * topImage;
     UITableView *myTableView;
@@ -26,16 +23,14 @@
     
     NSString* style;
     
-    MJPhotoBrowser *browser;
-    
-    loginViewController* loginView;
-    pubQViewController * pubQ;
-    
-    questionDetailViewController * questionDetailView;
+    wayDetailViewController * wayDeatil;
+
 }
 @property(nonatomic,strong)        NSString* style;
 @property(nonatomic,strong)NSString * _hidden;
 -(void)selectCell:(NSInteger)_index;
+
+
 
 
 @end

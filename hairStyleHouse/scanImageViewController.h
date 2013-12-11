@@ -10,14 +10,17 @@
 #import "scanCell.h"
 #import "DemoViewController.h"
 #import "MJPhotoBrowser.h"
+@class AllAroundPullView;
 @interface scanImageViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 UITableView *myTableView;
 NSMutableArray * dresserArray;
-    
+     NSString * pageCount;
     NSString * page;
     
     MJPhotoBrowser * browser;
+    AllAroundPullView *bottomRefreshView;
+
     
     DemoViewController * demoView;
     
@@ -26,5 +29,7 @@ NSMutableArray * dresserArray;
 }
 @property(nonatomic,strong)NSString * worksOrsave;
 @property(nonatomic,strong)NSString* uid;
+@property(nonatomic,strong)NSString* _hidden;
 -(void)selectImage:(NSInteger)_index;
+
 @end

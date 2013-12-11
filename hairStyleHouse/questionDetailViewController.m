@@ -308,8 +308,9 @@
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:urlString];
     request.delegate=self;
     request.tag=2;
-    [request setPostValue:appDele.uid forKey:@"from_uid"];
-    [request setPostValue:[inforDic objectForKey:@"id"]  forKey:@"id"];
+    [request setPostValue:@"add" forKey:@"action"];
+    [request setPostValue:appDele.uid forKey:@"uid"];
+    [request setPostValue:[inforDic objectForKey:@"news_id"]  forKey:@"news_id"];
     [request setPostValue:contentView.text forKey:@"content"];
     [request startAsynchronous];
 }
