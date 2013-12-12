@@ -137,38 +137,45 @@
 -(void)oneButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"全部.png"]];
+//    [requestMain clearDelegatesAndCancel];
     sign =@"all";
     fromFouceLoginCancel=@"all";
     page=@"1";
-    [dresserArray removeAllObjects];
+//    [dresserArray removeAllObjects];
     [self getData];
     
 }
 -(void)twoButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"同城1.png"]];
+//    [requestMain clearDelegatesAndCancel];
+
     sign =@"sameCity";
     fromFouceLoginCancel=@"sameCity";
     page=@"1";
-    [dresserArray removeAllObjects];
+//    [dresserArray removeAllObjects];
     [self getData];
 }
 -(void)thirdButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"推荐.png"]];
+//    [requestMain clearDelegatesAndCancel];
+
     sign =@"introduce";
     fromFouceLoginCancel=@"introduce";
     page=@"1";
-    [dresserArray removeAllObjects];
+//    [dresserArray removeAllObjects];
     [self getData];
     
 }
 -(void)forthButtonClick
 {
     [topImage setImage:[UIImage imageNamed:@"4关注.png"]];
+//    [requestMain clearDelegatesAndCancel];
+
     sign =@"fouce";
     page=@"1";
-    [dresserArray removeAllObjects];
+//    [dresserArray removeAllObjects];
     [self getData];
     
 }
@@ -203,34 +210,34 @@
     [dresserArray removeAllObjects];
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     //    if (appDele.uid) {
-    ASIFormDataRequest* request;
+    
     if ([fromFouceLoginCancel isEqualToString:@"all"])
     {
         //            page=@"2";
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
     }
     else if([fromFouceLoginCancel isEqualToString:@"sameCity"])
     {
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
-        [request setPostValue:appDele.city forKey:@"city"];
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        [requestMain setPostValue:appDele.city forKey:@"city"];
+        [requestMain setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
+        [requestMain setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
     }
     else if([fromFouceLoginCancel isEqualToString:@"introduce"])
     {
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
     }
-    request.delegate=self;
-    request.tag=1;
+    requestMain.delegate=self;
+    requestMain.tag=1;
     
     if (appDele.uid) {
-        [request setPostValue:appDele.uid forKey:@"uid"];
+        [requestMain setPostValue:appDele.uid forKey:@"uid"];
     }
     else
     {
         
     }
-    [request startAsynchronous];
+    [requestMain startAsynchronous];
     //    }
     
 }
@@ -247,34 +254,76 @@
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     //    if (appDele.uid) {
-    ASIFormDataRequest* request;
     if ([sign isEqualToString:@"all"])
     {
         //            page=@"2";
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=allstylists&page=%@",page]]];
+        requestMain.delegate=self;
+        requestMain.tag=1;
+        
+        if (appDele.uid) {
+            [requestMain setPostValue:appDele.uid forKey:@"uid"];
+        }
+        else
+        {
+            
+        }
+        [requestMain startAsynchronous];
     }
     else if([sign isEqualToString:@"sameCity"])
     {
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
-        [request setPostValue:appDele.city forKey:@"city"];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=citystylists&page=%@",page]]];
+        [requestMain setPostValue:appDele.city forKey:@"city"];
         NSLog(@"city:%@",appDele.city);
 
         NSLog(@"%f",appDele.longitude);
         NSLog(@"%f",appDele.latitude);
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
-
+        [requestMain setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ]forKey:@"lng"];
+        [requestMain setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+        requestMain.delegate=self;
+        requestMain.tag=1;
+        
+        if (appDele.uid) {
+            [requestMain setPostValue:appDele.uid forKey:@"uid"];
+        }
+        else
+        {
+            
+        }
+        [requestMain startAsynchronous];
     }
     else if([sign isEqualToString:@"introduce"])
     {
-        request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
+        requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=recomstylists&page=%@",page]]];
+        requestMain.delegate=self;
+        requestMain.tag=1;
+        
+        if (appDele.uid) {
+            [requestMain setPostValue:appDele.uid forKey:@"uid"];
+        }
+        else
+        {
+            
+        }
+        [requestMain startAsynchronous];
     }
     else if([sign isEqualToString:@"fouce"])
     {
         NSLog(@"appDele.uid:%@",appDele.uid);
         
         if (appDele.uid) {
-            request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=followstylists&page=%@",page]]];
+            requestMain=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Hairstylist&a=followstylists&page=%@",page]]];
+            requestMain.delegate=self;
+            requestMain.tag=1;
+            
+            if (appDele.uid) {
+                [requestMain setPostValue:appDele.uid forKey:@"uid"];
+            }
+            else
+            {
+                
+            }
+            [requestMain startAsynchronous];
         }
         else
         {
@@ -294,17 +343,7 @@
         }
         
     }
-    request.delegate=self;
-    request.tag=1;
-    
-    if (appDele.uid) {
-        [request setPostValue:appDele.uid forKey:@"uid"];
-    }
-    else
-    {
-        
-    }
-    [request startAsynchronous];
+  
     //    }
     
 }

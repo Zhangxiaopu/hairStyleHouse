@@ -10,7 +10,7 @@
 #import "inviteCell.h"
 #import "inviteDetailViewController.h"
 #import "personInforViewController.h"
-
+#import "pubInviteInforViewController.h"
 @class AllAroundPullView;
 @interface inviteViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 { UITableView *myTableView;
@@ -21,6 +21,7 @@
     NSString * sign;
     inviteDetailViewController * inviteDetail;
     personInforViewController*personInfor;
+    pubInviteInforViewController * punInviteView;
 }
 @property(nonatomic,strong)NSString * _hidden;
 -(void)selectCell:(NSInteger)_index;

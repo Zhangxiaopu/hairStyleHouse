@@ -268,7 +268,7 @@
         appDel.type=[dic objectForKey:@"type"];
         appDel.touxiangImage=[dic objectForKey:@"head_photo"];
         appDel.uid=backId;//将值赋再appdelegat.uid上
-        appDel.city=[dic objectForKey:@"city"];
+//        appDel.city=[dic objectForKey:@"city"];
         //        if (request.tag==1) {
         //            appDel.loginType=@"qq";
         //        }
@@ -281,11 +281,34 @@
         [ud setObject:backId forKey:@"uid"];
         [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
         
-        [self getData];
-        [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
+        
+        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
+        request.delegate=self;
+        request.tag=2;
+        
+        [request setPostValue:appDel.uid forKey:@"uid"];
+        //         NSLog(@"%f",appDele.longitude);
+        //        NSLog(@"%f",appDele.latitude);
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDel.longitude ] forKey:@"lng"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDel.latitude ] forKey:@"lat"];
+        
+        [request startAsynchronous];
+        
+        //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
+        
+        //        if (request.tag==1) {
+        //            [ud setObject:@"qq"forKey:@"loginType"];
+        //        }
+        //        else{
+        //            [ud setObject:@"sina"forKey:@"loginType"];
+        //        }
+        
+        //    }
+        //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+        
     }
     
-    if (request.tag==101)
+    else if(request.tag==2)
     {
         NSLog(@"%@",request.responseString);
         NSData*jsondata = [request responseData];
@@ -293,33 +316,13 @@
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:jsonString];
         NSLog(@"修改经纬度dic:%@",dic);
+        
+        
+        
+        [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
     }
-    //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
     
-    //        if (request.tag==1) {
-    //            [ud setObject:@"qq"forKey:@"loginType"];
-    //        }
-    //        else{
-    //            [ud setObject:@"sina"forKey:@"loginType"];
-    //        }
-    
-    //    }
-    //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    
-}
 
--(void)getData
-{
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    
-    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
-    request.delegate=self;
-    request.tag=101;
-    
-    [request setPostValue:appDele.uid forKey:@"uid"];
-    [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
-    [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
-    [request startAsynchronous];
 }
 
 -(void)requestFailed:(ASIHTTPRequest *)request

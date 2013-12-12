@@ -213,6 +213,7 @@
 		7AE1B2FC184C26FF00F51BB2 /* sixin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AE1B2F9184C26FF00F51BB2 /* sixin.png */; };
 		7AE1B2FF184C2E1200F51BB2 /* commentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1B2FE184C2E1200F51BB2 /* commentViewController.m */; };
 		7AE1B302184C2E2C00F51BB2 /* commentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE1B301184C2E2C00F51BB2 /* commentCell.m */; };
+		7AE214601859AFA00030E5D3 /* pubInviteMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE2145F1859AFA00030E5D3 /* pubInviteMessage.xib */; };
 		7AE3614B1846D3E0008A107C /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */; };
 		7AE3614E1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */; };
 		7AE3615118472232008A107C /* dresserInforViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE3615018472232008A107C /* dresserInforViewController.m */; };
@@ -556,6 +557,7 @@
 		7AE1B2FE184C2E1200F51BB2 /* commentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentViewController.m; sourceTree = "<group>"; };
 		7AE1B300184C2E2C00F51BB2 /* commentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commentCell.h; sourceTree = "<group>"; };
 		7AE1B301184C2E2C00F51BB2 /* commentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commentCell.m; sourceTree = "<group>"; };
+		7AE2145F1859AFA00030E5D3 /* pubInviteMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pubInviteMessage.xib; sourceTree = "<group>"; };
 		7AE3614A1846D3E0008A107C /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		7AE3614C1846E8AE008A107C /* fansAndFouceAndmassegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fansAndFouceAndmassegeViewController.h; sourceTree = "<group>"; };
 		7AE3614D1846E8AE008A107C /* fansAndFouceAndmassegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = fansAndFouceAndmassegeViewController.m; sourceTree = "<group>"; };
@@ -737,12 +739,13 @@
 				7AE09E03185838D3007CA28D /* inviteDetailViewController.xib */,
 				7AE09E0618586AA7007CA28D /* pubInviteInforViewController.h */,
 				7AE09E0718586AA7007CA28D /* pubInviteInforViewController.m */,
-				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
-				7A37D7341844CA8A00D9C4D9 /* mineViewController.m */,
+				7AE2145F1859AFA00030E5D3 /* pubInviteMessage.xib */,
 				7ADC1A1B184DBDC7004C61BC /* loginViewController.h */,
 				7ADC1A1C184DBDC7004C61BC /* loginViewController.m */,
 				7A2BA6CC1844E0A200A46A09 /* LoginView.h */,
 				7A2BA6CD1844E0A200A46A09 /* LoginView.m */,
+				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
+				7A37D7341844CA8A00D9C4D9 /* mineViewController.m */,
 				7AE03D2B184589A400E14EDC /* singleTableCellBackgroundViewController.h */,
 				7AE03D2C184589A400E14EDC /* singleTableCellBackgroundViewController.m */,
 				7AE03D2D184589A400E14EDC /* singleTableCellBackgroundViewController.xib */,
@@ -1259,6 +1262,7 @@
 				7AD87E0518502CA10016A329 /* timeline_image_loading.png in Resources */,
 				7AE03D341845B9F300E14EDC /* changeInforViewController.xib in Resources */,
 				7ADDE7CB1856F78A00D48208 /* 品牌名店.png in Resources */,
+				7AE214601859AFA00030E5D3 /* pubInviteMessage.xib in Resources */,
 				7A37D7721844CC4C00D9C4D9 /* 02发型师.png in Resources */,
 				7A37D7771844CC4C00D9C4D9 /* jifen.png in Resources */,
 				7AD545B8184ED4EF009A6B79 /* 短发.png in Resources */,

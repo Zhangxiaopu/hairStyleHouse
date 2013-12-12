@@ -305,9 +305,9 @@
 -(void)rightButtonClick
 {
 
-//    personInfor = nil;
-//    personInfor =[[personInforViewController alloc] init];
-//    [self.navigationController pushViewController:personInfor animated:NO];
+    punInviteView = nil;
+    punInviteView =[[pubInviteInforViewController alloc] init];
+    [self.navigationController pushViewController:punInviteView animated:NO];
 }
 
 -(void)refreashNav

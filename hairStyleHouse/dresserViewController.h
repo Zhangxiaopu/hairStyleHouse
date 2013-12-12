@@ -11,6 +11,7 @@
 #import "dresserCell.h"
 #import "LoginView.h"
 #import "loginViewController.h"
+#import "ASIFormDataRequest.h"
 @class AllAroundPullView;
 @interface dresserViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
@@ -25,7 +26,7 @@
     dresserInforViewController * dreserView;
 
     loginViewController* loginView;
-
+ASIFormDataRequest* requestMain;
     NSString* fromFouceLoginCancel;//标记取消登陆后调用哪个借口
 }
 @property(nonatomic,strong)        NSString* fromFouceLoginCancel;

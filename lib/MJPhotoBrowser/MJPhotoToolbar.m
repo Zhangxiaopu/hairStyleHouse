@@ -12,10 +12,12 @@
 #import "MJPhotoBrowser.h"
 
 #import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "commentViewController.h"
+#import "AppDelegate.h"
 @interface MJPhotoToolbar()
 {
     // 显示页码
@@ -241,7 +243,41 @@
 }
 -(void)shareButtonClick
 {
-    
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    if (!appDele.uid)
+    {
+        [fatherView pushViewController:nil];
+    }
+    else
+    {
+    TencentOAuth* _tentenOAuth;
+    AppDelegate* dele=(AppDelegate*)[UIApplication sharedApplication].delegate;
+
+    _tentenOAuth=dele.tententOAuth;
+//    
+    TCAddShareDic *params = [TCAddShareDic dictionary];
+    params.paramTitle = @"我通过使用发型屋找到一款很好看的发型，点击跳转";
+    params.paramComment = @"潮流必备软件——发型屋";
+    params.paramSummary= @"发型屋是一款潮流达人必备的一款软件，它可以帮助你找到你想要的发型，在线预约发型师，折扣价格，查看他人推荐发型并实时聊天";
+
+        NSLog(@"%@",[diction objectForKey:@"works_pic"]);
+     
+    params.paramImages = [[diction objectForKey:@"works_pic"] firstObject];
+    params.paramUrl = [NSString stringWithFormat:@"http://wap.faxingw.cn/web.php?m=Share&a=index&id=%@",[diction objectForKey:@"works_id"]];
+
+    if(![_tentenOAuth addShareWithParams:params])
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"api调用失败" message:@"可能授权已过期，请重新获取" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",@"操作成功"]
+                              
+                                                       delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+        
+    }
 }
 
 - (void)setPhotos:(NSArray *)photos
