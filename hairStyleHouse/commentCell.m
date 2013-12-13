@@ -100,7 +100,7 @@
 
     if (likeArr.count>0)
     {
-        [likeScroll setContentSize:CGSizeMake(likeArr.count*(30+5), 30)];
+        [likeScroll setContentSize:CGSizeMake(likeArr.count*(30+10), 30)];
         if (likeScroll.contentSize.width<likeScroll.frame.size.width)
         {
             [likeScroll setContentSize:CGSizeMake(likeScroll.frame.size.width+1, likeScroll.frame.size.height)];
@@ -134,10 +134,13 @@
     }
     
     howMuchLable.frame = CGRectMake(10, 330, 200, 20);
+    timeLable.frame = CGRectMake(0, 0, 0, 0);
+
 
 }
 -(void)setOtherCell:(NSMutableArray *)_arr and:(NSInteger)_index
 {
+    picImage.frame = CGRectMake(0, 0, 0, 0);
     NSString* headStr = [[_arr objectAtIndex:_index-1]  objectForKey:@"head_photo"];
     [headImage setImageWithURL:[NSURL URLWithString:headStr]];
     headImage.frame = CGRectMake(5, 5, 50, 50);

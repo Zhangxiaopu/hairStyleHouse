@@ -13,8 +13,9 @@
 #import "mineViewController.h"
 #import <TencentOpenAPI/TencentOAuthObject.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "WeiboSDK.h"
 //#import "loginViewController.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate,WeiboSDKDelegate>
 
 {
     UINavigationController * rootNav;
@@ -35,8 +36,14 @@
     
 //    NSString * signStr;
 //    loginViewController* loginView;
+    NSString* wbtoken;
+    
+    id interface;
+    SEL sucfun;
+    SEL errfun;
 
 }
+@property (strong, retain) NSString* wbtoken;
 @property (strong, nonatomic) UIWindow *window;
 //@property (strong,nonatomic) SinaWeibo* sinaweibo;
 @property (strong,nonatomic) NSString* uid;//用到
@@ -50,5 +57,5 @@
 @property (nonatomic,strong) NSString* city;
 @property (nonatomic,strong) NSString* userName;//用到
 -(void)pushToViewController:(id)_sen;
-
+    -(void)getSinaLoginBack:(id)inter andSuc:(SEL)suc andErr:(SEL)err;
 @end

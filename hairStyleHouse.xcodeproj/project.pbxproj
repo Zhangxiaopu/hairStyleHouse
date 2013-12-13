@@ -94,6 +94,8 @@
 		7A37D7901844CC4C00D9C4D9 /* 粉丝.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D76E1844CC4C00D9C4D9 /* 粉丝.png */; };
 		7A37D7911844CC4C00D9C4D9 /* 评论.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D76F1844CC4C00D9C4D9 /* 评论.png */; };
 		7A37D7921844CC4C00D9C4D9 /* 钻石.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A37D7701844CC4C00D9C4D9 /* 钻石.png */; };
+		7A63A503185AF42800502E75 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A63A500185AF42800502E75 /* libWeiboSDK.a */; };
+		7A63A504185AF42800502E75 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A63A501185AF42800502E75 /* WeiboSDK.bundle */; };
 		7AD545B2184EBA81009A6B79 /* 盘发.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD545AD184EBA81009A6B79 /* 盘发.png */; };
 		7AD545B3184EBA81009A6B79 /* 男士发型.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD545AE184EBA81009A6B79 /* 男士发型.png */; };
 		7AD545B4184EBA81009A6B79 /* 中发.png in Resources */ = {isa = PBXBuildFile; fileRef = 7AD545AF184EBA81009A6B79 /* 中发.png */; };
@@ -370,6 +372,9 @@
 		7A37D76E1844CC4C00D9C4D9 /* 粉丝.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "粉丝.png"; sourceTree = "<group>"; };
 		7A37D76F1844CC4C00D9C4D9 /* 评论.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论.png"; sourceTree = "<group>"; };
 		7A37D7701844CC4C00D9C4D9 /* 钻石.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钻石.png"; sourceTree = "<group>"; };
+		7A63A500185AF42800502E75 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
+		7A63A501185AF42800502E75 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
+		7A63A502185AF42800502E75 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
 		7AD545AD184EBA81009A6B79 /* 盘发.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "盘发.png"; sourceTree = "<group>"; };
 		7AD545AE184EBA81009A6B79 /* 男士发型.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "男士发型.png"; sourceTree = "<group>"; };
 		7AD545AF184EBA81009A6B79 /* 中发.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中发.png"; sourceTree = "<group>"; };
@@ -606,6 +611,7 @@
 				7A37D73D1844CAF300D9C4D9 /* CoreTelephony.framework in Frameworks */,
 				7A37D73B1844CAE300D9C4D9 /* libz.dylib in Frameworks */,
 				7A37D7391844CAD700D9C4D9 /* SystemConfiguration.framework in Frameworks */,
+				7A63A503185AF42800502E75 /* libWeiboSDK.a in Frameworks */,
 				7A37D7371844CAC800D9C4D9 /* MobileCoreServices.framework in Frameworks */,
 				7A37D6871844C9E100D9C4D9 /* CoreGraphics.framework in Frameworks */,
 				7A37D6891844C9E100D9C4D9 /* UIKit.framework in Frameworks */,
@@ -629,6 +635,7 @@
 		7A37D6781844C9E100D9C4D9 = {
 			isa = PBXGroup;
 			children = (
+				7A63A4FF185AF42800502E75 /* libWeiboSDK */,
 				7AE7F5291855542400CAB2C6 /* PullRefresh */,
 				7AD545BC184F2B08009A6B79 /* lib */,
 				7AE03D3C1845D41C00E14EDC /* areapicker */,
@@ -1001,6 +1008,16 @@
 			path = "11-20";
 			sourceTree = "<group>";
 		};
+		7A63A4FF185AF42800502E75 /* libWeiboSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7A63A500185AF42800502E75 /* libWeiboSDK.a */,
+				7A63A501185AF42800502E75 /* WeiboSDK.bundle */,
+				7A63A502185AF42800502E75 /* WeiboSDK.h */,
+			);
+			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
 		7AD545BC184F2B08009A6B79 /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -1225,6 +1242,7 @@
 				7AD545B5184EBA81009A6B79 /* 长发.png in Resources */,
 				7A37D7791844CC4C00D9C4D9 /* like1.png in Resources */,
 				7A37D77E1844CC4C00D9C4D9 /* x0.png in Resources */,
+				7A63A504185AF42800502E75 /* WeiboSDK.bundle in Resources */,
 				7AD54616184F39EA009A6B79 /* 同城.png in Resources */,
 				7AD545B2184EBA81009A6B79 /* 盘发.png in Resources */,
 				7AE7F5301855542400CAB2C6 /* arrow@2x.png in Resources */,
@@ -1540,7 +1558,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hairStyleHouse/hairStyleHouse-Prefix.pch";
 				INFOPLIST_FILE = "hairStyleHouse/hairStyleHouse-Info.plist";
-				OTHER_LDFLAGS = "-fobjc-arc";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jeason/Desktop/hairStyleHouse/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1559,7 +1581,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hairStyleHouse/hairStyleHouse-Prefix.pch";
 				INFOPLIST_FILE = "hairStyleHouse/hairStyleHouse-Info.plist";
-				OTHER_LDFLAGS = "-fobjc-arc";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jeason/Desktop/hairStyleHouse/libWeiboSDK,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

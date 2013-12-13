@@ -168,6 +168,7 @@
 {
     scanView=nil;
     scanView = [[scanImageViewController alloc] init];
+    scanView._hidden = @"yes";
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     scanView.uid = appDele.uid;
     scanView.worksOrsave = @"save";

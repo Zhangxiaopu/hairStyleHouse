@@ -20,6 +20,7 @@
 @synthesize dresserFatherController;
 @synthesize _backsign;
 @synthesize _hidden;
+@synthesize _leftButtonhidden;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -34,7 +35,14 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     [self refreashNavLab];
-    [self refreashNav];
+    if ([_leftButtonhidden isEqualToString:@"yes"])
+    {
+       [self refreashNav1];
+    }
+    else
+    {
+       [self refreashNav];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -102,7 +110,24 @@
     UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem=leftButtonItem;
 }
-
+-(void)refreashNav1
+{
+    UIButton * leftButton=[[UIButton alloc] init];
+    leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton.layer setMasksToBounds:YES];
+    [leftButton.layer setCornerRadius:0.0];
+    [leftButton.layer setBorderWidth:0.0];
+    [leftButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 0, 0, 0, 0 })];//边框颜色
+    [leftButton setTitle:@"返回" forState:UIControlStateNormal];
+    leftButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    [leftButton setBackgroundColor:[UIColor clearColor]];
+    [leftButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
+    [leftButton setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
+//    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    leftButton.frame = CGRectMake(0,0, 0, 0);
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
+}
 
 #pragma mark - Creat View
 -(void)cLoginView//访问用户具体资料：
@@ -158,79 +183,23 @@
     [_tencentOAuth authorize:_permissions inSafari:NO];
     delegate.loginType=@"qq";
 }
+
+
 -(void)sinaButtonClick
 {
-    
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
+    [appDele getSinaLoginBack:self andSuc:@selector(sinaLoginAndPutData) andErr:nil];
+    WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+    request.redirectURI = kAppRedirectURI;
+    request.scope = @"all";
+    request.userInfo = @{@"SSO_From": @"LoginView",
+                         @"Other_Info_1": [NSNumber numberWithInt:123],
+                         @"Other_Info_2": @[@"obj1", @"obj2"],
+                         @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+    [WeiboSDK sendRequest:request];
+//    [self.navigationController popViewControllerAnimated:YES];
+
 }
-#pragma mark - Delegate
-//-(void)qqBtnClick
-//{
-//
-//
-//}
-
-//-(void)sinaBtnClick
-//{
-//    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//    _sinaweibo = delegate.sinaweibo;
-//    _sinaweibo.delegate=self;
-//    delegate.loginType=@"sina";
-//    [_sinaweibo logIn];
-//
-//}
-
-//- (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response
-//{
-//    //    NSLog(@"%@",response);
-//}
-//
-//- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
-//{
-//    //    NSLog(@"%@",error);
-//}
-//- (void)request:(SinaWeiboRequest *)request didReceiveRawData:(NSData *)data
-//{
-//    //    NSLog(@"%@",data);
-//    //    NSString* str=[NSString stringWithUTF8String:data];
-//    SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-//
-//    NSString*jsonString = [[NSString alloc]initWithBytes:[data bytes]length:[data length]encoding:NSUTF8StringEncoding];
-//
-//    //    NSDictionary* dic=[jsonP objectWithString:jsonString];
-//    NSDictionary* dic=[jsonP objectWithData:data];
-//    sType=@"sina";
-//    sImageUrl=[dic objectForKey:@"profile_image_url"];
-//    //    NSLog(@"%@",sImageUrl);
-//    sUserName=[dic objectForKey:@"name"];
-//    //    NSLog(@"%@",sUserName);
-//    sExpirationDate=(NSString*)[_sinaweibo expirationDate];
-//    //    NSLog(@"sExpirationDate=====%@",sExpirationDate);
-//    sAccess_token=[_sinaweibo accessToken];
-//    //    sOpenId=[_sinaweibo userID];
-//    //    sOpenId=[dic objectForKey:@"id"];
-//    sOpenId=[_sinaweibo userID];
-//    //    NSLog(@"sOpenId=========%@",sOpenId);
-//    [self postSinaData];
-//
-//}
-//
-//-(void)postSinaData
-//{
-//    [self cJiaZaiView];
-//    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
-//    request.tag=2;
-//
-//    [request setPostValue:sImageUrl forKey:@"head_photo"];
-//    [request setPostValue:sUserName forKey:@"username"];
-//    AppDelegate* dele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-//    dele.userName=sUserName;
-//    [request setPostValue:[_sinaweibo userID] forKey:@"sina_keyid"];
-//    NSLog(@"%@",[_sinaweibo userID]);
-//    [request setPostValue:@"" forKey:@"qq_keyid"];
-//
-//    request.delegate=self;
-//    [request startAsynchronous];
-//}
 
 -(void)getBack:(id)inter andSuc:(SEL)suc andErr:(SEL)err
 {
@@ -238,6 +207,15 @@
     sucfun = suc;
     errfun =err;
 }
+
+-(void)sinaLoginAndPutData
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
+}
+
+
+
 #pragma mark - OAuth Delegate
 - (void)tencentOAuth:(TencentOAuth *)tencentOAuth doCloseViewController:(UIViewController *)viewController
 {

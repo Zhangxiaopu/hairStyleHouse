@@ -9,6 +9,7 @@
 #import "TencentOpenAPI/TencentOAuth.h"
 //#import "SinaWeibo.h"
 #import "ASIHTTPRequest.h"
+
 @interface LoginView : UIView<TencentLoginDelegate,TencentSessionDelegate,/*SinaWeiboDelegate,*/ASIHTTPRequestDelegate/*SinaWeiboRequestDelegate*/>
 {
     UIView* myInfoView;

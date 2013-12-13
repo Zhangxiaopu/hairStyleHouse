@@ -10,6 +10,9 @@
 #import "TencentOpenAPI/TencentOAuth.h"
 //#import "SinaWeibo.h"
 #import "ASIHTTPRequest.h"
+#define kAppKey             @"276585644"
+#define kAppSecret          @"a71b4382aeda47dfbdd5925b4b407648"
+#define kAppRedirectURI     @"http://www.faxingw.cn"
 @class  dresserViewController;
 @interface loginViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,/*SinaWeiboDelegate,*/ASIHTTPRequestDelegate/*SinaWeiboRequestDelegate*/>
 {
@@ -52,4 +55,6 @@
 @property(nonatomic,retain) dresserViewController * dresserFatherController;
 @property(nonatomic,retain) NSString * _backsign;
 @property(nonatomic,retain) NSString * _hidden;
+@property(nonatomic,retain) NSString * _leftButtonhidden;
+
 @end

@@ -37,8 +37,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    loginView=[[LoginView alloc] init];
-    loginView.frame=self.view.bounds;
+   
     
 
     inforDic = [[NSDictionary alloc] init];
@@ -66,18 +65,22 @@
     [appDele pushToViewController:pubImage];
     
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
-    [loginView removeFromSuperview];
+//    [loginView.view removeFromSuperview];
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
     NSLog(@"appDele.uid:%@",appDele.uid);
     
     if (!appDele.uid) {
-       
+        loginView = nil;
+        loginView=[[loginViewController alloc] init];
+        loginView._leftButtonhidden = @"yes";
+        loginView.view.frame=self.view.bounds;
         [loginView getBack:self andSuc:@selector(getData) andErr:nil];
-        loginView.userInteractionEnabled=YES;
-        [self.view addSubview:loginView];
-//        [self.navigationController pushViewController:loginView animated:YES];
+        loginView.view.userInteractionEnabled=YES;
+//        [self.view addSubview:loginView.view];
+        [self.navigationController pushViewController:loginView animated:YES];
     }
     else
     {
