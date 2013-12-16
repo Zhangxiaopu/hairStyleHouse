@@ -123,9 +123,11 @@
 #pragma mark 创建UIScrollView
 - (void)createScrollView
 {
-    CGRect frame = self.view.bounds;
+    CGRect frame = self.view.frame;
     frame.origin.x -= kPadding;
     frame.size.width += (2 * kPadding);
+    NSLog(@"frame:%@",NSStringFromCGRect(frame));
+    
 	_photoScrollView = [[UIScrollView alloc] initWithFrame:frame];
 	_photoScrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_photoScrollView.pagingEnabled = YES;

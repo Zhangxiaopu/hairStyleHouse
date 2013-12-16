@@ -161,13 +161,13 @@
             NSLog(@"粉丝列表dic:%@",dic);
             
             pageCount = [dic objectForKey:@"page_count"];
-            if ([[dic objectForKey:@"works_info"] isKindOfClass:[NSString class]])
+            if ([[dic objectForKey:@"image_list"] isKindOfClass:[NSString class]])
             {
                 
             }
-            else if ([[dic objectForKey:@"works_info"] isKindOfClass:[NSArray class]])
+            else if ([[dic objectForKey:@"image_list"] isKindOfClass:[NSArray class]])
             {
-                arr= [dic objectForKey:@"works_info"];
+                arr= [dic objectForKey:@"image_list"];
                 [dresserArray addObjectsFromArray:arr];
                 NSLog(@"dresser.count:%d",dresserArray.count);
                 

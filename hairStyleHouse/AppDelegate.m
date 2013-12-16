@@ -23,6 +23,15 @@
 @synthesize city;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+    if ([ud objectForKey:@"uid"]&&[ud objectForKey:@"type"])
+    {
+        self.uid =[ud objectForKey:@"uid"];
+        self.type = [ud objectForKey:@"type"];
+    }
+   
+    
+    
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
     
@@ -229,7 +238,6 @@
     request.tag=1;
     [request setPostValue:[dic objectForKey:@"avatar_hd"] forKey:@"head_photo"];
     [request setPostValue:[dic objectForKey:@"name"] forKey:@"username"];
-        //有误
     [request setPostValue:[dic objectForKey:@"id"] forKey:@"sina_keyid"];
     //    [request setPostValue:@"" forKey:@"sina_keyid"];
     [request startAsynchronous];

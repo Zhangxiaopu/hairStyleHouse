@@ -197,6 +197,8 @@
                          @"Other_Info_2": @[@"obj1", @"obj2"],
                          @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
     [WeiboSDK sendRequest:request];
+    appDele.loginType=@"sina";
+
 //    [self.navigationController popViewControllerAnimated:YES];
 
 }
@@ -210,6 +212,15 @@
 
 -(void)sinaLoginAndPutData
 {
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+        
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+        
+    }
     [self.navigationController popViewControllerAnimated:YES];
     [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
 }
