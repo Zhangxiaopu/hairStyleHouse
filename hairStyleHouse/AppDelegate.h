@@ -14,8 +14,12 @@
 #import <TencentOpenAPI/TencentOAuthObject.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WeiboSDK.h"
+#import "SinaWeibo.h"
+#define kAppKey             @"276585644"
+#define kAppSecret          @"a71b4382aeda47dfbdd5925b4b407648"
+#define kAppRedirectURI     @"http://www.faxingw.cn"
 //#import "loginViewController.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate,WeiboSDKDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate,WeiboSDKDelegate,SinaWeiboDelegate>
 
 {
     UINavigationController * rootNav;
@@ -45,7 +49,7 @@
 }
 @property (strong, retain) NSString* wbtoken;
 @property (strong, nonatomic) UIWindow *window;
-//@property (strong,nonatomic) SinaWeibo* sinaweibo;
+@property (strong,nonatomic) SinaWeibo* sinaweibo;
 @property (strong,nonatomic) NSString* uid;//用到
 @property (strong,nonatomic) TencentOAuth* tententOAuth;//用到
 @property (nonatomic,assign) NSString* loginType;//用到

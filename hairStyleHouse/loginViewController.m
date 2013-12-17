@@ -184,8 +184,125 @@
     delegate.loginType=@"qq";
 }
 
-
 -(void)sinaButtonClick
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    _sinaweibo = delegate.sinaweibo;
+    _sinaweibo.delegate=self;
+    delegate.loginType=@"sina";
+    [_sinaweibo logIn];
+}
+
+- (void)request:(SinaWeiboRequest *)request didReceiveResponse:(NSURLResponse *)response
+{
+    //    NSLog(@"%@",response);
+}
+
+- (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
+{
+    //    NSLog(@"%@",error);
+}
+- (void)request:(SinaWeiboRequest *)request didReceiveRawData:(NSData *)data
+{
+    //    NSLog(@"%@",data);
+    //    NSString* str=[NSString stringWithUTF8String:data];
+    SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+    
+//    NSString*jsonString = [[NSString alloc]initWithBytes:[data bytes]length:[data length]encoding:NSUTF8StringEncoding];
+    
+    //    NSDictionary* dic=[jsonP objectWithString:jsonString];
+    NSDictionary* dic=[jsonP objectWithData:data];
+    sType=@"sina";
+    sImageUrl=[dic objectForKey:@"profile_image_url"];
+    //    NSLog(@"%@",sImageUrl);
+    sUserName=[dic objectForKey:@"name"];
+    //    NSLog(@"%@",sUserName);
+    sExpirationDate=(NSString*)[_sinaweibo expirationDate];
+    //    NSLog(@"sExpirationDate=====%@",sExpirationDate);
+    sAccess_token=[_sinaweibo accessToken];
+    //    sOpenId=[_sinaweibo userID];
+    //    sOpenId=[dic objectForKey:@"id"];
+    sOpenId=[_sinaweibo userID];
+    //    NSLog(@"sOpenId=========%@",sOpenId);
+    [self postSinaData];
+    
+    if ([_hidden isEqualToString:@"yes"]) {
+        self.navigationController.navigationBar.hidden=YES;
+        
+    }
+    else
+    {
+        self.navigationController.navigationBar.hidden=NO;
+        
+    }
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+-(void)postSinaData
+{
+//    [self cJiaZaiView];
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
+    request.tag=2;
+    
+    [request setPostValue:sImageUrl forKey:@"head_photo"];
+    [request setPostValue:sUserName forKey:@"username"];
+    AppDelegate* dele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    dele.userName=sUserName;
+    [request setPostValue:[_sinaweibo userID] forKey:@"sina_keyid"];
+    NSLog(@"%@",[_sinaweibo userID]);
+    [request setPostValue:@"" forKey:@"qq_keyid"];
+    
+    request.delegate=self;
+    [request startAsynchronous];
+}
+
+#pragma mark - SinaWeibo Delegate
+- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
+{
+    //将获取的信息打印 log。
+    
+    [_sinaweibo requestWithURL:@"users/show.json" params:[NSMutableDictionary dictionaryWithObject:_sinaweibo.userID forKey:@"uid"] httpMethod:@"GET" delegate:self];
+    
+    //    NSLog(@"______%@",sinaweibo.userID);
+    
+    
+    
+    
+}
+
+- (void)addShareResponse:(APIResponse*) response {
+    NSLog(@"xxxxx");
+	if (response.retCode == URLREQUEST_SUCCEED)
+	{
+		
+		
+		NSMutableString *str=[NSMutableString stringWithFormat:@""];
+		for (id key in response.jsonResponse) {
+			[str appendString: [NSString stringWithFormat:@"%@:%@\n",key,[response.jsonResponse objectForKey:key]]];
+		}
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",str]
+							  
+													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles:nil];
+		[alert show];
+		
+		
+		
+	}
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作失败" message:[NSString stringWithFormat:@"%@", response.errorMsg]
+							  
+													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles: nil];
+		[alert show];
+	}
+	
+	
+}
+
+
+
+
+-(void)sinaButtonClick1//最新新浪sdk登陆调用这个
 {
     AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
     [appDele getSinaLoginBack:self andSuc:@selector(sinaLoginAndPutData) andErr:nil];
@@ -323,18 +440,6 @@
     [request startAsynchronous];
 }
 
-#pragma mark - Creat JiaZai View
-//-(void)cJiaZaiView
-//{
-//    jiaZiaView=[[UIImageView alloc] init];
-//    jiaZiaView.frame=CGRectMake(0, 0, 320, 362);
-//    jiaZiaView.image=[UIImage imageNamed:@"加载@2x.png"];
-//    [self addSubview:jiaZiaView];
-//    UIActivityIndicatorView*aiv = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
-//    aiv.center = CGPointMake(jiaZiaView.bounds.origin.x + jiaZiaView.bounds.size.width/2, jiaZiaView.bounds.origin.y +jiaZiaView.bounds.size.height/2-15);
-//    [aiv startAnimating];
-//    [jiaZiaView addSubview:aiv];  //加载view中添加转圈
-//}
 
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
@@ -369,7 +474,7 @@
         
         ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
         request.delegate=self;
-        request.tag=2;
+        request.tag=3;
         
         [request setPostValue:appDele.uid forKey:@"uid"];
 //         NSLog(@"%f",appDele.longitude);
@@ -392,8 +497,50 @@
         //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
         
     }
-    
     else if(request.tag==2)
+    {
+        NSLog(@"%@",request.responseString);
+        //    if (request.tag==1||request.tag==2) {
+        
+        
+        NSLog(@"1111111====%@",request.responseString);
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:request.responseString];
+        backId=[dic objectForKey:@"uid"];
+        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
+        appDele.type=[dic objectForKey:@"type"];
+        appDele.touxiangImage=[dic objectForKey:@"head_photo"];
+        appDele.uid=backId;//将值赋再appdelegat.uid上
+        //        appDele.city=[dic objectForKey:@"city"];
+        //        if (request.tag==1) {
+        //            appDel.loginType=@"qq";
+        //        }
+        //        else{
+        //        appDel.loginType=@"sina";
+        //        }
+        //
+        //NSuserDefaults
+        NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+        [ud setObject:backId forKey:@"uid"];
+        [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];
+        
+        
+        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
+        request.delegate=self;
+        request.tag=3;
+        
+        [request setPostValue:appDele.uid forKey:@"uid"];
+        //         NSLog(@"%f",appDele.longitude);
+        //        NSLog(@"%f",appDele.latitude);
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
+        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
+        
+        [request startAsynchronous];
+        
+
+    }
+    
+    else if(request.tag==3)
     {
         NSLog(@"%@",request.responseString);
         NSData*jsondata = [request responseData];
@@ -415,47 +562,7 @@
     UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
-#pragma mark - SinaWeibo Delegate
-//- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
-//{
-//    //将获取的信息打印 log。
-//
-//    [_sinaweibo requestWithURL:@"users/show.json" params:[NSMutableDictionary dictionaryWithObject:_sinaweibo.userID forKey:@"uid"] httpMethod:@"GET" delegate:self];
-//
-//    //    NSLog(@"______%@",sinaweibo.userID);
-//
-//
-//
-//
-//}
 
-//- (void)addShareResponse:(APIResponse*) response {
-//    NSLog(@"xxxxx");
-//	if (response.retCode == URLREQUEST_SUCCEED)
-//	{
-//
-//
-//		NSMutableString *str=[NSMutableString stringWithFormat:@""];
-//		for (id key in response.jsonResponse) {
-//			[str appendString: [NSString stringWithFormat:@"%@:%@\n",key,[response.jsonResponse objectForKey:key]]];
-//		}
-//		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",str]
-//
-//													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles:nil];
-//		[alert show];
-//
-//
-//
-//	}
-//	else {
-//		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作失败" message:[NSString stringWithFormat:@"%@", response.errorMsg]
-//
-//													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles: nil];
-//		[alert show];
-//	}
-//
-//
-//}
 
 - (void)didReceiveMemoryWarning
 {

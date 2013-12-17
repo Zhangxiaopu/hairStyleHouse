@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TencentOpenAPI/TencentOAuth.h"
-//#import "SinaWeibo.h"
+#import "SinaWeibo.h"
 #import "ASIHTTPRequest.h"
 #define kAppKey             @"276585644"
 #define kAppSecret          @"a71b4382aeda47dfbdd5925b4b407648"
 #define kAppRedirectURI     @"http://www.faxingw.cn"
 @class  dresserViewController;
-@interface loginViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,/*SinaWeiboDelegate,*/ASIHTTPRequestDelegate/*SinaWeiboRequestDelegate*/>
+@interface loginViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,SinaWeiboDelegate,ASIHTTPRequestDelegate,SinaWeiboRequestDelegate>
 {
     UIView* myInfoView;
     TencentOAuth* _tencentOAuth;
-    //    SinaWeibo* _sinaweibo;
+        SinaWeibo* _sinaweibo;
     NSArray* _permissions;
     NSString* imageUrl;
     NSString* type;

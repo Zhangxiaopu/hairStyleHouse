@@ -11,7 +11,7 @@
 #import "ASIFormDataRequest.h"
 @implementation AppDelegate
 @synthesize wbtoken;
-//@synthesize sinaweibo;
+@synthesize sinaweibo;
 @synthesize tententOAuth;
 @synthesize uid;
 @synthesize loginType;
@@ -23,18 +23,18 @@
 @synthesize city;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-    if ([ud objectForKey:@"uid"]&&[ud objectForKey:@"type"])
-    {
-        self.uid =[ud objectForKey:@"uid"];
-        self.type = [ud objectForKey:@"type"];
-    }
+//    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+//    if ([ud objectForKey:@"uid"]&&[ud objectForKey:@"type"])
+//    {
+//        self.uid =[ud objectForKey:@"uid"];
+//        self.type = [ud objectForKey:@"type"];
+//    }
    
     
     
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:kAppKey];
-    
+    self.sinaweibo = [[SinaWeibo alloc] initWithAppKey:kAppKey appSecret:kAppSecret appRedirectURI:kAppRedirectURI andDelegate:self];
     findStyleController=[[findStyleViewController alloc] init];
     dresserController=[[dresserViewController alloc] init];
     squareController=[[squareViewController alloc] init];
