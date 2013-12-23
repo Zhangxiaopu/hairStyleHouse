@@ -337,45 +337,4 @@
     UIAlertView * alert =[[UIAlertView alloc] initWithTitle:@"提示" message:@"请求失败" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
-#pragma mark - SinaWeibo Delegate
-//- (void)sinaweiboDidLogIn:(SinaWeibo *)sinaweibo
-//{
-//    //将获取的信息打印 log。
-//    
-//    [_sinaweibo requestWithURL:@"users/show.json" params:[NSMutableDictionary dictionaryWithObject:_sinaweibo.userID forKey:@"uid"] httpMethod:@"GET" delegate:self];
-//    
-//    //    NSLog(@"______%@",sinaweibo.userID);
-//    
-//    
-//    
-//    
-//}
-
-//- (void)addShareResponse:(APIResponse*) response {
-//    NSLog(@"xxxxx");
-//	if (response.retCode == URLREQUEST_SUCCEED)
-//	{
-//		
-//		
-//		NSMutableString *str=[NSMutableString stringWithFormat:@""];
-//		for (id key in response.jsonResponse) {
-//			[str appendString: [NSString stringWithFormat:@"%@:%@\n",key,[response.jsonResponse objectForKey:key]]];
-//		}
-//		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",str]
-//							  
-//													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles:nil];
-//		[alert show];
-//		
-//		
-//		
-//	}
-//	else {
-//		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作失败" message:[NSString stringWithFormat:@"%@", response.errorMsg]
-//							  
-//													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles: nil];
-//		[alert show];
-//	}
-//	
-//	
-//}
 @end

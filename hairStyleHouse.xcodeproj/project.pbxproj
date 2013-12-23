@@ -20,6 +20,7 @@
 		7A06F11618613493007624D3 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A06F11118613493007624D3 /* Message.m */; };
 		7A06F11718613493007624D3 /* HRChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F11318613493007624D3 /* HRChatCell.xib */; };
 		7A06F11818613493007624D3 /* HRChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A06F11418613493007624D3 /* HRChatCell.m */; };
+		7A13F2B618681E4600F9CFE4 /* rigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A13F2B518681E4600F9CFE4 /* rigViewController.m */; };
 		7A2BA6CE1844E0A200A46A09 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2BA6CD1844E0A200A46A09 /* LoginView.m */; };
 		7A37D6851844C9E100D9C4D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6841844C9E100D9C4D9 /* Foundation.framework */; };
 		7A37D6871844C9E100D9C4D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6861844C9E100D9C4D9 /* CoreGraphics.framework */; };
@@ -281,6 +282,8 @@
 		7A06F11318613493007624D3 /* HRChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRChatCell.xib; sourceTree = "<group>"; };
 		7A06F11418613493007624D3 /* HRChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRChatCell.m; sourceTree = "<group>"; };
 		7A06F11518613493007624D3 /* HRChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRChatCell.h; sourceTree = "<group>"; };
+		7A13F2B418681E4600F9CFE4 /* rigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rigViewController.h; sourceTree = "<group>"; };
+		7A13F2B518681E4600F9CFE4 /* rigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rigViewController.m; sourceTree = "<group>"; };
 		7A2BA6CC1844E0A200A46A09 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		7A2BA6CD1844E0A200A46A09 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		7A37D6811844C9E100D9C4D9 /* hairStyleHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hairStyleHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -829,6 +832,8 @@
 				7AE2145F1859AFA00030E5D3 /* pubInviteMessage.xib */,
 				7ADC1A1B184DBDC7004C61BC /* loginViewController.h */,
 				7ADC1A1C184DBDC7004C61BC /* loginViewController.m */,
+				7A13F2B418681E4600F9CFE4 /* rigViewController.h */,
+				7A13F2B518681E4600F9CFE4 /* rigViewController.m */,
 				7A2BA6CC1844E0A200A46A09 /* LoginView.h */,
 				7A2BA6CD1844E0A200A46A09 /* LoginView.m */,
 				7A37D7331844CA8A00D9C4D9 /* mineViewController.h */,
@@ -1463,6 +1468,7 @@
 				7AE03D6F18461C0200E14EDC /* SlideImageView.m in Sources */,
 				7AD54606184F2B08009A6B79 /* SDWebImagePrefetcher.m in Sources */,
 				7AE03D551846172F00E14EDC /* pubImageViewController.m in Sources */,
+				7A13F2B618681E4600F9CFE4 /* rigViewController.m in Sources */,
 				7A37D6951844C9E100D9C4D9 /* AppDelegate.m in Sources */,
 				7ADDE7AA18569C7500D48208 /* saleBeaspeaskViewController.m in Sources */,
 				7ADDE7BA1856E4C600D48208 /* hotTalkViewController.m in Sources */,

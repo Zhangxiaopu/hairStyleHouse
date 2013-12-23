@@ -1,10 +1,13 @@
 //
-//  loginViewController.h
+//  rigViewController.h
 //  hairStyleHouse
 //
-//  Created by jeason on 13-12-3.
+//  Created by jeason on 13-12-23.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
+
+#import <UIKit/UIKit.h>
+
 
 #import <UIKit/UIKit.h>
 #import "TencentOpenAPI/TencentOAuth.h"
@@ -14,11 +17,11 @@
 #define kAppSecret          @"a71b4382aeda47dfbdd5925b4b407648"
 #define kAppRedirectURI     @"http://www.faxingw.cn"
 @class  dresserViewController;
-@interface loginViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,SinaWeiboDelegate,ASIHTTPRequestDelegate,SinaWeiboRequestDelegate>
+@interface rigViewController : UIViewController<TencentLoginDelegate,TencentSessionDelegate,SinaWeiboDelegate,ASIHTTPRequestDelegate,SinaWeiboRequestDelegate>
 {
     UIView* myInfoView;
     TencentOAuth* _tencentOAuth;
-        SinaWeibo* _sinaweibo;
+    SinaWeibo* _sinaweibo;
     NSArray* _permissions;
     NSString* imageUrl;
     NSString* type;

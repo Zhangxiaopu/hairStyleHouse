@@ -1,26 +1,27 @@
 //
-//  loginViewController.m
+//  rigViewController.m
 //  hairStyleHouse
 //
-//  Created by jeason on 13-12-3.
+//  Created by jeason on 13-12-23.
 //  Copyright (c) 2013年 jeason. All rights reserved.
 //
 
-#import "loginViewController.h"
+#import "rigViewController.h"
 #import "AppDelegate.h"
 #import "ASIFormDataRequest.h"
 #import "SBJson.h"
 #import "dresserViewController.h"
-@interface loginViewController ()
+@interface rigViewController ()
 
 @end
 
-@implementation loginViewController
+@implementation rigViewController
 @synthesize tentenOAuth;
 @synthesize dresserFatherController;
 @synthesize _backsign;
 @synthesize _hidden;
 @synthesize _leftButtonhidden;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,36 +38,67 @@
     [self refreashNavLab];
     if ([_leftButtonhidden isEqualToString:@"yes"])
     {
-       [self refreashNav1];
+        [self refreashNav1];
     }
     else
     {
-       [self refreashNav];
+        [self refreashNav];
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 -(void)viewDidAppear:(BOOL)animated
 {
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    if (appDele.uid)
+//    if ([_backsign isEqualToString:@"qq"])
+//    {
+//        [self QQButtonClick];
+//    }
+//    else
+//    {
+//        [self sinaButtonClick];
+//    }
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    QQButton=[[UIButton alloc] init];
+    QQButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [QQButton.layer setMasksToBounds:YES];
+    [QQButton.layer setCornerRadius:10.0];
+    [QQButton.layer setBorderWidth:1.0];
+    [QQButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 1, 0, 0, 1 })];//边框颜色
+    [QQButton setTitle:@"QQ登陆" forState:UIControlStateNormal];
+    [QQButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [QQButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
+    [QQButton addTarget:self action:@selector(QQButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    QQButton.frame = CGRectMake(10, 240, 300, 40);
+    
+    
+    sinaButton=[[UIButton alloc] init];
+    sinaButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [sinaButton.layer setMasksToBounds:YES];
+    [sinaButton.layer setCornerRadius:10.0];
+    [sinaButton.layer setBorderWidth:1.0];
+    [sinaButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 1, 0, 0, 1 })];//边框颜色
+    [sinaButton setTitle:@"新浪登陆" forState:UIControlStateNormal];
+    [sinaButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [sinaButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
+    [sinaButton addTarget:self action:@selector(sinaButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    sinaButton.frame = CGRectMake(10, 300, 300, 40);
+    [self.view addSubview:QQButton];
+    [self.view addSubview:sinaButton];
+    
+    if ([_backsign isEqualToString:@"qq"])
     {
-        [self.navigationController popViewControllerAnimated:NO];
+        sinaButton.hidden = YES;
     }
     else
     {
-        [self cLoginView];
+        QQButton.hidden = YES;
         
     }
-    
 }
 -(void)refreashNavLab
 {
     UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-    Lab.text = @"登陆";
+    Lab.text = @"绑定";
     Lab.textAlignment = NSTextAlignmentCenter;
     Lab.font = [UIFont systemFontOfSize:16];
     Lab.textColor = [UIColor blackColor];
@@ -77,21 +109,17 @@
 {
     if ([_hidden isEqualToString:@"yes"]) {
         self.navigationController.navigationBar.hidden=YES;
-
+        
     }
     else
     {
         self.navigationController.navigationBar.hidden=NO;
-
+        
     }
     [self.navigationController popViewControllerAnimated:YES];
-    if (dresserFatherController) {
-         [dresserFatherController fromFouceCancelBack:_backsign];
-    }
-   
 
-    
 }
+
 -(void)refreashNav
 {
     UIButton * leftButton=[[UIButton alloc] init];
@@ -123,54 +151,13 @@
     [leftButton setBackgroundColor:[UIColor clearColor]];
     [leftButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];
     [leftButton setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
-//    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    //    [leftButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     leftButton.frame = CGRectMake(0,0, 0, 0);
     UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem=leftButtonItem;
 }
 
-#pragma mark - Creat View
--(void)cLoginView//访问用户具体资料：
-{
-    self.view.backgroundColor = [UIColor whiteColor];
-    QQButton=[[UIButton alloc] init];
-    QQButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [QQButton.layer setMasksToBounds:YES];
-    [QQButton.layer setCornerRadius:10.0];
-    [QQButton.layer setBorderWidth:1.0];
-    [QQButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 1, 0, 0, 1 })];//边框颜色
-    [QQButton setTitle:@"QQ登陆" forState:UIControlStateNormal];
-    [QQButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [QQButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
-    [QQButton addTarget:self action:@selector(QQButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    QQButton.frame = CGRectMake(10, 240, 300, 40);
-    
-    
-    sinaButton=[[UIButton alloc] init];
-    sinaButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sinaButton.layer setMasksToBounds:YES];
-    [sinaButton.layer setCornerRadius:10.0];
-    [sinaButton.layer setBorderWidth:1.0];
-    [sinaButton.layer setBorderColor: CGColorCreate(CGColorSpaceCreateDeviceRGB(),(CGFloat[]){ 1, 0, 0, 1 })];//边框颜色
-    [sinaButton setTitle:@"新浪登陆" forState:UIControlStateNormal];
-    [sinaButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [sinaButton setTitleColor:[UIColor blueColor] forState:UIControlStateHighlighted];
-    [sinaButton addTarget:self action:@selector(sinaButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    sinaButton.frame = CGRectMake(10, 300, 300, 40);
-    [self.view addSubview:QQButton];
-    [self.view addSubview:sinaButton];
-    
-    
-    
-    
-    //    AppDelegate* dele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    //    (dele.xuanzheLoginType==NULL)?[self xuanzheView]:NULL;
-    //    ([dele.xuanzheLoginType isEqual:@"qq"])?[self qqBtnClick]:NULL;
-    ////    ([dele.xuanzheLoginType isEqual:@"sina"])?[self sinaBtnClick]:NULL;
-    
-    
-    
-}
+
 
 -(void)QQButtonClick
 {
@@ -208,7 +195,7 @@
     //    NSString* str=[NSString stringWithUTF8String:data];
     SBJsonParser* jsonP=[[SBJsonParser alloc] init];
     
-//    NSString*jsonString = [[NSString alloc]initWithBytes:[data bytes]length:[data length]encoding:NSUTF8StringEncoding];
+    //    NSString*jsonString = [[NSString alloc]initWithBytes:[data bytes]length:[data length]encoding:NSUTF8StringEncoding];
     
     //    NSDictionary* dic=[jsonP objectWithString:jsonString];
     NSDictionary* dic=[jsonP objectWithData:data];
@@ -241,19 +228,14 @@
 
 -(void)postSinaData
 {
-//    [self cJiaZaiView];
-    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
+    //    [self cJiaZaiView];
+    ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=User&a=binding"]];
     request.tag=2;
     
-    [request setPostValue:sImageUrl forKey:@"head_photo"];
-    [request setPostValue:sUserName forKey:@"username"];
     AppDelegate* dele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    dele.userName=sUserName;
+    [request setPostValue:dele.uid forKey:@"uid"];
     [request setPostValue:[_sinaweibo userID] forKey:@"sina_keyid"];
-    NSLog(@"%@",[_sinaweibo userID]);
-    [request setPostValue:@"" forKey:@"qq_keyid"];
-    
-    request.delegate=self;
+       request.delegate=self;
     [request startAsynchronous];
 }
 
@@ -272,7 +254,29 @@
 }
 
 - (void)addShareResponse:(APIResponse*) response {
-    
+    NSLog(@"xxxxx");
+	if (response.retCode == URLREQUEST_SUCCEED)
+	{
+		
+		
+		NSMutableString *str=[NSMutableString stringWithFormat:@""];
+		for (id key in response.jsonResponse) {
+			[str appendString: [NSString stringWithFormat:@"%@:%@\n",key,[response.jsonResponse objectForKey:key]]];
+		}
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",str]
+							  
+													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles:nil];
+		[alert show];
+		
+		
+		
+	}
+	else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作失败" message:[NSString stringWithFormat:@"%@", response.errorMsg]
+							  
+													   delegate:self cancelButtonTitle:@"我知道啦" otherButtonTitles: nil];
+		[alert show];
+	}
 	
 	
 }
@@ -293,9 +297,9 @@
                          @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
     [WeiboSDK sendRequest:request];
     appDele.loginType=@"sina";
-
-//    [self.navigationController popViewControllerAnimated:YES];
-
+    
+    //    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 -(void)getBack:(id)inter andSuc:(SEL)suc andErr:(SEL)err
@@ -372,10 +376,10 @@
     userName=[yy objectForKey:@"nickname"];
     NSLog(@"xxxxxxx===%@",yy);
     
-//    expirationDate=(NSString*)_tencentOAuth.expirationDate;
+    //    expirationDate=(NSString*)_tencentOAuth.expirationDate;
     
     [self postTententData];
-   
+    
     
     if ([_hidden isEqualToString:@"yes"]) {
         self.navigationController.navigationBar.hidden=YES;
@@ -386,9 +390,9 @@
         self.navigationController.navigationBar.hidden=NO;
         
     }
-//    [self.navigationController popViewControllerAnimated:YES];
-//    self.navigationController.navigationBar.hidden=NO;
-
+    //    [self.navigationController popViewControllerAnimated:YES];
+    //    self.navigationController.navigationBar.hidden=NO;
+    
     [self.navigationController popViewControllerAnimated:YES];
     
 }
@@ -396,23 +400,13 @@
 
 -(void)postTententData
 {
-    //    [self cJiaZaiView];
-    //    [self.view removeFromSuperview];
-    
+  
     ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:@"http://wap.faxingw.cn/index.php?m=Index&a=login"]];
-    //
-    //    qq_keyid
-    //    sina_keyid
-    //    username
-    //    head_photo
     
     AppDelegate* dele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    dele.userName=userName;
-    
     request.delegate=self;
     request.tag=1;
-    [request setPostValue:imageUrl forKey:@"head_photo"];
-    [request setPostValue:userName forKey:@"username"];
+    [request setPostValue:dele.uid forKey:@"uid"];
     [request setPostValue:openId forKey:@"qq_keyid"];
     //    [request setPostValue:@"" forKey:@"sina_keyid"];
     [request startAsynchronous];
@@ -431,104 +425,44 @@
         NSLog(@"1111111====%@",request.responseString);
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:request.responseString];
-        backId=[dic objectForKey:@"uid"];
-        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
-        appDele.type=[dic objectForKey:@"type"];
-        appDele.touxiangImage=[dic objectForKey:@"head_photo"];
-        appDele.uid=backId;//将值赋再appdelegat.uid上
-//        appDele.city=[dic objectForKey:@"city"];
-        //        if (request.tag==1) {
-        //            appDel.loginType=@"qq";
-        //        }
-        //        else{
-        //        appDel.loginType=@"sina";
-        //        }
-        //
+        NSLog(@"是否绑定成功:%@",dic);
+        if ([[dic objectForKey:@"code"] isEqualToString:@"201"])
+        {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该账号已被其他用户绑定，请重新绑定" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        }
+        else
+        {
         //NSuserDefaults
         NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-        [ud setObject:backId forKey:@"uid"];
-        [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];//选择身份后保存
-        [ud setObject:@"qq" forKey:@"loginType"];
         [ud setObject:[_tencentOAuth accessToken]  forKey:@"tencentOAuth_accesstoken"];
         [ud setObject:[_tencentOAuth openId]  forKey:@"tencentOAuth_openId"];
         [ud setObject:[_tencentOAuth expirationDate]  forKey:@"tencentOAuth_expirationDate"];
-
-            
-        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
-        request.delegate=self;
-        request.tag=3;
+        }
         
-        [request setPostValue:appDele.uid forKey:@"uid"];
-//         NSLog(@"%f",appDele.longitude);
-//        NSLog(@"%f",appDele.latitude);
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
-        
-        [request startAsynchronous];
-        
-        //    [interface performSelectorOnMainThread:successfun withObject:_rs waitUntilDone:YES];
-        
-        //        if (request.tag==1) {
-        //            [ud setObject:@"qq"forKey:@"loginType"];
-        //        }
-        //        else{
-        //            [ud setObject:@"sina"forKey:@"loginType"];
-        //        }
-        
-        //    }
-        //    AppDelegate* appdele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-        
-    }
+        }
     else if(request.tag==2)
     {
         NSLog(@"%@",request.responseString);
-        //    if (request.tag==1||request.tag==2) {
-        
-        
-        NSLog(@"1111111====%@",request.responseString);
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:request.responseString];
-        backId=[dic objectForKey:@"uid"];
-        AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;//调用appdel
-        appDele.type=[dic objectForKey:@"type"];
-        appDele.touxiangImage=[dic objectForKey:@"head_photo"];
-        appDele.uid=backId;//将值赋再appdelegat.uid上
         
+        NSLog(@"是否绑定成功:%@",dic);
+
+        if ([[dic objectForKey:@"code"] isEqualToString:@"201"])
+        {
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"该账号已被其他用户绑定，请重新绑定" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+            [alert show];
+        }
+        else
+        {
         NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-        [ud setObject:backId forKey:@"uid"];
-        [ud setObject:[dic objectForKey:@"type"] forKey:@"type"];//选择身份后保存
-        [ud setObject:@"sina" forKey:@"loginType"];
         
         [ud setObject:[_sinaweibo accessToken]  forKey:@"sina_accesstoken"];
         [ud setObject:[_sinaweibo userID]  forKey:@"sina_userId"];
         [ud setObject:[_sinaweibo expirationDate] forKey:@"sina_expirationDate"];
+        }
         
-        
-        ASIFormDataRequest* request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=User&a=coordinates"]]];
-        request.delegate=self;
-        request.tag=3;
-        
-        [request setPostValue:appDele.uid forKey:@"uid"];
-        //         NSLog(@"%f",appDele.longitude);
-        //        NSLog(@"%f",appDele.latitude);
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.longitude ] forKey:@"lng"];
-        [request setPostValue:[NSString stringWithFormat:@"%f",appDele.latitude ] forKey:@"lat"];
-        
-        [request startAsynchronous];
-        
-
-    }
-    
-    else if(request.tag==3)
-    {
-        NSLog(@"%@",request.responseString);
-        NSData*jsondata = [request responseData];
-        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
-        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
-        NSDictionary* dic=[jsonP objectWithString:jsonString];
-        NSLog(@"修改经纬度dic:%@",dic);
-        
-        [interface performSelectorOnMainThread:sucfun withObject:nil waitUntilDone:NO];
     }
     
     
@@ -550,3 +484,4 @@
 
 
 @end
+

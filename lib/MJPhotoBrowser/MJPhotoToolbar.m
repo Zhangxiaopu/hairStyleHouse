@@ -67,8 +67,9 @@
         
         diction = [[NSDictionary alloc] init];
         dic = [[NSDictionary alloc] init];
+        sign= [[NSString alloc] init];
         
-            self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor redColor];
         headBack = [[UIView alloc] initWithFrame:CGRectMake(10, 10, 60, 60)];
         headBack.backgroundColor = [UIColor whiteColor];
         headImage = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 50, 50)];
@@ -262,11 +263,16 @@
     {
         if (buttonIndex == 0)
         {
+            
             TencentOAuth* _tentenOAuth;
             AppDelegate* dele=(AppDelegate*)[UIApplication sharedApplication].delegate;
             
             _tentenOAuth=dele.tententOAuth;
             //
+//            NSLog(@"_tentenOAuth:%@",_tentenOAuth.accessToken);
+//             NSLog(@"_tentenOAuth:%@",_tentenOAuth.openId);
+//            NSLog(@"_tentenOAuth:%@",_tentenOAuth.expirationDate);
+
             TCAddShareDic *params = [TCAddShareDic dictionary];
             params.paramTitle = @"我通过使用发型屋找到一款很好看的发型，点击跳转";
             params.paramComment = @"潮流必备软件——发型屋";
@@ -279,14 +285,13 @@
             
             if(![_tentenOAuth addShareWithParams:params])
             {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"api调用失败" message:@"可能授权已过期，请重新获取" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                sign =@"qq";
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"api调用失败" message:@"你尚未绑定QQ账号,或你的账号授权已过期,需要重新获取" delegate:self cancelButtonTitle:@"暂不绑定" otherButtonTitles:@"现在绑定", nil];
                 [alert show];
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",@"操作成功"]
-                                      
-                                                               delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",@"操作成功"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
                 [alert show];
             }
             
@@ -321,21 +326,98 @@
 
 - (void)request:(SinaWeiboRequest *)request didFailWithError:(NSError *)error
 {
-NSLog(@"move failed:%@", [error localizedDescription]);
-    
+    NSLog(@"move failed:%@", [error localizedDescription]);
+    sign =@"sina";
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"api调用失败" message:@"你尚未绑定新浪微博账号,或你的账号授权已过期,需要重新获取" delegate:self cancelButtonTitle:@"暂不绑定" otherButtonTitles:@"现在绑定", nil];
+    [alert show];
 }
 - (void)request:(SinaWeiboRequest *)request didFinishLoadingWithResult:(id)result
 {
     //    [self.indicator stopAnimating];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"操作成功" message:[NSString stringWithFormat:@"%@",@"操作成功"]
-                          
-                                                   delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",@"操作成功"] delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
     
 }
 
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+   if (buttonIndex == 1)
+   {
+       rigView = nil;
+       rigView  = [[rigViewController alloc] init] ;
+       rigView._hidden = NO;
+       rigView._backsign = sign;
+       [rigView getBack:self andSuc:@selector(rigThenshare) andErr:nil];
+       [fatherView pushViewController:rigView];
+
+   }
+   else
+   {
+   
+   }
+}
+
+-(void)rigThenshare
+{
+    if ([sign isEqualToString:@"qq"])//qq绑定返回触发
+    {
+        TencentOAuth* _tentenOAuth;
+        AppDelegate* dele=(AppDelegate*)[UIApplication sharedApplication].delegate;
+        
+        _tentenOAuth=dele.tententOAuth;
+        //
+        //            NSLog(@"_tentenOAuth:%@",_tentenOAuth.accessToken);
+        //             NSLog(@"_tentenOAuth:%@",_tentenOAuth.openId);
+        //            NSLog(@"_tentenOAuth:%@",_tentenOAuth.expirationDate);
+        
+        TCAddShareDic *params = [TCAddShareDic dictionary];
+        params.paramTitle = @"我通过使用发型屋找到一款很好看的发型，点击跳转";
+        params.paramComment = @"潮流必备软件——发型屋";
+        params.paramSummary= @"发型屋是一款潮流达人必备的一款软件，它可以帮助你找到你想要的发型，在线预约发型师，折扣价格，查看他人推荐发型并实时聊天";
+        
+        NSLog(@"%@",[diction objectForKey:@"works_pic"]);
+        
+        params.paramImages = [[diction objectForKey:@"works_pic"] firstObject];
+        params.paramUrl = [NSString stringWithFormat:@"http://wap.faxingw.cn/web.php?m=Share&a=index&id=%@",[[diction objectForKey:@"works_id"] firstObject]];
+        
+        if(![_tentenOAuth addShareWithParams:params])
+        {
+            sign =@"qq";
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"api调用失败" message:@"你尚未绑定QQ账号,或你的账号授权已过期,需要重新获取" delegate:self cancelButtonTitle:@"暂不绑定" otherButtonTitles:@"现在绑定", nil];
+            [alert show];
+        }
+        else
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"%@",@"操作成功"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+            [alert show];
+        }
+
+    }
+    else//新浪绑定返回触发
+    {
+        AppDelegate* dele=(AppDelegate*)[UIApplication sharedApplication].delegate;
+        SinaWeibo* _sinaWeibo=dele.sinaweibo;
+        NSLog(@"%@",[diction objectForKey:@"works_pic"]);
+        NSString* upText=[@"" stringByAppendingFormat:@"我通过使用发型屋找到一款很好看的发型，点击跳转>>>>>http://www.faxingw.cn/soufaxing/%@_hairpic.html",[diction objectForKey:@"works_id"]];
+        [_sinaWeibo requestWithURL:@"statuses/upload.json"
+                            params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                    upText, @"status",
+                                    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[diction objectForKey:@"works_pic"] firstObject]]]], @"pic", nil]
+                        httpMethod:@"POST"
+                          delegate:self];
+        //            NSString* upText=[NSString stringWithFormat:@"我通过使用发型屋找到一款很好看的发型，点击跳转>>>>>http://wap.faxingw.cn/web.php?m=Share&a=index&id=%@",[diction objectForKey:@"works_id"]];
+        //            [_sinaWeibo requestWithURL:@"statuses/upload.json"
+        //                                params:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+        //                                        upText, @"status",
+        //                                        [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/web.php?m=Share&a=index&id=%@",[diction objectForKey:@"works_id"]]]]], @"pic", nil]
+        //                            httpMethod:@"POST"
+        //                              delegate:self];
+    }
+}
     - (void)actionSheetCancel:(UIActionSheet *)actionSheet
 {
         

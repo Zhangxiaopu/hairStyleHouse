@@ -66,7 +66,7 @@
         CGSize labelsize = [_content sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
         
         contentLable.frame = CGRectMake(22, 18, labelsize.width, labelsize.height);
-        picImage.frame =CGRectMake(25, labelsize.height+28, 150, 200);
+        picImage.frame =CGRectMake(20, labelsize.height+28, 150, 200);
         if ([picStr isEqualToString:@""])
         {
             backImage.frame = CGRectMake(self.frame.size.width-60-labelsize.width-50, 10, labelsize.width+50, labelsize.height+40);

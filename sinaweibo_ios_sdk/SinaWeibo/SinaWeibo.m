@@ -334,6 +334,10 @@
             [[SinaWeiboAuthorizeView alloc] initWithAuthParams:params
                                                       delegate:self];
             [authorizeView show];
+            
+            NSLog(@"%@",NSStringFromCGRect(authorizeView.frame));
+            
+            
             [authorizeView release];
         }
     }

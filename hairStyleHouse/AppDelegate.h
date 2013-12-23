@@ -19,7 +19,7 @@
 #define kAppSecret          @"a71b4382aeda47dfbdd5925b4b407648"
 #define kAppRedirectURI     @"http://www.faxingw.cn"
 //#import "loginViewController.h"
-@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate,WeiboSDKDelegate,SinaWeiboDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,UINavigationControllerDelegate,UITabBarControllerDelegate,TencentLoginDelegate,TencentSessionDelegate,WeiboSDKDelegate,SinaWeiboDelegate>
 
 {
     UINavigationController * rootNav;

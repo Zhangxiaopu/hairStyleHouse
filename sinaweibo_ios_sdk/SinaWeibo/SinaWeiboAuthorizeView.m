@@ -380,7 +380,8 @@ static CGFloat kBorderWidth = 10;
     
     webView.frame = CGRectMake(kBorderWidth+1, kBorderWidth+1, innerWidth,
                                self.frame.size.height - (1 + kBorderWidth*2));
-    
+    NSLog(@"%@",NSStringFromCGRect(webView.frame));
+
     [self showWebView];
     [self showIndicator];
     
