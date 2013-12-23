@@ -77,7 +77,7 @@
     NSString * serviceStr = [dic objectForKey:@"service"];
     NSString * priceStr = [dic objectForKey:@"price"];
     NSString * milieuStr = [dic objectForKey:@"milieu"];
-    NSString * infoStr = [dic objectForKey:@"info"];
+//    NSString * infoStr = [dic objectForKey:@"info"];
     
     [headImage setImageWithURL:[NSURL URLWithString:headStr]];
     nameLable.text=nameStr;

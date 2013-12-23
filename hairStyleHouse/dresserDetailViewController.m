@@ -141,7 +141,11 @@
 
 - (IBAction)myFouceButtonClick:(id)sender//私聊
 {
-    
+    talkView=nil;
+    talkView = [[talkViewController alloc] init];
+    talkView.uid = [infoDic objectForKey:@"uid"];
+    [fatherController  pushToViewController:talkView];
+
     
 }
 

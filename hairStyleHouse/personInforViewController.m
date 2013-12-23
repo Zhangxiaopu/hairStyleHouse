@@ -91,6 +91,7 @@
     myTableView.delegate=self;
     myTableView.backgroundColor=[UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
     [self.view addSubview:myTableView];
+        [self getData];
 	// Do any additional setup after loading the view.
 }
 -(void)leftButtonClick
@@ -173,7 +174,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     
-    [self getData];
+
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];

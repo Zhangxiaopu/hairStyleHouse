@@ -103,11 +103,11 @@
             SBJsonParser* jsonP=[[SBJsonParser alloc] init];
             NSDictionary* dic=[jsonP objectWithString:jsonString];
             NSLog(@"评价列表dic:%@",dic);
-            if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSString class]])
+            if ([[dic objectForKey:@"assess_list"] isKindOfClass:[NSString class]])
             {
                 
             }
-            else if ([[dic objectForKey:@"user_info"] isKindOfClass:[NSArray class]])
+            else if ([[dic objectForKey:@"assess_list"] isKindOfClass:[NSArray class]])
             {
                 dresserArray = [dic objectForKey:@"assess_list"];//评价列表
                 

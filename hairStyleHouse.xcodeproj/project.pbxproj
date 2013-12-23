@@ -12,6 +12,14 @@
 		7A0191FC18602CC600AFD637 /* SinaWeibo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191F418602CC600AFD637 /* SinaWeibo.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7A0191FD18602CC600AFD637 /* SinaWeiboAuthorizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191F618602CC600AFD637 /* SinaWeiboAuthorizeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7A0191FE18602CC600AFD637 /* SinaWeiboRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0191F918602CC600AFD637 /* SinaWeiboRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		7A06F10C18613482007624D3 /* messages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F10718613482007624D3 /* messages.plist */; };
+		7A06F10D18613482007624D3 /* mychat_focused.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F10818613482007624D3 /* mychat_focused.png */; };
+		7A06F10E18613482007624D3 /* mychat_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F10918613482007624D3 /* mychat_normal.png */; };
+		7A06F10F18613482007624D3 /* other_focused.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F10A18613482007624D3 /* other_focused.png */; };
+		7A06F11018613482007624D3 /* other_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F10B18613482007624D3 /* other_normal.png */; };
+		7A06F11618613493007624D3 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A06F11118613493007624D3 /* Message.m */; };
+		7A06F11718613493007624D3 /* HRChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A06F11318613493007624D3 /* HRChatCell.xib */; };
+		7A06F11818613493007624D3 /* HRChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A06F11418613493007624D3 /* HRChatCell.m */; };
 		7A2BA6CE1844E0A200A46A09 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A2BA6CD1844E0A200A46A09 /* LoginView.m */; };
 		7A37D6851844C9E100D9C4D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6841844C9E100D9C4D9 /* Foundation.framework */; };
 		7A37D6871844C9E100D9C4D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A37D6861844C9E100D9C4D9 /* CoreGraphics.framework */; };
@@ -263,6 +271,16 @@
 		7A0191F718602CC600AFD637 /* SinaWeiboConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboConstants.h; sourceTree = "<group>"; };
 		7A0191F818602CC600AFD637 /* SinaWeiboRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinaWeiboRequest.h; sourceTree = "<group>"; };
 		7A0191F918602CC600AFD637 /* SinaWeiboRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinaWeiboRequest.m; sourceTree = "<group>"; };
+		7A06F10718613482007624D3 /* messages.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = messages.plist; sourceTree = "<group>"; };
+		7A06F10818613482007624D3 /* mychat_focused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mychat_focused.png; sourceTree = "<group>"; };
+		7A06F10918613482007624D3 /* mychat_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mychat_normal.png; sourceTree = "<group>"; };
+		7A06F10A18613482007624D3 /* other_focused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = other_focused.png; sourceTree = "<group>"; };
+		7A06F10B18613482007624D3 /* other_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = other_normal.png; sourceTree = "<group>"; };
+		7A06F11118613493007624D3 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		7A06F11218613493007624D3 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		7A06F11318613493007624D3 /* HRChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRChatCell.xib; sourceTree = "<group>"; };
+		7A06F11418613493007624D3 /* HRChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRChatCell.m; sourceTree = "<group>"; };
+		7A06F11518613493007624D3 /* HRChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRChatCell.h; sourceTree = "<group>"; };
 		7A2BA6CC1844E0A200A46A09 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		7A2BA6CD1844E0A200A46A09 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		7A37D6811844C9E100D9C4D9 /* hairStyleHouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hairStyleHouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -680,9 +698,22 @@
 			path = SinaWeibo;
 			sourceTree = "<group>";
 		};
+		7A06F10618613482007624D3 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7A06F10718613482007624D3 /* messages.plist */,
+				7A06F10818613482007624D3 /* mychat_focused.png */,
+				7A06F10918613482007624D3 /* mychat_normal.png */,
+				7A06F10A18613482007624D3 /* other_focused.png */,
+				7A06F10B18613482007624D3 /* other_normal.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
 		7A37D6781844C9E100D9C4D9 = {
 			isa = PBXGroup;
 			children = (
+				7A06F10618613482007624D3 /* resources */,
 				7A0191ED18602CC600AFD637 /* sinaweibo_ios_sdk */,
 				7A63A4FF185AF42800502E75 /* libWeiboSDK */,
 				7AE7F5291855542400CAB2C6 /* PullRefresh */,
@@ -853,6 +884,11 @@
 				7AE3615318473C26008A107C /* lookEvaluateCell.m */,
 				7AE03D5F184617A800E14EDC /* talkViewController.h */,
 				7AE03D60184617A800E14EDC /* talkViewController.m */,
+				7A06F11118613493007624D3 /* Message.m */,
+				7A06F11218613493007624D3 /* Message.h */,
+				7A06F11518613493007624D3 /* HRChatCell.h */,
+				7A06F11418613493007624D3 /* HRChatCell.m */,
+				7A06F11318613493007624D3 /* HRChatCell.xib */,
 				7AE03D62184617DB00E14EDC /* talkCell.h */,
 				7AE03D63184617DB00E14EDC /* talkCell.m */,
 				7A37D6961844C9E100D9C4D9 /* Main.storyboard */,
@@ -1256,6 +1292,7 @@
 				7AE1B2FB184C26FF00F51BB2 /* comment.png in Resources */,
 				7A37D7811844CC4C00D9C4D9 /* x3.png in Resources */,
 				7ADC1A17184D8418004C61BC /* 4关注.png in Resources */,
+				7A06F10F18613482007624D3 /* other_focused.png in Resources */,
 				7AE7F53B1855926F00CAB2C6 /* 最新榜.png in Resources */,
 				7AD5461A184F39EA009A6B79 /* 行业情报.png in Resources */,
 				7AE5AC291852C4C100C1970E /* 同城发型.png in Resources */,
@@ -1294,6 +1331,7 @@
 				7A63A504185AF42800502E75 /* WeiboSDK.bundle in Resources */,
 				7AD54616184F39EA009A6B79 /* 同城.png in Resources */,
 				7AD545B2184EBA81009A6B79 /* 盘发.png in Resources */,
+				7A06F10E18613482007624D3 /* mychat_normal.png in Resources */,
 				7AE7F5301855542400CAB2C6 /* arrow@2x.png in Resources */,
 				7ADDE7C91856F78A00D48208 /* 洗护方法.png in Resources */,
 				7ADC1A15184D6E22004C61BC /* beaspeakDresserViewController.xib in Resources */,
@@ -1319,6 +1357,7 @@
 				7ADDE7CD1856F78A00D48208 /* 我的话题.png in Resources */,
 				7AD54618184F39EA009A6B79 /* 问答中心.png in Resources */,
 				7A37D7841844CC4C00D9C4D9 /* xiaoxi.png in Resources */,
+				7A06F10D18613482007624D3 /* mychat_focused.png in Resources */,
 				7A37D7731844CC4C00D9C4D9 /* 03广场.png in Resources */,
 				7ADDE7D11856F78A00D48208 /* 烫发.png in Resources */,
 				7A37D78B1844CC4C00D9C4D9 /* 推荐.png in Resources */,
@@ -1334,11 +1373,13 @@
 				7A37D7771844CC4C00D9C4D9 /* jifen.png in Resources */,
 				7AD545B8184ED4EF009A6B79 /* 短发.png in Resources */,
 				7AD545B3184EBA81009A6B79 /* 男士发型.png in Resources */,
+				7A06F10C18613482007624D3 /* messages.plist in Resources */,
 				7AE7F52F1855542400CAB2C6 /* arrow.png in Resources */,
 				7AE7F53C1855926F00CAB2C6 /* 评论榜.png in Resources */,
 				7AD87E0218502CA10016A329 /* Default-568h@2x.png in Resources */,
 				7AE5AC2A1852C4C100C1970E /* 推荐发型.png in Resources */,
 				7A37D7711844CC4C00D9C4D9 /* 01找发型.png in Resources */,
+				7A06F11718613493007624D3 /* HRChatCell.xib in Resources */,
 				7AD54614184F39EA009A6B79 /* 我型我秀.png in Resources */,
 				7AE09DFD18582FBB007CA28D /* inviteViewController.xib in Resources */,
 				7ADDE7CA1856F78A00D48208 /* 名人堂.png in Resources */,
@@ -1349,6 +1390,7 @@
 				7ADDE7CE1856F78A00D48208 /* 热点话题.png in Resources */,
 				7A0191FB18602CC600AFD637 /* SinaWeibo.bundle in Resources */,
 				7ADDE7D51856F78A00D48208 /* 个人用户.png in Resources */,
+				7A06F11018613482007624D3 /* other_normal.png in Resources */,
 				7AE1B2FA184C26FF00F51BB2 /* fenxiang.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1369,6 +1411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A37D7091844CA2700D9C4D9 /* ASIDataCompressor.m in Sources */,
+				7A06F11618613493007624D3 /* Message.m in Sources */,
 				7A37D69B1844C9E100D9C4D9 /* ViewController.m in Sources */,
 				7A37D7151844CA2700D9C4D9 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7AD54604184F2B08009A6B79 /* SDWebImageManager+MJ.m in Sources */,
@@ -1384,6 +1427,7 @@
 				7AD545F5184F2B08009A6B79 /* MBProgressHUD.m in Sources */,
 				7AD5460B184F2B08009A6B79 /* UIImageView+MJWebCache.m in Sources */,
 				7AE03D51184615F500E14EDC /* fansAndfoceAndMassegeCell.m in Sources */,
+				7A06F11818613493007624D3 /* HRChatCell.m in Sources */,
 				7AE09DF518581324007CA28D /* myAnwserCenterViewController.m in Sources */,
 				7A37D7131844CA2700D9C4D9 /* SBJsonParser.m in Sources */,
 				7A37D7081844CA2700D9C4D9 /* ASIAuthenticationDialog.m in Sources */,

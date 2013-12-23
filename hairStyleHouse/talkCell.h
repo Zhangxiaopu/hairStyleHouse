@@ -9,5 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface talkCell : UITableViewCell
+{
+    UIImageView * backImage;
+
+    UIImageView * headImage;
+
+    UILabel * contentLable;
+    UIImageView * picImage;
+    UILabel * timeLable;
+
+}
+- (void)bindMessage:(NSDictionary *)_dic and: (NSDictionary *)lastDic;
 
 @end

@@ -7,7 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface talkViewController : UIViewController
+#import "talkCell.h"
+@interface talkViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+{
+    NSString * uid;
+    
+    UITableView *myTableView;
+    NSMutableArray * dresserArray;
+    NSMutableArray * oldArray;
+    NSDictionary * headImageDiction;
+    
+    UIView * lastView;
+    UITextView * contentView;
+    BOOL ifchangeHeadImage;
+    UIImageView * sendImage;
+    NSString * imageString;
+    UIButton * imageButton;
+    UIButton * sendButton;
+    
+    NSTimer* timer;
+    
+}
+@property(strong,nonatomic)    NSString * uid;
 
 @end

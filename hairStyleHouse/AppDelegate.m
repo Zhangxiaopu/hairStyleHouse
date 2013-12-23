@@ -23,12 +23,12 @@
 @synthesize city;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-//    if ([ud objectForKey:@"uid"]&&[ud objectForKey:@"type"])
-//    {
-//        self.uid =[ud objectForKey:@"uid"];
-//        self.type = [ud objectForKey:@"type"];
-//    }
+    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+    if ([ud objectForKey:@"uid"]&&[ud objectForKey:@"type"])
+    {
+        self.uid =[ud objectForKey:@"uid"];
+        self.type = [ud objectForKey:@"type"];
+    }
    
     
     
