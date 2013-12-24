@@ -36,6 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     if (![CLLocationManager locationServicesEnabled] || [CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied)
@@ -50,9 +52,246 @@
     locationManager.distanceFilter=100.0f;//设置距离筛选器
     [locationManager startUpdatingLocation];//启动位置管理器
     }
-    [self cView];
+    
+     backView = [[[NSBundle mainBundle] loadNibNamed:@"oprationMenue" owner:self options:nil] objectAtIndex:0];
+    [self.view addSubview:backView];
+    
+    
+    whichDic = [[NSString alloc] initWithFormat:@"1"];
+    firstArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].firstArray];
+    NSLog(@"firstArr:%@",firstArr);
+    
+    secondArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].secondArray];
+    thirdArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].thirdArray];
+    forthArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].forthArray];
+    fifthArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].fifthArray];
+    sixthArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].sixthArray];
+    
+    myTableView=[[UITableView alloc] initWithFrame:CGRectMake(100, self.navigationController.navigationBar.frame.size.height+20, self.view.bounds.size.width-100, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-20-self.tabBarController.tabBar.frame.size.height) style:UITableViewStylePlain];
+    [myTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    myTableView.allowsSelection=NO;
+    myTableView.dataSource=self;
+    myTableView.delegate=self;
+    myTableView.backgroundColor=[UIColor colorWithRed:231.0/256.0 green:231.0/256.0 blue:231.0/256.0 alpha:1.0];
+    [self.view addSubview:myTableView];
+//    [self cView];
 	// Do any additional setup after loading the view.
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    if ([whichDic isEqualToString:@"1"])
+    {
+        if (firstArr.count%3==0)
+        {
+            return firstArr.count/3;
+        }
+        else
+        {
+            return firstArr.count/3+1;
+        }
+      
+    }
+    else if ([whichDic isEqualToString:@"2"])
+    {
+        if (secondArr.count%3==0)
+        {
+            return secondArr.count/3;
+        }
+        else
+        {
+            return secondArr.count/3+1;
+        }
+    }
+    else if ([whichDic isEqualToString:@"3"])
+    {
+        if (thirdArr.count%3==0)
+        {
+            return thirdArr.count/3;
+        }
+        else
+        {
+            return thirdArr.count/3+1;
+        }
+    }
+    else if ([whichDic isEqualToString:@"4"])
+    {
+        if (forthArr.count%3==0)
+        {
+            return forthArr.count/3;
+        }
+        else
+        {
+            return forthArr.count/3+1;
+        }
+    }
+    else if ([whichDic isEqualToString:@"5"])
+    {
+        if (fifthArr.count%3==0)
+        {
+            return fifthArr.count/3;
+        }
+        else
+        {
+            return fifthArr.count/3+1;
+        }
+    }
+    else if ([whichDic isEqualToString:@"6"])
+    {
+        if (sixthArr.count%3==0)
+        {
+            return sixthArr.count/3;
+        }
+        else
+        {
+            return sixthArr.count/3+1;
+        }
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    
+//    if ([appDele.type isEqualToString:@"1"])
+//    {
+//        return   self.view.frame.size.height;
+//        
+//    }
+//    else if ([appDele.type isEqualToString:@"2"])
+//    {
+//        return   self.view.frame.size.height+120;
+//        
+//    }
+//    else
+//        
+//    {
+        return   tableView.frame.size.height/3;
+//    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellID=@"cell";
+    hairStyleIconCell *cell=(hairStyleIconCell*)[tableView dequeueReusableCellWithIdentifier:cellID];
+    if (cell==nil) {
+        cell=[[hairStyleIconCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        cell.fatherView =self;
+    }
+    NSUInteger row1 = [indexPath row]*3;
+    NSLog(@"row1:%d",row1);
+    NSUInteger row2 = [indexPath row]*3+1;
+    NSLog(@"row2:%d",row2);
+    NSUInteger row3 = [indexPath row]*3+2;
+    NSLog(@"row3:%d",row3);
+    
+    if ([whichDic isEqualToString:@"1"])
+    {
+        if (row1<firstArr.count)//防止可能越界
+        {
+
+        [cell setCell:[firstArr objectAtIndex:row1] andIndex:row1];
+        }
+        if (row2<firstArr.count)//防止可能越界
+        {
+            [cell setCell:[firstArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<firstArr.count)//防止可能越界
+        {
+            [cell setCell:[firstArr objectAtIndex:row3] andIndex:row3];
+        }
+
+    }
+    else if ([whichDic isEqualToString:@"2"])
+    {
+        if (row1<firstArr.count)//防止可能越界
+        {
+            
+            [cell setCell:[firstArr objectAtIndex:row1] andIndex:row1];
+        }
+        if (row2<secondArr.count)//防止可能越界
+        {
+            [cell setCell:[secondArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<secondArr.count)//防止可能越界
+        {
+            [cell setCell:[secondArr objectAtIndex:row3] andIndex:row3];
+        }
+    }
+    else if ([whichDic isEqualToString:@"3"])
+    {
+        if (row1<firstArr.count)//防止可能越界
+        {
+            
+            [cell setCell:[firstArr objectAtIndex:row1] andIndex:row1];
+        }
+        if (row2<thirdArr.count)//防止可能越界
+        {
+            [cell setCell:[thirdArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<thirdArr.count)//防止可能越界
+        {
+            [cell setCell:[thirdArr objectAtIndex:row3] andIndex:row3];
+        }
+    }
+    else if ([whichDic isEqualToString:@"4"])
+    {
+        [cell setCell:[forthArr objectAtIndex:row1] andIndex:row1];
+        
+        if (row2<forthArr.count)//防止可能越界
+        {
+            [cell setCell:[forthArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<forthArr.count)//防止可能越界
+        {
+            [cell setCell:[forthArr objectAtIndex:row3] andIndex:row3];
+        }
+    }
+    else if ([whichDic isEqualToString:@"5"])
+    {
+        [cell setCell:[fifthArr objectAtIndex:row1] andIndex:row1];
+        
+        if (row2<fifthArr.count)//防止可能越界
+        {
+            [cell setCell:[fifthArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<fifthArr.count)//防止可能越界
+        {
+            [cell setCell:[fifthArr objectAtIndex:row3] andIndex:row3];
+        }
+    }
+    else if ([whichDic isEqualToString:@"6"])
+    {
+        [cell setCell:[sixthArr objectAtIndex:row1] andIndex:row1];
+        
+        if (row2<sixthArr.count)//防止可能越界
+        {
+            [cell setCell:[sixthArr objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<sixthArr.count)//防止可能越界
+        {
+            [cell setCell:[sixthArr objectAtIndex:row3] andIndex:row3];
+        }
+    }
+    cell.backgroundColor = [UIColor colorWithRed:231.0/256.0 green:231.0/256.0 blue:231.0/256.0 alpha:1.0];
+    return cell;
+}
+
+-(void)selectImage:(NSInteger)_index
+{
+
+}
+
 
 -(void)cView
 {
@@ -240,4 +479,116 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)categoryButtonClick:(UIButton *)sender
+{
+    if (sender.tag==1)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX , 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man1.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype1.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm1.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color1.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        
+        whichDic = @"1";
+        [myTableView reloadData];
+    }
+    else if(sender.tag==2)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX+72, 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man1.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype1.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm1.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color1.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        whichDic = @"2";
+        [myTableView reloadData];
+    }
+    else if(sender.tag==3)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX+72*2 , 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype1.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm1.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color1.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        whichDic = @"3";
+        [myTableView reloadData];
+    }
+    else if(sender.tag==4)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX+71*3 , 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man1.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm1.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color1.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        whichDic = @"4";
+        [myTableView reloadData];
+    }
+    else if(sender.tag==5)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX+71*4 , 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man1.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype1.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color1.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        whichDic = @"5";
+        [myTableView reloadData];
+    }
+    else if(sender.tag==6)
+    {
+        _signImage.frame = CGRectMake(85,signOrigionX+71*5 , 15, 15);
+        [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
+        [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
+        [_secondLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_thirdImage setImage:[UIImage imageNamed:@"icon_man1.png"]];
+        [_thirdLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_forthImage setImage:[UIImage imageNamed:@"icon_facetype1.png"]];
+        [_forthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_fifthImage setImage:[UIImage imageNamed:@"icon_perm1.png"]];
+        [_fifthLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
+        [_sixthImage setImage:[UIImage imageNamed:@"icon_color.png"]];
+        [_sixthLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
+        whichDic = @"6";
+        [myTableView reloadData];
+    }
+}
 @end
