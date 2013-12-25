@@ -21,6 +21,9 @@
 
 @implementation findStyleDetailViewController
 @synthesize style;
+@synthesize bcid;
+@synthesize scid;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -36,38 +39,56 @@
     [self refreashNavLab];
     [self refreashNav];
     self.view.backgroundColor = [UIColor whiteColor];
-    topImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320, 50)];
-    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
+    topImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320, 70)];
+    topImage.backgroundColor = [UIColor whiteColor];
+//    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
     
-    UIButton * oneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    oneButton.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320/3, 50);
+    oneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    oneButton.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height+20, 320/2, 50);
     oneButton.backgroundColor = [UIColor clearColor];
+    [oneButton setTitleColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+
     [oneButton addTarget:self action:@selector(oneButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * twoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    twoButton.frame = CGRectMake(320/3,self.navigationController.navigationBar.frame.size.height+20, 320/3, 50);
+     twoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    twoButton.frame = CGRectMake(320/2,self.navigationController.navigationBar.frame.size.height+20, 320/2, 50);
     twoButton.backgroundColor = [UIColor clearColor];
+    
+    [twoButton setTitleColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0] forState:UIControlStateNormal];
     [twoButton addTarget:self action:@selector(twoButtonClick) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton * thirdButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    thirdButton.frame = CGRectMake(320*2/3,self.navigationController.navigationBar.frame.size.height+20, 320/3, 50);
-    thirdButton.backgroundColor = [UIColor clearColor];
-    [thirdButton addTarget:self action:@selector(thirdButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    if ([self.bcid isEqualToString:@"1"]||[self.bcid isEqualToString:@"2"])
+    {
+        [oneButton setTitle:@"最新作品" forState:UIControlStateNormal];
+        [twoButton setTitle:@"推荐作品" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [oneButton setTitle:@"女生" forState:UIControlStateNormal];
+        [twoButton setTitle:@"男生" forState:UIControlStateNormal];
+
+    }
+    
+    
     
     
     [self.view addSubview:topImage];
     [self.view addSubview:oneButton];
     [self.view addSubview:twoButton];
-    [self.view addSubview:thirdButton];
     
     dresserArray =[[NSMutableArray alloc] init];
+    dresserArray1 =[[NSMutableArray alloc] init];
+
     page =[[NSString alloc] init];
     page=@"1";
+    page1 =[[NSString alloc] init];
+    page1=@"1";
     pageCount=[[NSString alloc] init];
+    pageCount1=[[NSString alloc] init];
     sign =[[NSString alloc] init];
-    sign = @"new";
+    sign=@"1";
     
-    myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-50) style:UITableViewStylePlain];
+    myTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 110, self.view.bounds.size.width, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-self.tabBarController.tabBar.frame.size.height-50) style:UITableViewStylePlain];
     myTableView.allowsSelection=NO;
     [myTableView setSeparatorInset:UIEdgeInsetsZero];
     myTableView.dataSource=self;
@@ -84,98 +105,137 @@
     
     
     [self getData];
+    [self getData1];
 }
 -(void)pullLoadMore
 {
-    NSInteger _pageCount= [pageCount integerValue];
-    
-    NSInteger _page = [page integerValue];
-    
-    NSLog(@"page:%@",page);
-    NSLog(@"pageCount:%@",pageCount);
-    
-    if (_page<_pageCount) {
-        _page++;
-        page = [NSString stringWithFormat:@"%d",_page];
+    if ([sign isEqualToString:@"1"]) {
+        NSInteger _pageCount= [pageCount integerValue];
+        
+        NSInteger _page = [page integerValue];
+        
         NSLog(@"page:%@",page);
-        [self getData];
+        NSLog(@"pageCount:%@",pageCount);
+        
+        if (_page<_pageCount) {
+            _page++;
+            page = [NSString stringWithFormat:@"%d",_page];
+            NSLog(@"page:%@",page);
+            [self getData];
+        }
+        else
+        {
+            [bottomRefreshView performSelector:@selector(finishedLoading)];
+            
+        }
     }
     else
     {
-        [bottomRefreshView performSelector:@selector(finishedLoading)];
+        NSInteger _pageCount= [pageCount1 integerValue];
         
+        NSInteger _page = [page1 integerValue];
+        
+        NSLog(@"page:%@",page1);
+        NSLog(@"pageCount:%@",pageCount1);
+        
+        if (_page<_pageCount) {
+            _page++;
+            page1 = [NSString stringWithFormat:@"%d",_page];
+            NSLog(@"page:%@",page1);
+            [self getData1];
+        }
+        else
+        {
+            [bottomRefreshView performSelector:@selector(finishedLoading)];
+            
+        }
     }
+    
 }
 
 -(void)oneButtonClick
 {
-    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
-    sign =@"new";
-    page=@"1";
-    [dresserArray removeAllObjects];
-    [self getData];
+//    [topImage setImage:[UIImage imageNamed:@"最新发型.png"]];
+    [oneButton setTitleColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+    [twoButton setTitleColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+    
+    sign=@"1";
+    [myTableView reloadData];
     
 }
 -(void)twoButtonClick
 {
-    [topImage setImage:[UIImage imageNamed:@"同城发型.png"]];
+    [oneButton setTitleColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+    [twoButton setTitleColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0] forState:UIControlStateNormal];
+//    [topImage setImage:[UIImage imageNamed:@"同城发型.png"]];
 //    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
 
-    sign =@"city";
-    page=@"1";
-    [dresserArray removeAllObjects];
-    [self getData];
+    sign=@"2";
+
+    [myTableView reloadData];
+
 }
--(void)thirdButtonClick
-{
-    [topImage setImage:[UIImage imageNamed:@"推荐发型.png"]];
-    sign =@"recommend";
-    page=@"1";
-    [dresserArray removeAllObjects];
-    [self getData];
-    
-}
+
 -(void)getData
 {
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-    //    if (appDele.uid) {
+    
     ASIFormDataRequest* request;
-    request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Forhair&a=cate&page=%@",page]]];
-    if (!appDele.uid)
+    request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Forhair&a=newCate&page=%@",page]]];
+    
+    [request setPostValue:self.bcid forKey:@"bcid"];
+    [request setPostValue:self.scid forKey:@"scid"];
+
+    if ([self.bcid isEqualToString:@"1"]||[self.bcid isEqualToString:@"2"])
     {
-        
+        [request setPostValue:@"new" forKey:@"condition"];
     }
     else
     {
-    [request setPostValue:appDele.uid forKey:@"uid"];
-    }
-    
-    [request setPostValue:style forKey:@"cid"];
-   
-    [request setPostValue:sign forKey:@"condition"];
-    
-    if ([sign isEqualToString:@"city"]) {
-        [request setPostValue:appDele.city forKey:@"city_name"];
-
+        [request setPostValue:@"woman" forKey:@"condition"];
     }
 
-    
     request.delegate=self;
     request.tag=1;
     [request startAsynchronous];
 }
+
+-(void)getData1
+{
+    
+    ASIFormDataRequest* request;
+    request=[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wap.faxingw.cn/index.php?m=Forhair&a=newCate&page=%@",page]]];
+    
+    [request setPostValue:self.bcid forKey:@"bcid"];
+    [request setPostValue:self.scid forKey:@"scid"];
+    
+    if ([self.bcid isEqualToString:@"1"]||[self.bcid isEqualToString:@"2"])
+    {
+        [request setPostValue:@"recommend" forKey:@"condition"];
+    }
+    else
+    {
+        [request setPostValue:@"man" forKey:@"condition"];
+    }
+    
+    request.delegate=self;
+    request.tag=2;
+    [request startAsynchronous];
+}
+
 -(void)requestFinished:(ASIHTTPRequest *)request
 {
-    NSMutableArray * arr;
     
-    if (request.tag==1) {
+    
+    if (request.tag==1)
+    {
+        NSMutableArray * arr;
         NSLog(@"%@",request.responseString);
         NSData*jsondata = [request responseData];
         NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
         
         SBJsonParser* jsonP=[[SBJsonParser alloc] init];
         NSDictionary* dic=[jsonP objectWithString:jsonString];
-        NSLog(@"%@分类%@发型dic:%@",style,sign,dic);
+        NSLog(@"%@分类发型dic:%@",style,dic);
         
         pageCount = [dic objectForKey:@"page_count"];
         if ([[dic objectForKey:@"image_list"] isKindOfClass:[NSString class]])
@@ -187,6 +247,32 @@
             arr= [dic objectForKey:@"image_list"];
             [dresserArray addObjectsFromArray:arr];
             NSLog(@"dresser.count:%d",dresserArray.count);
+            
+        }
+        [self freashView];
+    }
+    
+   else if (request.tag==2)
+   {
+        NSMutableArray * arr;
+        NSLog(@"%@",request.responseString);
+        NSData*jsondata = [request responseData];
+        NSString*jsonString = [[NSString alloc]initWithBytes:[jsondata bytes]length:[jsondata length]encoding:NSUTF8StringEncoding];
+        
+        SBJsonParser* jsonP=[[SBJsonParser alloc] init];
+        NSDictionary* dic=[jsonP objectWithString:jsonString];
+        NSLog(@"%@分类发型dic:%@",style,dic);
+        
+        pageCount1 = [dic objectForKey:@"page_count"];
+        if ([[dic objectForKey:@"image_list"] isKindOfClass:[NSString class]])
+        {
+            
+        }
+        else if ([[dic objectForKey:@"image_list"] isKindOfClass:[NSArray class]])
+        {
+            arr= [dic objectForKey:@"image_list"];
+            [dresserArray1 addObjectsFromArray:arr];
+            NSLog(@"dresser1.count:%d",dresserArray1.count);
             
         }
         [self freashView];
@@ -209,15 +295,30 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (dresserArray.count%3==0)
-    {
-        return dresserArray.count/3;
+    if ([sign isEqualToString:@"1"]) {
+        if (dresserArray.count%3==0)
+        {
+            return dresserArray.count/3;
+        }
+        else
+        {
+            return dresserArray.count/3+1;
+        }
+        
     }
     else
     {
-        return dresserArray.count/3+1;
+        if (dresserArray1.count%3==0)
+        {
+            return dresserArray1.count/3;
+        }
+        else
+        {
+            return dresserArray1.count/3+1;
+        }
+        
     }
-  
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -240,17 +341,33 @@
     NSLog(@"row2:%d",row2);
     NSUInteger row3 = [indexPath row]*3+2;
     NSLog(@"row3:%d",row3);
-    
-    [cell setCell:[dresserArray objectAtIndex:row1] andIndex:row1];
-    
-    if (row2<dresserArray.count)//防止可能越界
+    if ([sign isEqualToString:@"1"])
     {
-        [cell setCell:[dresserArray objectAtIndex:row2] andIndex:row2];
+        [cell setCell:[dresserArray objectAtIndex:row1] andIndex:row1];
+        
+        if (row2<dresserArray.count)//防止可能越界
+        {
+            [cell setCell:[dresserArray objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<dresserArray.count)//防止可能越界
+        {
+            [cell setCell:[dresserArray objectAtIndex:row3] andIndex:row3];
+        }
     }
-    if (row3<dresserArray.count)//防止可能越界
+    else
     {
-        [cell setCell:[dresserArray objectAtIndex:row3] andIndex:row3];
+        [cell setCell:[dresserArray1 objectAtIndex:row1] andIndex:row1];
+        
+        if (row2<dresserArray1.count)//防止可能越界
+        {
+            [cell setCell:[dresserArray1 objectAtIndex:row2] andIndex:row2];
+        }
+        if (row3<dresserArray1.count)//防止可能越界
+        {
+            [cell setCell:[dresserArray1 objectAtIndex:row3] andIndex:row3];
+        }
     }
+   
 
     return cell;
 
@@ -284,33 +401,8 @@
 -(void)refreashNavLab
 {
     UILabel * Lab= [[UILabel alloc] initWithFrame:CGRectMake(160, 10, 100, 30)];
-    
-        if ([style isEqualToString:@"1"])
-        {
-            Lab.text = @"短发";
-        }
-        else if ([style isEqualToString:@"2"])
-        {
-            Lab.text = @"中发";
-        }
-        else if ([style isEqualToString:@"3"])
-        {
-            Lab.text = @"长发";
-        }
-        else if ([style isEqualToString:@"4"])
-        {
-            Lab.text = @"盘发";
-        }
-        else if ([style isEqualToString:@"5"])
-        {
-            Lab.text = @"男发";
-        }
-        else if ([style isEqualToString:@"6"])
-        {
-            Lab.text = @"全部";
-        }
-        
-    
+    NSLog(@"style:%@",self.style);
+    Lab.text = self.style;
     Lab.textAlignment = NSTextAlignmentCenter;
     Lab.font = [UIFont systemFontOfSize:16];
     Lab.textColor = [UIColor blackColor];

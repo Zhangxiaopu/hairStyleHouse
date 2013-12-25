@@ -16,6 +16,7 @@
 #import "hairStyleIconCell.h"
 
 #define signOrigionX 103
+#define signOrigionY 70
 @interface findStyleViewController : UIViewController<CLLocationManagerDelegate,UIAlertViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UIView * backView;

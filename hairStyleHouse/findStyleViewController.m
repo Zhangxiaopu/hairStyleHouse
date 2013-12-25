@@ -67,7 +67,7 @@
     fifthArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].fifthArray];
     sixthArr = [[NSArray alloc] initWithArray:[hairStyleCategory shareData].sixthArray];
     
-    myTableView=[[UITableView alloc] initWithFrame:CGRectMake(100, self.navigationController.navigationBar.frame.size.height+20, self.view.bounds.size.width-100, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-20-self.tabBarController.tabBar.frame.size.height) style:UITableViewStylePlain];
+    myTableView=[[UITableView alloc] initWithFrame:CGRectMake(85, self.navigationController.navigationBar.frame.size.height+20, self.view.bounds.size.width-85, self.view.bounds.size.height-self.navigationController.navigationBar.frame.size.height-20-self.tabBarController.tabBar.frame.size.height) style:UITableViewStylePlain];
     [myTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     myTableView.allowsSelection=NO;
     myTableView.dataSource=self;
@@ -176,7 +176,7 @@
 //    else
 //        
 //    {
-        return   tableView.frame.size.height/3;
+        return   tableView.frame.size.height/3-20;
 //    }
 }
 
@@ -214,10 +214,10 @@
     }
     else if ([whichDic isEqualToString:@"2"])
     {
-        if (row1<firstArr.count)//防止可能越界
+        if (row1<secondArr.count)//防止可能越界
         {
             
-            [cell setCell:[firstArr objectAtIndex:row1] andIndex:row1];
+            [cell setCell:[secondArr objectAtIndex:row1] andIndex:row1];
         }
         if (row2<secondArr.count)//防止可能越界
         {
@@ -230,10 +230,10 @@
     }
     else if ([whichDic isEqualToString:@"3"])
     {
-        if (row1<firstArr.count)//防止可能越界
+        if (row1<thirdArr.count)//防止可能越界
         {
             
-            [cell setCell:[firstArr objectAtIndex:row1] andIndex:row1];
+            [cell setCell:[thirdArr objectAtIndex:row1] andIndex:row1];
         }
         if (row2<thirdArr.count)//防止可能越界
         {
@@ -289,7 +289,135 @@
 
 -(void)selectImage:(NSInteger)_index
 {
+   
+    if ([whichDic isEqualToString:@"1"])
+    {
+        switch (_index) {
+            case 0:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"1";
+                findStyleDetail.scid=@"9";
+                findStyleDetail.style=[secondArr[8]  objectForKey:@"nameArr"];
+                
+                break;
+            case 1:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"1";
+                findStyleDetail.scid=@"7";
+                findStyleDetail.style=[secondArr[6]  objectForKey:@"nameArr"];
 
+                break;
+            case 2:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"4";
+                findStyleDetail.scid=@"4";
+                findStyleDetail.style=[fifthArr[3]  objectForKey:@"nameArr"];
+
+                break;
+            case 3:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"4";
+                findStyleDetail.scid=@"1";
+                findStyleDetail.style=[fifthArr[0]  objectForKey:@"nameArr"];
+
+                break;
+            case 4:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"1";
+                findStyleDetail.scid=@"4";
+                findStyleDetail.style=[secondArr[3]  objectForKey:@"nameArr"];
+
+                break;
+            case 5:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"1";
+                findStyleDetail.scid=@"5";
+                findStyleDetail.style=[secondArr[4]  objectForKey:@"nameArr"];
+
+                break;
+            case 6:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"2";
+                findStyleDetail.scid=@"9";
+                findStyleDetail.style=@"男明星";
+
+                break;
+            case 7:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"1";
+                findStyleDetail.scid=@"10";
+                findStyleDetail.style=@"女明星";
+
+                break;
+            case 8:
+                findStyleDetail = nil;
+                findStyleDetail = [[findStyleDetailViewController alloc] init];
+                findStyleDetail.bcid=@"5";
+                findStyleDetail.scid=@"2";
+                findStyleDetail.style=[sixthArr[1]  objectForKey:@"nameArr"];
+
+                break;
+            default:
+                break;
+        }
+    }
+    else if ([whichDic isEqualToString:@"2"])
+    {
+        findStyleDetail = nil;
+        findStyleDetail = [[findStyleDetailViewController alloc] init];
+        findStyleDetail.bcid=@"1";
+        findStyleDetail.scid=[NSString stringWithFormat:@"%d",_index+1];
+        findStyleDetail.style=[secondArr[_index]  objectForKey:@"nameArr"];
+
+    }
+    else if ([whichDic isEqualToString:@"3"])
+    {
+        findStyleDetail = nil;
+        findStyleDetail = [[findStyleDetailViewController alloc] init];
+        findStyleDetail.bcid=@"2";
+        findStyleDetail.scid=[NSString stringWithFormat:@"%d",_index+1];
+        findStyleDetail.style=[thirdArr[_index]  objectForKey:@"nameArr"];
+
+    }
+    else if ([whichDic isEqualToString:@"4"])
+    {
+        findStyleDetail = nil;
+        findStyleDetail = [[findStyleDetailViewController alloc] init];
+        findStyleDetail.bcid=@"3";
+        findStyleDetail.scid=[NSString stringWithFormat:@"%d",_index+1];
+        findStyleDetail.style=[forthArr[_index]  objectForKey:@"nameArr"];
+
+    }
+    else if ([whichDic isEqualToString:@"5"])
+    {
+        findStyleDetail = nil;
+        findStyleDetail = [[findStyleDetailViewController alloc] init];
+        findStyleDetail.bcid=@"4";
+        findStyleDetail.scid=[NSString stringWithFormat:@"%d",_index+1];
+        findStyleDetail.style=[fifthArr[_index]  objectForKey:@"nameArr"];
+
+    }
+    else if ([whichDic isEqualToString:@"6"])
+    {
+        findStyleDetail = nil;
+        findStyleDetail = [[findStyleDetailViewController alloc] init];
+        findStyleDetail.bcid=@"5";
+        findStyleDetail.scid=[NSString stringWithFormat:@"%d",_index+1];
+        findStyleDetail.style=[sixthArr[_index]  objectForKey:@"nameArr"];
+
+    }
+    
+    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+    
+    [ appDele pushToViewController:findStyleDetail];
 }
 
 
@@ -301,7 +429,7 @@
             imageView.frame=CGRectMake(20+150*j, 10+145*i+(self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-self.navigationController.navigationBar.frame.size.height-140)/4, 130, 121);
             imageView.tag=i*2+j;
             imageView.userInteractionEnabled=YES;
-            [self.view addSubview:imageView];
+//            [self.view addSubview:imageView];
         }
     }
     UITapGestureRecognizer* tap;
@@ -311,32 +439,32 @@
             case 0:
                 [imageView setImage:[UIImage imageNamed:@"短发.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             case 1:
                 [imageView setImage:[UIImage imageNamed:@"中发.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             case 2:
                 [imageView setImage:[UIImage imageNamed:@"长发.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             case 3:
                 [imageView setImage:[UIImage imageNamed:@"盘发.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             case 4:
                 [imageView setImage:[UIImage imageNamed:@"男士发型.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             case 5:
                 [imageView setImage:[UIImage imageNamed:@"其他.png"]];
                 tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
-                [imageView addGestureRecognizer:tap];
+//                [imageView addGestureRecognizer:tap];
                 break;
             default:
                 break;
@@ -371,9 +499,9 @@
         default:
             break;
     }
-    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
-
-    [ appDele pushToViewController:findStyleDetail];
+//    AppDelegate* appDele=(AppDelegate* )[UIApplication sharedApplication].delegate;
+//
+//    [ appDele pushToViewController:findStyleDetail];
     
 }
 
@@ -483,7 +611,7 @@
 {
     if (sender.tag==1)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX , 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX , 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:245.0/256.0 green:35.0/256.0 blue:96.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
@@ -502,7 +630,7 @@
     }
     else if(sender.tag==2)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX+72, 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX+72, 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women.png"]];
@@ -520,7 +648,7 @@
     }
     else if(sender.tag==3)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX+72*2 , 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX+72*2 , 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
@@ -538,7 +666,7 @@
     }
     else if(sender.tag==4)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX+71*3 , 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX+71*3 , 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
@@ -556,7 +684,7 @@
     }
     else if(sender.tag==5)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX+71*4 , 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX+71*4 , 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];
@@ -574,7 +702,7 @@
     }
     else if(sender.tag==6)
     {
-        _signImage.frame = CGRectMake(85,signOrigionX+71*5 , 15, 15);
+        _signImage.frame = CGRectMake(signOrigionY,signOrigionX+71*5 , 15, 15);
         [_firstImage setImage:[UIImage imageNamed:@"icon_recommend1.png"]];
         [_firstLable setTextColor:[UIColor colorWithRed:146.0/256.0 green:146.0/256.0 blue:146.0/256.0 alpha:1.0]];
         [_secondImage setImage:[UIImage imageNamed:@"icon_women1.png"]];

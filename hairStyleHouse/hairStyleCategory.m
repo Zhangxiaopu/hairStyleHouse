@@ -117,7 +117,7 @@ static hairStyleCategory *hairStyleCategoryData = nil;
         
        
         
-        NSString * oneStr2 = [[NSString alloc] initWithFormat:@"发机头"];
+        NSString * oneStr2 = [[NSString alloc] initWithFormat:@"飞机头"];
         NSString * twoStr2 = [[NSString alloc] initWithFormat:@"寸头"];
         NSString * threeStr2 = [[NSString alloc] initWithFormat:@"斜庞克"];
         NSString * fourStr2 = [[NSString alloc] initWithFormat:@"莫西干"];

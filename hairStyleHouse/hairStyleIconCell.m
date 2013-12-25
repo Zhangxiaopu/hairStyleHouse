@@ -67,11 +67,11 @@
         // 内容模式
         firstImage.clipsToBounds = YES;
         firstImage.contentMode = UIViewContentModeScaleAspectFill;
-        firstImage.frame =CGRectMake(5, 20, 68, 90);
+        firstImage.frame =CGRectMake(5, 20, 70, 90);
         secondImage.frame =CGRectMake(0, 0, 0, 0);
         thirdImage.frame =CGRectMake(0, 0, 0, 0);
         
-        firstLable.frame =CGRectMake(12, 115, 55, 20);
+        firstLable.frame =CGRectMake(6, 112,70, 20);
         secondLable.frame =CGRectMake(0, 0, 0, 0);
         thirdLable.frame =CGRectMake(0, 0, 0, 0);
     }
@@ -93,10 +93,10 @@
         // 内容模式
         secondImage.clipsToBounds = YES;
         secondImage.contentMode = UIViewContentModeScaleAspectFill;
-        secondImage.frame =CGRectMake(79, 20, 68, 90);
+        secondImage.frame =CGRectMake(81, 20, 70, 90);
         thirdImage.frame =CGRectMake(0, 0, 0, 0);
         
-        secondLable.frame =CGRectMake(88, 115, 55, 20);
+        secondLable.frame =CGRectMake(82, 112, 70, 20);
         thirdLable.frame =CGRectMake(0, 0, 0, 0);
     }
     else if (index%3==2)
@@ -116,9 +116,9 @@
         // 内容模式
         thirdImage.clipsToBounds = YES;
         thirdImage.contentMode = UIViewContentModeScaleAspectFill;
-        thirdImage.frame =CGRectMake(153, 20, 60, 90);
+        thirdImage.frame =CGRectMake(158, 20, 70, 90);
         
-        thirdLable.frame =CGRectMake(158, 115, 55, 20);
+        thirdLable.frame =CGRectMake(160, 112,70, 20);
     }
     
 }
